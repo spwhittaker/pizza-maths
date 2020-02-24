@@ -10,6 +10,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { pizzas: [] };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(e) {
+    this.state.pizzas.push(e);
+    console.log(this.state);
+    this.forceUpdate();
   }
 
   render() {
@@ -19,9 +25,12 @@ class App extends React.Component {
           <h1>Pizzarithmetic</h1>
           <h3>...best thing since sliced bread(pizza)</h3>
         </header>
-        <InputForm />
-        <PizzaCard name="Test Pizza" diameter="20" price="7.80" />
-        <PizzaCards />
+        <InputForm
+          updatePizzas={this.handleChange}
+          pizzas={this.state.pizzas}
+        />
+        {/* <PizzaCard name="Test Pizza" diameter="20" price="7.80" /> */}
+        <PizzaCards pizzas={this.state.pizzas} />
       </div>
     );
   }

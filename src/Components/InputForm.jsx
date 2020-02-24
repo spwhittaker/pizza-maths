@@ -16,13 +16,13 @@ class InputForm extends Component {
     if (document.getElementById("cm").checked) {
       inchesVal = this.state.diameterInput / 2.54;
     }
-    this.state.pizzas.push({
+    const newPizza = {
       name: this.state.nameInput,
       diameter: inchesVal,
       price: this.state.priceInput,
       quantity: 1
-    });
-    console.log(this.state);
+    };
+    this.props.updatePizzas(newPizza);
   };
   render() {
     return (

@@ -6,15 +6,21 @@ class PizzaCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pizzas: [
-        { name: "test 1", price: 10.0, diameter: 15 },
-        { name: "test 2", price: 12.5, diameter: 17 }
-      ]
+      pizzas: this.props.pizzas
+      /* pizzas: [{ diameter: 10, price: 23.45, name: "Food" }] */
     };
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.pizzas !== this.props.pizzas) {
+      this.setState({ pizzas: this.props.pizzas });
+    }
+  }
+
   render() {
     return (
       <div className="AllPizzas">
+        {/* {console.log("pizza props", this.props)} */}
+        {/* {this.props.pizzas.map(pie => { */}
         {this.state.pizzas.map(pie => {
           return (
             <div key={pie["_id"]}>
