@@ -14,13 +14,17 @@ const PizzaCard = ({ name, diameter, price }) => {
       <h4>Name: {name}</h4>
       <h4>Diameter (in inches): {roundedDiameter}</h4>
       <h4>Price: £{Number(price).toFixed(2)}</h4>
-      <p>Area: {area} square inches</p>
+      <p>
+        Area: {area} in<sup>2</sup>
+      </p>
       <p>Crust: {circumference} inches</p>
       <p>
         Area to crust (bigger means more area compared to crust):{" "}
         {(area / circumference).toFixed(2)}
       </p>
-      <p>Price per square inch: £{(Number(price) / area).toFixed(2)}</p>
+      <p>
+        Price per in<sup>2</sup>: £{(Number(price) / area).toFixed(2)}
+      </p>
     </div>
   );
 };

@@ -53,9 +53,9 @@ class InputForm extends Component {
                     this.setState({ diameterInput: event.target.value })
                   }
                 />
-                <input type="radio" id="cm" name="units" value="cm" />
+                <input type="radio" id="cm" name="units" value="cm" required />
                 <label htmlFor="cm">cm</label>
-                <input type="radio" id="in" name="units" value="in" />
+                <input type="radio" id="in" name="units" value="in" required />
                 <label htmlFor="in">in</label>
               </span>
             </div>
