@@ -1,0 +1,7 @@
+.PizzaCard {
+  margin: 5px;
+  border: solid green 3px;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px;
+}

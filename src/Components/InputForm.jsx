@@ -12,9 +12,13 @@ class InputForm extends Component {
   }
   handleInput = input => {
     input.preventDefault();
+    let inchesVal = this.state.diameterInput;
+    if (document.getElementById("cm").checked) {
+      inchesVal = this.state.diameterInput / 2.54;
+    }
     this.state.pizzas.push({
       name: this.state.nameInput,
-      diameter: this.state.diameterInput,
+      diameter: inchesVal,
       price: this.state.priceInput,
       quantity: 1
     });
