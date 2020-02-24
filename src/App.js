@@ -29,7 +29,6 @@ class App extends React.Component {
           updatePizzas={this.handleChange}
           pizzas={this.state.pizzas}
         />
-        {/* <PizzaCard name="Test Pizza" diameter="20" price="7.80" /> */}
         <PizzaCards pizzas={this.state.pizzas} />
       </div>
     );

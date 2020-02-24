@@ -15,6 +15,10 @@ const PizzaCard = ({ name, diameter, price }) => (
         2
       )}
     </p>
+    <p>
+      Price per square inch: £
+      {(Number(price) / (Math.PI * Math.pow(diameter / 2, 2))).toFixed(2)}
+    </p>
   </div>
 );
 
