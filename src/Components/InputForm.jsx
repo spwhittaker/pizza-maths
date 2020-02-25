@@ -7,7 +7,8 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: null
+      priceInput: null,
+      pizzas: []
     };
   }
   handleInput = input => {
