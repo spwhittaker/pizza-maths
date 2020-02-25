@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import PizzaCard from "./PizzaCard";
+import "../styles/PizzaCards.css";
 
 class PizzaCards extends Component {
   constructor(props) {
@@ -18,10 +19,10 @@ class PizzaCards extends Component {
   render() {
     return (
       <div className="AllPizzas">
-        {this.state.pizzas.map(pie => {
+        {this.state.pizzas.map((pie, index) => {
           return (
-            <div key={pie["_id"]}>
-              <PizzaCard {...pie} />
+            <div>
+              <PizzaCard {...pie} key={pie.name + index} />
             </div>
           );
         })}
