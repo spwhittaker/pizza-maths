@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/InputForm.css";
 
 class InputForm extends Component {
   constructor(props) {
@@ -6,8 +7,7 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: null,
-      pizzas: []
+      priceInput: null
     };
   }
   handleInput = input => {

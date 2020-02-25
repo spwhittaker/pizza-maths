@@ -3,7 +3,6 @@ import logo from "./logo.svg";
 import "./styles/App.css";
 import "./Components/InputForm";
 import InputForm from "./Components/InputForm";
-import PizzaCard from "./Components/PizzaCard";
 import PizzaCards from "./Components/PizzaCards";
 
 class App extends React.Component {
@@ -14,7 +13,6 @@ class App extends React.Component {
   }
   handleChange(e) {
     this.state.pizzas.push(e);
-    console.log(this.state);
     this.forceUpdate();
   }
 
