@@ -1,0 +1,4 @@
+.AllPizzas {
+  display: flex;
+  flex-wrap: wrap;
+}
