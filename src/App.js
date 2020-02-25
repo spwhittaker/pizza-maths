@@ -10,13 +10,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pizzas: [{ name: "Test guy", diameter: 12, price: 7, key: "Test guy 0" }]
+      pizzas: [
+        {
+          name: "Test guy",
+          diameter: 12,
+          price: 7,
+          key: "Test guy 0",
+          quantity: 2
+        }
+      ]
     };
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
     this.state.pizzas.push(e);
-    console.log(this.state);
     this.forceUpdate();
   }
 
