@@ -8,7 +8,9 @@ import PizzaCards from "./Components/PizzaCards";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { pizzas: [] };
+    this.state = {
+      pizzas: [{ name: "Test guy", diameter: 12, price: 7, key: "Test guy 0" }]
+    };
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
