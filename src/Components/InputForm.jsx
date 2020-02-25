@@ -29,7 +29,7 @@ class InputForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleInput}>
-          <div>
+          <div class="inputTexts">
             <div class="pizzaOption">
               <span class="inputOptions">
                 <p>Name</p>
@@ -50,14 +50,15 @@ class InputForm extends Component {
                   type="number"
                   required
                   name="diameter"
+                  min="1"
                   onChange={event =>
                     this.setState({ diameterInput: event.target.value })
                   }
                 />
-                <input type="radio" id="cm" name="units" value="cm" required />
-                <label htmlFor="cm">cm</label>
                 <input type="radio" id="in" name="units" value="in" required />
                 <label htmlFor="in">in</label>
+                <input type="radio" id="cm" name="units" value="cm" required />
+                <label htmlFor="cm">cm</label>
               </span>
             </div>
             <div class="pizzaOption">
@@ -68,6 +69,7 @@ class InputForm extends Component {
                   required
                   name="price"
                   step="0.01"
+                  min="1"
                   onChange={event =>
                     this.setState({ priceInput: event.target.value })
                   }
