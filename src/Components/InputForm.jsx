@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/InputForm.css";
 
 class InputForm extends Component {
   constructor(props) {
