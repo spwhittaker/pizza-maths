@@ -17,11 +17,13 @@ class InputForm extends Component {
     if (document.getElementById("cm").checked) {
       inchesVal = this.state.diameterInput / 2.54;
     }
+    const key = this.state.nameInput + new Date().getTime();
     const newPizza = {
       name: this.state.nameInput,
       diameter: inchesVal,
       price: this.state.priceInput,
-      quantity: 1
+      quantity: 1,
+      key: key
     };
     this.props.updatePizzas(newPizza);
   };
@@ -29,9 +31,9 @@ class InputForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleInput}>
-          <div class="inputTexts">
-            <div class="pizzaOption">
-              <span class="inputOptions">
+          <div className="inputTexts">
+            <div className="pizzaOption">
+              <span className="inputOptions">
                 <p>Name</p>
                 <input
                   type="text"
@@ -43,8 +45,8 @@ class InputForm extends Component {
                 />
               </span>
             </div>
-            <div class="pizzaOption">
-              <span class="inputOptions">
+            <div className="pizzaOption">
+              <span className="inputOptions">
                 <p>Diameter</p>
                 <input
                   type="number"
@@ -61,8 +63,8 @@ class InputForm extends Component {
                 <label htmlFor="cm">cm</label>
               </span>
             </div>
-            <div class="pizzaOption">
-              <span class="inputOptions">
+            <div className="pizzaOption">
+              <span className="inputOptions">
                 <p>Price (£)</p>
                 <input
                   type="number"

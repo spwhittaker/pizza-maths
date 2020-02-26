@@ -20,6 +20,8 @@ class App extends React.Component {
     this.forceUpdate();
   }
 
+  handleRemove(e) {}
+
   render() {
     return (
       <div className="App">

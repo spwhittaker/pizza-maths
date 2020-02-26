@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/PizzaCard.css";
-const PizzaCard = ({ name, diameter, price }) => {
+const PizzaCard = ({ name, diameter, price, key }) => {
   let roundedDiameter;
   if (diameter % 1 === 0) {
     roundedDiameter = diameter;
@@ -10,7 +10,7 @@ const PizzaCard = ({ name, diameter, price }) => {
   const area = (Math.PI * Math.pow(diameter / 2, 2)).toFixed(2);
   const circumference = (Math.PI * diameter).toFixed(2);
   return (
-    <div className="PizzaCard">
+    <div className="PizzaCard" id={key}>
       <h4>Name: {name}</h4>
       <h4>Diameter (in inches): {roundedDiameter}</h4>
       <h4>Price: £{Number(price).toFixed(2)}</h4>

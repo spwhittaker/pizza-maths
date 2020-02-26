@@ -20,7 +20,7 @@ class PizzaCards extends Component {
       <div className="AllPizzas">
         {this.state.pizzas.map(pie => {
           return (
-            <div key={pie["_id"]}>
+            <div key={pie.key}>
               <PizzaCard {...pie} />
             </div>
           );
