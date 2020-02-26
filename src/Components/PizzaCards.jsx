@@ -21,9 +21,11 @@ class PizzaCards extends Component {
       <div className="AllPizzas">
         {this.state.pizzas.map(pie => {
           return (
-            <div key={pie.key}>
-              <PizzaCard {...pie} />
-            </div>
+            <PizzaCard
+              {...pie}
+              pizzaId={pie.pizzaId}
+              addButtonClick={this.props.addButton}
+            />
           );
         })}
       </div>

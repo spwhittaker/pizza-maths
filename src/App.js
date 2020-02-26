@@ -1,9 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./styles/App.css";
 import "./Components/InputForm";
 import InputForm from "./Components/InputForm";
-import PizzaCard from "./Components/PizzaCard";
 import PizzaCards from "./Components/PizzaCards";
 
 class App extends React.Component {
@@ -16,6 +14,7 @@ class App extends React.Component {
           diameter: 12,
           price: 7,
           key: "Test guy 0",
+          pizzaId: "test id",
           quantity: 2
         }
       ]
@@ -27,7 +26,13 @@ class App extends React.Component {
     this.forceUpdate();
   }
 
-  handleRemove(e) {}
+  handleRemove(e) {
+    console.log(e.props.key);
+  }
+
+  handleAdd(e) {
+    console.log("add");
+  }
 
   render() {
     return (
@@ -40,7 +45,7 @@ class App extends React.Component {
           updatePizzas={this.handleChange}
           pizzas={this.state.pizzas}
         />
-        <PizzaCards pizzas={this.state.pizzas} />
+        <PizzaCards pizzas={this.state.pizzas} addButton={this.handleAdd} />
       </div>
     );
   }

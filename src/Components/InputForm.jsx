@@ -17,13 +17,13 @@ class InputForm extends Component {
     if (document.getElementById("cm").checked) {
       inchesVal = this.state.diameterInput / 2.54;
     }
-    const key = this.state.nameInput + new Date().getTime();
+    const pizzaId = this.state.nameInput + new Date().getTime();
     const newPizza = {
       name: this.state.nameInput,
       diameter: inchesVal,
       price: this.state.priceInput,
       quantity: 1,
-      key: key
+      key: pizzaId
     };
     this.props.updatePizzas(newPizza);
   };
