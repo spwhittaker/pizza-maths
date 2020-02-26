@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import PizzaCard from "./PizzaCard";
+import "../styles/PizzaCards.css";
 
 class PizzaCards extends Component {
   constructor(props) {

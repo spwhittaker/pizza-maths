@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/PizzaCard.css";
 const PizzaCard = ({ name, diameter, price, key }) => {
+const PizzaCard = ({ name, diameter, price, quantity }) => {
   let roundedDiameter;
   if (diameter % 1 === 0) {
     roundedDiameter = diameter;
@@ -13,14 +14,17 @@ const PizzaCard = ({ name, diameter, price, key }) => {
     <div className="PizzaCard" id={key}>
       <h4>Name: {name}</h4>
       <h4>Diameter (in inches): {roundedDiameter}</h4>
-      <h4>Price: £{Number(price).toFixed(2)}</h4>
+      <h4>Price per pizza: £{Number(price).toFixed(2)}</h4>
+      <p>Quantity: {quantity}</p>
+
+      <h4>Total: £{Number(price * quantity).toFixed(2)}</h4>
       <p>
-        Area: {area} in<sup>2</sup>
+        Area: {area * quantity} in<sup>2</sup>
       </p>
-      <p>Crust: {circumference} inches</p>
+      <p>Crust: {circumference * quantity} inches</p>
       <p>
         Area to crust (bigger means more area compared to crust):{" "}
-        {(area / circumference).toFixed(2)}
+        {((area * quantity) / (circumference * quantity)).toFixed(2)}
       </p>
       <p>
         Price per in<sup>2</sup>: £{(Number(price) / area).toFixed(2)}
@@ -30,3 +34,4 @@ const PizzaCard = ({ name, diameter, price, key }) => {
 };
 
 export default PizzaCard;
+
