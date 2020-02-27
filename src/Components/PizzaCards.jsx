@@ -10,6 +10,7 @@ class PizzaCards extends Component {
       pizzas: this.props.pizzas
     };
   }
+
   componentDidUpdate(prevProps) {
     if (prevProps.pizzas !== this.props.pizzas) {
       this.setState({ pizzas: this.props.pizzas });
@@ -18,16 +19,27 @@ class PizzaCards extends Component {
 
   render() {
     return (
-      <div className="AllPizzas">
-        {this.state.pizzas.map(pie => {
-          return (
-            <PizzaCard
-              {...pie}
-              pizzaId={pie.pizzaId}
-              addButtonClick={this.props.addButton}
-            />
-          );
-        })}
+      <div>
+        <div className="AllPizzas">
+          {this.state.pizzas.map(pie => {
+            return (
+              <PizzaCard
+                {...pie}
+                pizzaId={pie.pizzaId}
+                addButtonClick={this.props.addButton}
+              />
+            );
+          })}
+        </div>
+        <span>
+          <h2>
+            Total: £
+            {this.props.pizzas
+              .map(pizza => pizza.price * pizza.quantity)
+              .reduce((total, currentPizza) => total + currentPizza)
+              .toFixed(2)}
+          </h2>
+        </span>
       </div>
     );
   }

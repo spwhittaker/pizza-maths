@@ -21,9 +21,16 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(e) {
-    this.state.pizzas.push(e);
-    this.forceUpdate();
+    if (
+      !this.state.pizzas.some(
+        obj =>
+          obj.name === e.name && Number(obj.diameter) === Number(e.diameter)
+      )
+    ) {
+      this.setState({ pizzas: [...this.state.pizzas, e] });
+    }
   }
 
   handleRemove(e) {
