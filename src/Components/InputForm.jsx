@@ -23,7 +23,8 @@ class InputForm extends Component {
       diameter: inchesVal,
       price: this.state.priceInput,
       quantity: 1,
-      key: pizzaId
+      key: pizzaId,
+      pizzaId: pizzaId
     };
     this.props.updatePizzas(newPizza);
   };

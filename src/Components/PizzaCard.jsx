@@ -6,7 +6,9 @@ const PizzaCard = ({
   price,
   quantity,
   pizzaId,
-  addButtonClick
+  addButtonClick,
+  minusButtonClick,
+  removeButtonClick
 }) => {
   let roundedDiameter;
   if (diameter % 1 === 0) {
@@ -14,8 +16,8 @@ const PizzaCard = ({
   } else {
     roundedDiameter = Number(diameter).toFixed(1);
   }
-  const area = (Math.PI * Math.pow(diameter / 2, 2)).toFixed(2);
-  const circumference = (Math.PI * diameter).toFixed(2);
+  const area = Math.PI * Math.pow(diameter / 2, 2);
+  const circumference = Math.PI * diameter;
   return (
     <div className="PizzaCard" key={pizzaId}>
       <h4>Name: {name}</h4>
@@ -23,13 +25,25 @@ const PizzaCard = ({
       <h4>Price per pizza: £{Number(price).toFixed(2)}</h4>
       <span>
         <p>Quantity: {quantity}</p>
-        <button type="button" className="addButton" onClick={addButtonClick}>
-          Add
+        <button
+          type="button"
+          className="addButton"
+          onClick={() => addButtonClick(pizzaId)}
+        >
+          +
+        </button>
+        <button
+          type="button"
+          className="minusButton"
+          onClick={() => minusButtonClick(pizzaId)}
+        >
+          -
         </button>
         <button
           type="button"
           className="removeButton"
           id={"removeButton for " + pizzaId}
+          onClick={() => removeButtonClick(pizzaId)}
         >
           Remove
         </button>
@@ -37,9 +51,9 @@ const PizzaCard = ({
 
       <h4>Total: £{Number(price * quantity).toFixed(2)}</h4>
       <p>
-        Area: {area * quantity} in<sup>2</sup>
+        Area: {(area * quantity).toFixed(2)} in<sup>2</sup>
       </p>
-      <p>Crust: {circumference * quantity} inches</p>
+      <p>Crust: {(circumference * quantity).toFixed(2)} inches</p>
       <p>
         Area to crust (bigger means more area compared to crust):{" "}
         {((area * quantity) / (circumference * quantity)).toFixed(2)}

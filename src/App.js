@@ -19,10 +19,10 @@ class App extends React.Component {
         }
       ]
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handlePizzaInput = this.handlePizzaInput.bind(this);
   }
 
-  handleChange(e) {
+  handlePizzaInput(e) {
     if (
       !this.state.pizzas.some(
         obj =>
@@ -33,13 +33,31 @@ class App extends React.Component {
     }
   }
 
-  handleRemove(e) {
-    console.log(e.props.key);
-  }
+  handleRemove = e => {
+    this.setState({
+      pizzas: this.state.pizzas.filter(arrPizza => arrPizza.pizzaId !== e)
+    });
+  };
 
-  handleAdd(e) {
-    console.log("add");
-  }
+  handleAdd = e => {
+    let foundPizza = this.state.pizzas.find(arrPizza => arrPizza.pizzaId === e);
+    let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
+    foundPizza.quantity += 1;
+    const newPizzas = [...this.state.pizzas];
+    newPizzas[pizzaIndex] = foundPizza;
+    this.setState({ pizzas: newPizzas });
+  };
+
+  handleMinus = e => {
+    let foundPizza = this.state.pizzas.find(arrPizza => arrPizza.pizzaId === e);
+    let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
+    if (foundPizza.quantity > 1) {
+      foundPizza.quantity -= 1;
+      const newPizzas = [...this.state.pizzas];
+      newPizzas[pizzaIndex] = foundPizza;
+      this.setState({ pizzas: newPizzas });
+    }
+  };
 
   render() {
     return (
@@ -49,10 +67,15 @@ class App extends React.Component {
           <h3>...best thing since sliced bread(pizza)</h3>
         </header>
         <InputForm
-          updatePizzas={this.handleChange}
+          updatePizzas={this.handlePizzaInput}
           pizzas={this.state.pizzas}
         />
-        <PizzaCards pizzas={this.state.pizzas} addButton={this.handleAdd} />
+        <PizzaCards
+          pizzas={this.state.pizzas}
+          addButton={this.handleAdd}
+          removeButton={this.handleRemove}
+          minusButton={this.handleMinus}
+        />
       </div>
     );
   }
