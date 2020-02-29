@@ -7,8 +7,7 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: null,
-      pizzas: []
+      priceInput: null
     };
   }
   handleInput = input => {
@@ -32,9 +31,9 @@ class InputForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleInput}>
-          <div className="inputTexts">
-            <div className="pizzaOption">
-              <span className="inputOptions">
+          <div className="input-texts">
+            <div className="pizza-option">
+              <span className="input-options">
                 <p>Name</p>
                 <input
                   type="text"
@@ -46,8 +45,8 @@ class InputForm extends Component {
                 />
               </span>
             </div>
-            <div className="pizzaOption">
-              <span className="inputOptions">
+            <div className="pizza-option">
+              <span className="input-options">
                 <p>Diameter</p>
                 <input
                   type="number"
@@ -64,8 +63,8 @@ class InputForm extends Component {
                 <label htmlFor="cm">cm</label>
               </span>
             </div>
-            <div className="pizzaOption">
-              <span className="inputOptions">
+            <div className="pizza-option">
+              <span className="input-options">
                 <p>Price (£)</p>
                 <input
                   type="number"

@@ -60,6 +60,7 @@ class App extends React.Component {
   };
 
   render() {
+    const { sideBySide, metricUnits } = this.props;
     return (
       <div className="App">
         <InputForm
@@ -71,8 +72,8 @@ class App extends React.Component {
           addButton={this.handleAdd}
           removeButton={this.handleRemove}
           minusButton={this.handleMinus}
-          splitView={this.props.sideBySide}
-          metricUnits={this.props.metricUnits}
+          splitView={sideBySide}
+          metricUnits={metricUnits}
         />
       </div>
     );

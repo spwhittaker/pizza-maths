@@ -38,21 +38,21 @@ const PizzaCard = ({
         <p>Quantity: {quantity}</p>
         <button
           type="button"
-          className="addButton"
+          className="add-button"
           onClick={() => addButtonClick(pizzaId)}
         >
           +
         </button>
         <button
           type="button"
-          className="minusButton"
+          className="minus-button"
           onClick={() => minusButtonClick(pizzaId)}
         >
           -
         </button>
         <button
           type="button"
-          className="removeButton"
+          className="remove-button"
           onClick={() => removeButtonClick(pizzaId)}
         >
           Remove

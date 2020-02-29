@@ -40,7 +40,7 @@ li {
   list-style-type: none;
 }
 
-.inputOptions {
+.input-options {
   display: flex;
   width: 400px;
   flex-grow: 1;
@@ -48,7 +48,7 @@ li {
   justify-content: space-evenly;
 }
 
-.pizzaOption {
+.pizza-option {
   min-width: 50%;
   display: inline;
 }

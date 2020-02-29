@@ -10,8 +10,9 @@
 .pizza-cards-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.totalValues {
-  justify-content: flex-end;
+.total-values {
+  align-self: center;
 }
