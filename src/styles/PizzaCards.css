@@ -1,5 +1,17 @@
-.AllPizzas {
+.all-pizzas {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.split-view {
+  flex-direction: column;
+}
+.pizza-cards-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.totalValues {
+  justify-content: flex-end;
 }

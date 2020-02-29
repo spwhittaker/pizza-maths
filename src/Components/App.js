@@ -1,8 +1,8 @@
 import React from "react";
-import "./styles/App.css";
-import "./Components/InputForm";
-import InputForm from "./Components/InputForm";
-import PizzaCards from "./Components/PizzaCards";
+import "../styles/App.css";
+import "./InputForm";
+import InputForm from "./InputForm";
+import PizzaCards from "./PizzaCards";
 
 class App extends React.Component {
   constructor(props) {
@@ -62,10 +62,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Pizzarithmetic</h1>
-          <h3>...best thing since sliced bread(pizza)</h3>
-        </header>
         <InputForm
           updatePizzas={this.handlePizzaInput}
           pizzas={this.state.pizzas}
@@ -75,6 +71,8 @@ class App extends React.Component {
           addButton={this.handleAdd}
           removeButton={this.handleRemove}
           minusButton={this.handleMinus}
+          splitView={this.props.sideBySide}
+          metricUnits={this.props.metricUnits}
         />
       </div>
     );

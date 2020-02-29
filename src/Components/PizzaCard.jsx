@@ -8,7 +8,8 @@ const PizzaCard = ({
   pizzaId,
   addButtonClick,
   minusButtonClick,
-  removeButtonClick
+  removeButtonClick,
+  metricUnits
 }) => {
   let roundedDiameter;
   if (diameter % 1 === 0) {
@@ -21,7 +22,17 @@ const PizzaCard = ({
   return (
     <div className="PizzaCard" key={pizzaId}>
       <h4>Name: {name}</h4>
-      <h4>Diameter (in inches): {roundedDiameter}</h4>
+      {metricUnits === false ? (
+        <h4>Diameter: {roundedDiameter} inches</h4>
+      ) : (
+        <h4>
+          Diameter:{" "}
+          {(diameter * 2.54) % 1 === 0
+            ? diameter * 2.54
+            : Number(diameter * 2.54).toFixed(1)}{" "}
+          cm
+        </h4>
+      )}
       <h4>Price per pizza: £{Number(price).toFixed(2)}</h4>
       <span>
         <p>Quantity: {quantity}</p>
@@ -42,7 +53,6 @@ const PizzaCard = ({
         <button
           type="button"
           className="removeButton"
-          id={"removeButton for " + pizzaId}
           onClick={() => removeButtonClick(pizzaId)}
         >
           Remove
@@ -50,17 +60,34 @@ const PizzaCard = ({
       </span>
 
       <h4>Total: £{Number(price * quantity).toFixed(2)}</h4>
-      <p>
-        Area: {(area * quantity).toFixed(2)} in<sup>2</sup>
-      </p>
-      <p>Crust: {(circumference * quantity).toFixed(2)} inches</p>
+      {metricUnits === false ? (
+        <p>
+          Area: {(area * quantity).toFixed(2)} in<sup>2</sup>
+        </p>
+      ) : (
+        <p>
+          Area: {(area * quantity * 2.54 * 2.54).toFixed(2)} cm<sup>2</sup>
+        </p>
+      )}
+      {metricUnits === false ? (
+        <p>Crust: {(circumference * quantity).toFixed(2)} inches</p>
+      ) : (
+        <p>Crust: {(circumference * quantity * 2.54).toFixed(2)} cm</p>
+      )}
       <p>
         Area to crust (bigger means more area compared to crust):{" "}
         {((area * quantity) / (circumference * quantity)).toFixed(2)}
       </p>
-      <p>
-        Price per in<sup>2</sup>: £{(Number(price) / area).toFixed(2)}
-      </p>
+      {metricUnits === false ? (
+        <p>
+          Price per in<sup>2</sup>: {((Number(price) / area) * 100).toFixed(2)}p
+        </p>
+      ) : (
+        <p>
+          Price per cm<sup>2</sup>:
+          {(Number(price / (area * 2.54 * 2.54)) * 100).toFixed(2)}p
+        </p>
+      )}
     </div>
   );
 };

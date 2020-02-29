@@ -1,0 +1,11 @@
+.UpperLevel {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.sideBySideComparison {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
