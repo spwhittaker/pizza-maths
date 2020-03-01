@@ -3,20 +3,20 @@ import "../styles/App.css";
 import "./InputForm";
 import InputForm from "./InputForm";
 import PizzaCards from "./PizzaCards";
-
+/* eslint no-restricted-globals:0 */
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pizzas: [
-        {
+        /*  {
           name: "Test guy",
           diameter: 12,
           price: 7,
           key: "Test guy 0",
           pizzaId: "test id",
           quantity: 2
-        }
+        } */
       ]
     };
     this.handlePizzaInput = this.handlePizzaInput.bind(this);
@@ -34,9 +34,12 @@ class App extends React.Component {
   }
 
   handleRemove = e => {
-    this.setState({
-      pizzas: this.state.pizzas.filter(arrPizza => arrPizza.pizzaId !== e)
-    });
+    if (confirm("Are you completely sure you want to remove this pizza?")) {
+      this.setState({
+        pizzas: this.state.pizzas.filter(arrPizza => arrPizza.pizzaId !== e)
+      });
+    } else {
+    }
   };
 
   handleAdd = e => {
@@ -66,6 +69,7 @@ class App extends React.Component {
         <InputForm
           updatePizzas={this.handlePizzaInput}
           pizzas={this.state.pizzas}
+          instanceNumber={this.props.appInstance}
         />
         <PizzaCards
           pizzas={this.state.pizzas}

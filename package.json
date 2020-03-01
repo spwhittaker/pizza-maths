@@ -1,7 +1,7 @@
 {
   "name": "pizza-maths",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -33,6 +33,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.8.3"
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "gh-pages": "^2.2.0",
+    "now": "^17.0.4"
   }
 }
