@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/InputForm.css";
+import ToggleSwitch from './Toggle.jsx';
 
 class InputForm extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class InputForm extends Component {
                 />
               </span>
             </div>
-            <div className="pizza-option">
+            <div className="pizza-option" id="toggle">
               <span className="input-options">
                 <p>Diameter</p>
                 <input
@@ -57,10 +58,9 @@ class InputForm extends Component {
                     this.setState({ diameterInput: event.target.value })
                   }
                 />
-                <input type="radio" id="in" name="units" value="in" required />
-                <label htmlFor="in">in</label>
-                <input type="radio" id="cm" name="units" value="cm" required />
-                <label htmlFor="cm">cm</label>
+
+                < ToggleSwitch/>
+
               </span>
             </div>
             <div className="pizza-option">
@@ -80,13 +80,13 @@ class InputForm extends Component {
             </div>
           </div>
 
-          <button type="submit" label="Submit">
+          <button type="submit">
             I'm hungry!
           </button>
         </form>
       </div>
-    );
+    )
   }
-}
+};
 
 export default InputForm;
