@@ -9,14 +9,14 @@ class App extends React.Component {
     super(props);
     this.state = {
       pizzas: [
-        {
+        /*  {
           name: "Test guy",
           diameter: 12,
           price: 7,
           key: "Test guy 0",
           pizzaId: "test id",
           quantity: 2
-        }
+        } */
       ]
     };
     this.handlePizzaInput = this.handlePizzaInput.bind(this);
