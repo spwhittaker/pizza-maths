@@ -36,14 +36,13 @@ class UpperLevel extends Component {
   };
   render() {
     return (
-      <div>
-        <div className="upper-level">
-          <header className="App-header">
-            <h1>Pizzarithmetic</h1>
-            <h3>...best thing since sliced bread(pizza)</h3>
-            <p>Add some pizza details below and compare for the best value</p>
-          </header>
-
+      <div className="upper-level">
+        <header className="App-header">
+          <h1>Pizzarithmetic</h1>
+          <h3>...best thing since sliced bread(pizza)</h3>
+          <p>Add some pizza details below and compare for the best value</p>
+        </header>
+        <div className="top-level-options">
           {this.state.comparisonDiv === false && (
             <button
               type="button"
@@ -70,23 +69,23 @@ class UpperLevel extends Component {
             Change values to {this.state.metricUnits === true && "cm"}
             {this.state.metricUnits === false && "inches"}
           </button>
-          <span className="apps">
+        </div>
+        <span className="apps">
+          <App
+            className={this.state.comparisonClass}
+            sideBySide={this.state.splitViewClass}
+            metricUnits={this.state.metricUnits}
+            appInstance={"0"}
+          />
+          {this.state.comparisonDiv && (
             <App
-              className={this.state.comparisonClass}
+              className={this.state.splitViewClass}
               sideBySide={this.state.splitViewClass}
               metricUnits={this.state.metricUnits}
-              appInstance={"0"}
+              appInstance={"1"}
             />
-            {this.state.comparisonDiv && (
-              <App
-                className={this.state.splitViewClass}
-                sideBySide={this.state.splitViewClass}
-                metricUnits={this.state.metricUnits}
-                appInstance={"1"}
-              />
-            )}
-          </span>
-        </div>
+          )}
+        </span>
       </div>
     );
   }

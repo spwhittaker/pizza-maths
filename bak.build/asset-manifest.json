@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.870ec345.chunk.css",
+    "main.js": "/static/js/main.c2a35b10.chunk.js",
+    "main.js.map": "/static/js/main.c2a35b10.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c2f2e163.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c2f2e163.js.map",
+    "static/js/2.e1f5f902.chunk.js": "/static/js/2.e1f5f902.chunk.js",
+    "static/js/2.e1f5f902.chunk.js.map": "/static/js/2.e1f5f902.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.da0ab56edc1a82ee27b8ad89582c4f9f.js": "/precache-manifest.da0ab56edc1a82ee27b8ad89582c4f9f.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.870ec345.chunk.css.map": "/static/css/main.870ec345.chunk.css.map",
+    "static/js/2.e1f5f902.chunk.js.LICENSE.txt": "/static/js/2.e1f5f902.chunk.js.LICENSE.txt",
+    "static/media/margherita.jpg": "/static/media/margherita.256757d0.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c2f2e163.js",
+    "static/js/2.e1f5f902.chunk.js",
+    "static/css/main.870ec345.chunk.css",
+    "static/js/main.c2a35b10.chunk.js"
+  ]
+}

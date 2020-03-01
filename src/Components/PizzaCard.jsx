@@ -21,19 +21,19 @@ const PizzaCard = ({
   const circumference = Math.PI * diameter;
   return (
     <div className="PizzaCard" key={pizzaId}>
-      <h4>Name: {name}</h4>
+      <p>Name: {name}</p>
       {metricUnits === false ? (
-        <h4>Diameter: {roundedDiameter} inches</h4>
+        <p>Diameter: {roundedDiameter} inches</p>
       ) : (
-        <h4>
+        <p>
           Diameter:{" "}
           {(diameter * 2.54) % 1 === 0
             ? diameter * 2.54
             : Number(diameter * 2.54).toFixed(1)}{" "}
           cm
-        </h4>
+        </p>
       )}
-      <h4>Price per pizza: £{Number(price).toFixed(2)}</h4>
+      <p>Price per pizza: £{Number(price).toFixed(2)}</p>
       <div className="quantity-buttons">
         <p>Quantity: {quantity}</p>
         <button
@@ -59,7 +59,7 @@ const PizzaCard = ({
         </button>
       </div>
 
-      <h4>Total: £{Number(price * quantity).toFixed(2)}</h4>
+      <p>Total: £{Number(price * quantity).toFixed(2)}</p>
       {metricUnits === false ? (
         <p>
           Area: {(area * quantity).toFixed(2)} in<sup>2</sup>
@@ -75,7 +75,7 @@ const PizzaCard = ({
         <p>Crust: {(circumference * quantity * 2.54).toFixed(2)} cm</p>
       )}
       <p>
-        Area to crust (bigger means more area compared to crust):{" "}
+        Area to crust ratio:{" "}
         {((area * quantity) / (circumference * quantity)).toFixed(2)}
       </p>
       {metricUnits === false ? (

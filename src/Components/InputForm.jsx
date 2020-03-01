@@ -61,24 +61,28 @@ class InputForm extends Component {
                     this.setState({ diameterInput: event.target.value })
                   }
                 />
-                <input
-                  type="radio"
-                  id={`in${this.props.instanceNumber}`}
-                  name="units"
-                  value={`in${this.props.instanceNumber}`}
-                  required
-                  className="radio-button"
-                />
-                <label htmlFor={`in${this.props.instanceNumber}`}>inches</label>
-                <input
-                  type="radio"
-                  id={`cm${this.props.instanceNumber}`}
-                  name="units"
-                  value={`cm${this.props.instanceNumber}`}
-                  required
-                  className="radio-button"
-                />
-                <label htmlFor={`cm${this.props.instanceNumber}`}>cm</label>
+                <div className="unit-buttons">
+                  <input
+                    type="radio"
+                    id={`in${this.props.instanceNumber}`}
+                    name="units"
+                    value={`in${this.props.instanceNumber}`}
+                    required
+                    className="radio-button"
+                  />
+                  <label htmlFor={`in${this.props.instanceNumber}`}>
+                    inches
+                  </label>
+                  <input
+                    type="radio"
+                    id={`cm${this.props.instanceNumber}`}
+                    name="units"
+                    value={`cm${this.props.instanceNumber}`}
+                    required
+                    className="radio-button"
+                  />
+                  <label htmlFor={`cm${this.props.instanceNumber}`}>cm</label>
+                </div>
               </div>
             </div>
           </div>
