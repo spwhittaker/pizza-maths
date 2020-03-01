@@ -34,7 +34,7 @@ const PizzaCard = ({
         </h4>
       )}
       <h4>Price per pizza: £{Number(price).toFixed(2)}</h4>
-      <span>
+      <div className="quantity-buttons">
         <p>Quantity: {quantity}</p>
         <button
           type="button"
@@ -57,7 +57,7 @@ const PizzaCard = ({
         >
           Remove
         </button>
-      </span>
+      </div>
 
       <h4>Total: £{Number(price * quantity).toFixed(2)}</h4>
       {metricUnits === false ? (

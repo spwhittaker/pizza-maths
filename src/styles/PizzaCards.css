@@ -15,4 +15,10 @@
 
 .total-values {
   align-self: center;
+  background-color: red;
+  margin: 5px;
+  padding: 5px;
+  border: solid maroon 3px;
+  max-width: 100%;
+  border-radius: 5px;
 }

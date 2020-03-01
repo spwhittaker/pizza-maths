@@ -1,5 +1,6 @@
 import App from "./App";
 import "../styles/UpperLevel.css";
+import background from "../margherita.jpg";
 
 import React, { Component } from "react";
 
@@ -17,7 +18,7 @@ class UpperLevel extends Component {
   handleAddComparison = event => {
     this.setState({
       comparisonDiv: true,
-      comparisonClass: "sideBySideComparison",
+      comparisonClass: "side-by-side-comparison",
       splitViewClass: "split-view"
     });
   };
@@ -36,38 +37,56 @@ class UpperLevel extends Component {
   render() {
     return (
       <div>
-        <header className="App-header">
-          <h1>Pizzarithmetic</h1>
-          <h3>...best thing since sliced bread(pizza)</h3>
-        </header>
-        {this.state.comparisonDiv === false && (
-          <button type="button" onClick={this.handleAddComparison}>
-            Add comparison
+        <div className="upper-level">
+          <header className="App-header">
+            <h1>Pizzarithmetic</h1>
+            <h3>...best thing since sliced bread(pizza)</h3>
+            <p>Add some pizza details below and compare for the best value</p>
+          </header>
+
+          {this.state.comparisonDiv === false && (
+            <button
+              type="button"
+              onClick={this.handleAddComparison}
+              className="top-level-button"
+            >
+              Add comparison
+            </button>
+          )}
+          {this.state.comparisonDiv === true && (
+            <button
+              type="button"
+              onClick={this.handleRemoveComparison}
+              className="top-level-button"
+            >
+              Remove second comparison
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={this.handleUnitConversion}
+            className="top-level-button"
+          >
+            Change values to {this.state.metricUnits === true && "cm"}
+            {this.state.metricUnits === false && "inches"}
           </button>
-        )}
-        {this.state.comparisonDiv === true && (
-          <button type="button" onClick={this.handleRemoveComparison}>
-            Remove second comparison
-          </button>
-        )}
-        <button type="button" onClick={this.handleUnitConversion}>
-          Change values to {this.state.metricUnits === true && "cm"}
-          {this.state.metricUnits === false && "inches"}
-        </button>
-        <span className="UpperLevel">
-          <App
-            className={this.state.comparisonClass}
-            sideBySide={this.state.splitViewClass}
-            metricUnits={this.state.metricUnits}
-          />
-          {this.state.comparisonDiv && (
+          <span className="apps">
             <App
-              className={this.state.splitViewClass}
+              className={this.state.comparisonClass}
               sideBySide={this.state.splitViewClass}
               metricUnits={this.state.metricUnits}
+              appInstance={"0"}
             />
-          )}
-        </span>
+            {this.state.comparisonDiv && (
+              <App
+                className={this.state.splitViewClass}
+                sideBySide={this.state.splitViewClass}
+                metricUnits={this.state.metricUnits}
+                appInstance={"1"}
+              />
+            )}
+          </span>
+        </div>
       </div>
     );
   }
