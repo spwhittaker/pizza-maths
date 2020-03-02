@@ -21,21 +21,29 @@ const PizzaCard = ({
   const circumference = Math.PI * diameter;
   return (
     <div className="PizzaCard" key={pizzaId}>
-      <p>Name: {name}</p>
+      <p>
+        <strong>Name</strong>: {name}
+      </p>
       {metricUnits === false ? (
-        <p>Diameter: {roundedDiameter} inches</p>
+        <p>
+          <strong>Diameter</strong>: {roundedDiameter} inches
+        </p>
       ) : (
         <p>
-          Diameter:{" "}
+          <strong>Diameter</strong>:{" "}
           {(diameter * 2.54) % 1 === 0
             ? diameter * 2.54
             : Number(diameter * 2.54).toFixed(1)}{" "}
           cm
         </p>
       )}
-      <p>Price per pizza: £{Number(price).toFixed(2)}</p>
+      <p>
+        <strong>Price per pizza</strong>: £{Number(price).toFixed(2)}
+      </p>
       <div className="quantity-buttons">
-        <p>Quantity: {quantity}</p>
+        <p>
+          <strong>Quantity</strong>: {quantity}
+        </p>
         <button
           type="button"
           className="add-button"
@@ -59,33 +67,46 @@ const PizzaCard = ({
         </button>
       </div>
 
-      <p>Total: £{Number(price * quantity).toFixed(2)}</p>
+      <p>
+        <strong>Total</strong>: £{Number(price * quantity).toFixed(2)}
+      </p>
       {metricUnits === false ? (
         <p>
-          Area: {(area * quantity).toFixed(2)} in<sup>2</sup>
+          <strong>Area</strong>: {(area * quantity).toFixed(2)} in<sup>2</sup>
         </p>
       ) : (
         <p>
-          Area: {(area * quantity * 2.54 * 2.54).toFixed(2)} cm<sup>2</sup>
+          <strong>Area</strong>: {(area * quantity * 2.54 * 2.54).toFixed(2)} cm
+          <sup>2</sup>
         </p>
       )}
       {metricUnits === false ? (
-        <p>Crust: {(circumference * quantity).toFixed(2)} inches</p>
+        <p>
+          <strong>Crust</strong>: {(circumference * quantity).toFixed(2)} inches
+        </p>
       ) : (
-        <p>Crust: {(circumference * quantity * 2.54).toFixed(2)} cm</p>
+        <p>
+          <strong>Crust</strong>: {(circumference * quantity * 2.54).toFixed(2)}{" "}
+          cm
+        </p>
       )}
       <p>
-        Area to crust ratio:{" "}
+        <strong>Area to crust ratio</strong>:{" "}
         {((area * quantity) / (circumference * quantity)).toFixed(2)}
       </p>
       {metricUnits === false ? (
         <p>
-          Price per in<sup>2</sup>: {((Number(price) / area) * 100).toFixed(2)}p
+          <strong>
+            Price per in<sup>2</sup>
+          </strong>
+          : {((Number(price) / area) * 100).toFixed(2)}p
         </p>
       ) : (
         <p>
-          Price per cm<sup>2</sup>:
-          {(Number(price / (area * 2.54 * 2.54)) * 100).toFixed(2)}p
+          <strong>
+            Price per cm<sup>2</sup>
+          </strong>
+          :{(Number(price / (area * 2.54 * 2.54)) * 100).toFixed(2)}p
         </p>
       )}
     </div>

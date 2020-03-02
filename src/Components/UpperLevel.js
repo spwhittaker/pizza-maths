@@ -1,6 +1,5 @@
 import App from "./App";
 import "../styles/UpperLevel.css";
-import background from "../margherita.jpg";
 
 import React, { Component } from "react";
 
@@ -66,8 +65,8 @@ class UpperLevel extends Component {
             onClick={this.handleUnitConversion}
             className="top-level-button"
           >
-            Change values to {this.state.metricUnits === true && "cm"}
-            {this.state.metricUnits === false && "inches"}
+            Change values to {this.state.metricUnits === false && "cm"}
+            {this.state.metricUnits === true && "inches"}
           </button>
         </div>
         <span className="apps">
