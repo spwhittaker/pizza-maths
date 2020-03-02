@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import PizzaCard from "./PizzaCard";
 import "../styles/PizzaCards.css";
