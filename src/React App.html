@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <!-- saved from url=(0022)http://localhost:3000/ -->
-<html lang="en" class=" idcae idcac"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <link rel="icon" href="http://localhost:3000/faviconPizza.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Web site created using create-react-app">
-    <link rel="apple-touch-icon" href="http://localhost:3000/logo192.png">
+<html lang="en" class=" idcae idcac">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="icon" href="http://localhost:3000/faviconPizza.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="http://localhost:3000/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <link rel="manifest" href="http://localhost:3000/manifest.json" />
     <!--
       Notice the use of  in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -21,63 +26,69 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  <style type="text/css">body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    <title>Pizzarithmetic</title>
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-html {
-  background: url(/static/media/margherita.256757d0.jpg) no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
-  overflow-x: hidden;
-}
-</style><style type="text/css">body {
-  margin: 0;
-  padding: 0;
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(8px + 2vmin);
-  color: white;
-  width: 100%;
-  margin: 0;
-  width: 100%;
-  padding: 0;
-}
+      code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+          monospace;
+      }
+      html {
+        background: url(/static/media/margherita.256757d0.jpg) no-repeat center
+          center fixed;
+        background-size: cover;
+        height: 100%;
+        overflow-x: hidden;
+      }
+    </style>
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .App-header {
+        background-color: #282c34;
+        min-height: 15vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(8px + 2vmin);
+        color: white;
+        width: 100%;
+        margin: 0;
+        width: 100%;
+        padding: 0;
+      }
 
-.App-link {
-  color: #61dafb;
-}
+      .App-link {
+        color: #61dafb;
+      }
 
-.input-options {
-  display: flex;
-  min-width: 30vw;
-  flex-grow: 1;
-  align-content: center;
-  justify-content: space-evenly;
-}
+      .input-options {
+        display: flex;
+        min-width: 30vw;
+        flex-grow: 1;
+        align-content: center;
+        justify-content: space-evenly;
+      }
 
-.pizza-option {
-  min-width: 20%;
-  display: inline;
-}
-</style><style type="text/css">/* button {
+      .pizza-option {
+        min-width: 20%;
+        display: inline;
+      }
+    </style>
+    <style type="text/css">
+      /* button {
   background-color: rgb(255, 230, 0);
   border-radius: 10%;
   width: 20%;
@@ -87,7 +98,7 @@ html {
   margin-bottom: 5px;
 } */
 
-/* button {
+      /* button {
   background-color: #ffec64;
   border-radius: 6px;
   border: 1px solid #ffaa22;
@@ -108,107 +119,109 @@ margin-top: 5px;
   margin-bottom: 5px;
   text-align: center;
 } */
-.submit-button {
-  background-color: #ffec64;
-  border-radius: 6px;
-  border: 1px solid #ffaa22;
+      .submit-button {
+        background-color: #ffec64;
+        border-radius: 6px;
+        border: 1px solid #ffaa22;
 
-  cursor: pointer;
-  color: #333333;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 6px 24px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #ffee66;
-  width: max-content;
-  margin-left: 40%;
-  margin-right: 40%;
+        cursor: pointer;
+        color: #333333;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffee66;
+        width: max-content;
+        margin-left: 40%;
+        margin-right: 40%;
 
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+      }
 
-button:hover {
-  background-color: #ffab23;
-}
-button:active {
-  position: relative;
-  top: 1px;
-}
+      button:hover {
+        background-color: #ffab23;
+      }
+      button:active {
+        position: relative;
+        top: 1px;
+      }
 
-form {
-  background-color: rgb(245, 208, 0);
-  padding: 15px;
-  border-radius: 30px;
-  border: solid rgba(97, 39, 5, 0.746) 3px;
-}
-.input-texts {
-  display: flex;
-  flex-direction: column;
-}
-.col {
-  flex: 1 1;
-  align-self: center;
-}
+      form {
+        background-color: rgb(245, 208, 0);
+        padding: 15px;
+        border-radius: 30px;
+        border: solid rgba(97, 39, 5, 0.746) 3px;
+      }
+      .input-texts {
+        display: flex;
+        flex-direction: column;
+      }
+      .col {
+        flex: 1 1;
+        align-self: center;
+      }
 
-.radio-button {
-  visibility: hidden;
-  flex-basis: 1;
-}
+      .radio-button {
+        visibility: hidden;
+        flex-basis: 1;
+      }
 
-label {
-  cursor: pointer;
-  border-radius: 3px;
-  padding: 3px;
-  margin: 5px;
-  display: inline-block;
-  border: solid rgb(105, 60, 0) 2px;
-  background-color: rgba(255, 157, 0, 0.7);
-}
-.radio-button:checked + label {
-  background: red;
-}
+      label {
+        cursor: pointer;
+        border-radius: 3px;
+        padding: 3px;
+        margin: 5px;
+        display: inline-block;
+        border: solid rgb(105, 60, 0) 2px;
+        background-color: rgba(255, 157, 0, 0.7);
+      }
+      .radio-button:checked + label {
+        background: red;
+      }
 
-/* #diameter-and-units {
+      /* #diameter-and-units {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
  */
-</style><style type="text/css">.PizzaCard {
-  margin: 5px;
-  border: solid #333333 3px;
-  border-radius: 5px;
-  display: inline-block;
-  padding: 5px;
-  background-color: whitesmoke;
-  opacity: 0.75;
-}
+    </style>
+    <style type="text/css">
+      .PizzaCard {
+        margin: 5px;
+        border: solid #333333 3px;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 5px;
+        background-color: whitesmoke;
+        opacity: 0.75;
+      }
 
-.quantity-buttons button {
-  background-color: #ffec64;
-  border-radius: 6px;
-  border: 1px solid #ffaa22;
+      .quantity-buttons button {
+        background-color: #ffec64;
+        border-radius: 6px;
+        border: 1px solid #ffaa22;
 
-  cursor: pointer;
-  color: #333333;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 6px 24px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #ffee66;
-  width: max-content;
-  margin-left: 5px;
-  margin-right: 5px;
+        cursor: pointer;
+        color: #333333;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffee66;
+        width: max-content;
+        margin-left: 5px;
+        margin-right: 5px;
 
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
-/* 
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+      }
+      /* 
 #add-button {
   display: inline;
   margin-left: 5px;
@@ -225,109 +238,332 @@ label {
   margin-right: 5px;
 }
  */
-</style><style type="text/css">.all-pizzas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    </style>
+    <style type="text/css">
+      .all-pizzas {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-.split-view {
-  flex-direction: column;
-}
-.pizza-cards-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+      .split-view {
+        flex-direction: column;
+      }
+      .pizza-cards-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
 
-.total-values {
-  align-self: center;
-  background-color: red;
-  margin: 5px;
-  padding: 5px;
-  border: solid maroon 3px;
-  max-width: 100%;
-  border-radius: 5px;
-}
-</style><style type="text/css">.apps {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-}
+      .total-values {
+        align-self: center;
+        background-color: red;
+        margin: 5px;
+        padding: 5px;
+        border: solid maroon 3px;
+        max-width: 100%;
+        border-radius: 5px;
+      }
+    </style>
+    <style type="text/css">
+      .apps {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+      }
 
-.side-by-side-comparison {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+      .side-by-side-comparison {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
 
-.body {
-  background-color: orange;
-  width: 100%;
-  height: 100%;
-  background: gray;
-  position: relative;
-  display: block;
-  /*  background: url("/styles/margherita.jpg") no-repeat center center fixed;
+      .body {
+        background-color: orange;
+        width: 100%;
+        height: 100%;
+        background: gray;
+        position: relative;
+        display: block;
+        /*  background: url("/styles/margherita.jpg") no-repeat center center fixed;
 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; */
-}
-#bg {
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-}
-#bg img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-}
-.app-header {
-  z-index: 99;
-}
+      }
+      #bg {
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+      }
+      #bg img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        min-width: 50%;
+        min-height: 50%;
+      }
+      .app-header {
+        z-index: 99;
+      }
 
-.top-level-button {
-  background-color: #ffec64;
-  border-radius: 6px;
-  border: 1px solid #ffaa22;
+      .top-level-button {
+        background-color: #ffec64;
+        border-radius: 6px;
+        border: 1px solid #ffaa22;
 
-  cursor: pointer;
-  color: #333333;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 6px 24px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #ffee66;
-  width: max-content;
-  margin-left: 40%;
-  margin-right: 40%;
+        cursor: pointer;
+        color: #333333;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #ffee66;
+        width: max-content;
+        margin-left: 40%;
+        margin-right: 40%;
 
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+      }
 
-.upper-level {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-</style></head><span id="warning-container"><i data-reactroot=""></i></span>
+      .upper-level {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+    </style></head
+  ><span id="warning-container"><i data-reactroot=""></i></span>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"><div><div class="upper-level"><header class="App-header"><h1>Pizzarithmetic</h1><h3>...best thing since sliced bread(pizza)</h3><p>Add some pizza details below and compare for the best value</p></header><button type="button" class="top-level-button">Remove second comparison</button><button type="button" class="top-level-button">Change values to inches</button><span class="apps"><div class="App"><form><div class="input-texts"><div class="pizza-option"><div class="input-options"><p class="col">Name</p><div class="col"><input class="col" type="text" required="" name="pizzaName"></div></div></div><div class="pizza-option"><div class="input-options"><p class="col">Diameter</p><div class="col" id="diameter-and-units"><input type="number" required="" name="diameter" min="1"><div class="unit-buttons"><input type="radio" id="in0" name="units" required="" class="radio-button" value="in0"><label for="in0">inches</label><input type="radio" id="cm0" name="units" required="" class="radio-button" value="cm0"><label for="cm0">cm</label></div></div></div></div><div class="pizza-option"><div class="input-options"><p class="col">Price (£)</p><div class="col"><input class="col" type="number" required="" name="price" step="0.01" min="1"></div></div></div></div><button type="submit" label="Submit" class="submit-button">I'm hungry!</button></form><div class="pizza-cards-container"><div class="all-pizzas split-view"><div class="PizzaCard"><h4>Name: Test guy</h4><h4>Diameter: 12 inches</h4><h4>Price per pizza: £7.00</h4><div class="quantity-buttons"><p>Quantity: 2</p><button type="button" class="add-button">+</button><button type="button" class="minus-button">-</button><button type="button" class="remove-button">Remove</button></div><h4>Total: £14.00</h4><p>Area: 226.19 in<sup>2</sup></p><p>Crust: 75.40 inches</p><p>Area to crust (bigger means more area compared to crust): 3.00</p><p>Price per in<sup>2</sup>: 6.19p</p></div></div><div class="total-values"><div><h2>Total: £14.00</h2><h2>Total area: 226.19 in<sup>2</sup></h2><h2>Total price per in<sup>2</sup>: 6.19p</h2><h2>Total area to crust ratio: 3.00</h2></div></div></div></div><div class="App"><form><div class="input-texts"><div class="pizza-option"><div class="input-options"><p class="col">Name</p><div class="col"><input class="col" type="text" required="" name="pizzaName"></div></div></div><div class="pizza-option"><div class="input-options"><p class="col">Diameter</p><div class="col" id="diameter-and-units"><input type="number" required="" name="diameter" min="1"><div class="unit-buttons"><input type="radio" id="in1" name="units" required="" class="radio-button" value="in1"><label for="in1">inches</label><input type="radio" id="cm1" name="units" required="" class="radio-button" value="cm1"><label for="cm1">cm</label></div></div></div></div><div class="pizza-option"><div class="input-options"><p class="col">Price (£)</p><div class="col"><input class="col" type="number" required="" name="price" step="0.01" min="1"></div></div></div></div><button type="submit" label="Submit" class="submit-button">I'm hungry!</button></form><div class="pizza-cards-container"><div class="all-pizzas split-view"><div class="PizzaCard"><h4>Name: Test guy</h4><h4>Diameter: 12 inches</h4><h4>Price per pizza: £7.00</h4><div class="quantity-buttons"><p>Quantity: 2</p><button type="button" class="add-button">+</button><button type="button" class="minus-button">-</button><button type="button" class="remove-button">Remove</button></div><h4>Total: £14.00</h4><p>Area: 226.19 in<sup>2</sup></p><p>Crust: 75.40 inches</p><p>Area to crust (bigger means more area compared to crust): 3.00</p><p>Price per in<sup>2</sup>: 6.19p</p></div></div><div class="total-values"><div><h2>Total: £14.00</h2><h2>Total area: 226.19 in<sup>2</sup></h2><h2>Total price per in<sup>2</sup>: 6.19p</h2><h2>Total area to crust ratio: 3.00</h2></div></div></div></div></span></div></div></div>
+    <div id="root">
+      <div>
+        <div class="upper-level">
+          <header class="App-header">
+            <h1>Pizzarithmetic</h1>
+            <h3>...best thing since sliced bread(pizza)</h3>
+            <p>Add some pizza details below and compare for the best value</p>
+          </header>
+          <button type="button" class="top-level-button">
+            Remove second comparison</button
+          ><button type="button" class="top-level-button">
+            Change values to inches</button
+          ><span class="apps"
+            ><div class="App">
+              <form>
+                <div class="input-texts">
+                  <div class="pizza-option">
+                    <div class="input-options">
+                      <p class="col">Name</p>
+                      <div class="col">
+                        <input
+                          class="col"
+                          type="text"
+                          required=""
+                          name="pizzaName"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pizza-option">
+                    <div class="input-options">
+                      <p class="col">Diameter</p>
+                      <div class="col" id="diameter-and-units">
+                        <input
+                          type="number"
+                          required=""
+                          name="diameter"
+                          min="1"
+                        />
+                        <div class="unit-buttons">
+                          <input
+                            type="radio"
+                            id="in0"
+                            name="units"
+                            required=""
+                            class="radio-button"
+                            value="in0"
+                          /><label for="in0">inches</label
+                          ><input
+                            type="radio"
+                            id="cm0"
+                            name="units"
+                            required=""
+                            class="radio-button"
+                            value="cm0"
+                          /><label for="cm0">cm</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pizza-option">
+                    <div class="input-options">
+                      <p class="col">Price (£)</p>
+                      <div class="col">
+                        <input
+                          class="col"
+                          type="number"
+                          required=""
+                          name="price"
+                          step="0.01"
+                          min="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" label="Submit" class="submit-button">
+                  I'm hungry!
+                </button>
+              </form>
+              <div class="pizza-cards-container">
+                <div class="all-pizzas split-view">
+                  <div class="PizzaCard">
+                    <h4>Name: Test guy</h4>
+                    <h4>Diameter: 12 inches</h4>
+                    <h4>Price per pizza: £7.00</h4>
+                    <div class="quantity-buttons">
+                      <p>Quantity: 2</p>
+                      <button type="button" class="add-button">+</button
+                      ><button type="button" class="minus-button">-</button
+                      ><button type="button" class="remove-button">
+                        Remove
+                      </button>
+                    </div>
+                    <h4>Total: £14.00</h4>
+                    <p>Area: 226.19 in<sup>2</sup></p>
+                    <p>Crust: 75.40 inches</p>
+                    <p>
+                      Area to crust (bigger means more area compared to crust):
+                      3.00
+                    </p>
+                    <p>Price per in<sup>2</sup>: 6.19p</p>
+                  </div>
+                </div>
+                <div class="total-values">
+                  <div>
+                    <h2>Total: £14.00</h2>
+                    <h2>Total area: 226.19 in<sup>2</sup></h2>
+                    <h2>Total price per in<sup>2</sup>: 6.19p</h2>
+                    <h2>Total area to crust ratio: 3.00</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="App">
+              <form>
+                <div class="input-texts">
+                  <div class="pizza-option">
+                    <div class="input-options">
+                      <p class="col">Name</p>
+                      <div class="col">
+                        <input
+                          class="col"
+                          type="text"
+                          required=""
+                          name="pizzaName"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pizza-option">
+                    <div class="input-options">
+                      <p class="col">Diameter</p>
+                      <div class="col" id="diameter-and-units">
+                        <input
+                          type="number"
+                          required=""
+                          name="diameter"
+                          min="1"
+                        />
+                        <div class="unit-buttons">
+                          <input
+                            type="radio"
+                            id="in1"
+                            name="units"
+                            required=""
+                            class="radio-button"
+                            value="in1"
+                          /><label for="in1">inches</label
+                          ><input
+                            type="radio"
+                            id="cm1"
+                            name="units"
+                            required=""
+                            class="radio-button"
+                            value="cm1"
+                          /><label for="cm1">cm</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pizza-option">
+                    <div class="input-options">
+                      <p class="col">Price (£)</p>
+                      <div class="col">
+                        <input
+                          class="col"
+                          type="number"
+                          required=""
+                          name="price"
+                          step="0.01"
+                          min="1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" label="Submit" class="submit-button">
+                  I'm hungry!
+                </button>
+              </form>
+              <div class="pizza-cards-container">
+                <div class="all-pizzas split-view">
+                  <div class="PizzaCard">
+                    <h4>Name: Test guy</h4>
+                    <h4>Diameter: 12 inches</h4>
+                    <h4>Price per pizza: £7.00</h4>
+                    <div class="quantity-buttons">
+                      <p>Quantity: 2</p>
+                      <button type="button" class="add-button">+</button
+                      ><button type="button" class="minus-button">-</button
+                      ><button type="button" class="remove-button">
+                        Remove
+                      </button>
+                    </div>
+                    <h4>Total: £14.00</h4>
+                    <p>Area: 226.19 in<sup>2</sup></p>
+                    <p>Crust: 75.40 inches</p>
+                    <p>
+                      Area to crust (bigger means more area compared to crust):
+                      3.00
+                    </p>
+                    <p>Price per in<sup>2</sup>: 6.19p</p>
+                  </div>
+                </div>
+                <div class="total-values">
+                  <div>
+                    <h2>Total: £14.00</h2>
+                    <h2>Total area: 226.19 in<sup>2</sup></h2>
+                    <h2>Total price per in<sup>2</sup>: 6.19p</h2>
+                    <h2>Total area to crust ratio: 3.00</h2>
+                  </div>
+                </div>
+              </div>
+            </div></span
+          >
+        </div>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -338,24 +574,28 @@ label {
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  <script src="./React App_files/bundle.js"></script><script src="./React App_files/1.chunk.js"></script><script src="./React App_files/main.chunk.js"></script>
+    <script src="./React App_files/bundle.js"></script>
+    <script src="./React App_files/1.chunk.js"></script>
+    <script src="./React App_files/main.chunk.js"></script>
 
-<style>
-  ccc {
-    display: contents;
-  }
+    <style>
+      ccc {
+        display: contents;
+      }
 
-  ccc.ccc--converted {
-    animation: ccc 0.7s ease-in-out;
-  }
+      ccc.ccc--converted {
+        animation: ccc 0.7s ease-in-out;
+      }
 
-  @-webkit-keyframes ccc {
-    from {
-      background-color: yellow;
-    }
+      @-webkit-keyframes ccc {
+        from {
+          background-color: yellow;
+        }
 
-    to {
-      background-color: rgba(255, 255, 255, 0);
-    }
-  }
-</style></body></html>
+        to {
+          background-color: rgba(255, 255, 255, 0);
+        }
+      }
+    </style>
+  </body>
+</html>
