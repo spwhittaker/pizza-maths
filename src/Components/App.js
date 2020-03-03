@@ -3,24 +3,38 @@ import "../styles/App.css";
 import "./InputForm";
 import InputForm from "./InputForm";
 import PizzaCards from "./PizzaCards";
+import AddDiscounts from "./AddDiscounts";
 /* eslint no-restricted-globals:0 */
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pizzas: [
-        /*  {
+        {
           name: "Test guy",
           diameter: 12,
           price: 7,
           key: "Test guy 0",
           pizzaId: "test id",
           quantity: 2
-        } */
-      ]
+        }
+      ],
+      selectedDiscount: "",
+      percentage: 50,
+      threshold: ""
     };
     this.handlePizzaInput = this.handlePizzaInput.bind(this);
   }
+
+  handleDiscountInput = input => {
+    this.setState({ selectedDiscount: input.value });
+  };
+
+  onApplyPercentageDiscount = e => {
+    this.setState({
+      percentage: e
+    });
+  };
 
   handlePizzaInput(e) {
     if (
@@ -71,6 +85,13 @@ class App extends React.Component {
           pizzas={this.state.pizzas}
           instanceNumber={this.props.appInstance}
         />
+        <AddDiscounts
+          selectedDiscount={this.state.selectedDiscount}
+          onSelectDiscount={this.handleDiscountInput}
+          onApplyPercentageDiscount={this.onApplyPercentageDiscount}
+          instanceNumber={this.props.appInstance}
+          discountState={this.state.selectedDiscount}
+        />
         <PizzaCards
           pizzas={this.state.pizzas}
           addButton={this.handleAdd}
@@ -78,6 +99,10 @@ class App extends React.Component {
           minusButton={this.handleMinus}
           splitView={sideBySide}
           metricUnits={metricUnits}
+          percentageCalculator={Number(
+            1 - (this.state.percentage / 100).toFixed(2)
+          )}
+          percentValue={this.state.percentage}
         />
       </div>
     );

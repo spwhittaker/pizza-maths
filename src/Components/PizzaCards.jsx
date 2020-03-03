@@ -9,7 +9,9 @@ const PizzaCards = ({
   addButton,
   minusButton,
   removeButton,
-  metricUnits
+  metricUnits,
+  percentageCalculator,
+  percentValue
 }) => {
   return (
     <div className="pizza-cards-container">
@@ -30,13 +32,43 @@ const PizzaCards = ({
       <div className="total-values">
         {pizzas.length > 0 && (
           <div>
-            <h2>
-              Total: £
-              {pizzas
-                .map(pizza => pizza.price * pizza.quantity)
-                .reduce((total, currentPizza) => total + currentPizza)
-                .toFixed(2)}
-            </h2>
+            {percentageCalculator === 1 && (
+              <h2>
+                Total: £
+                {(
+                  Number(
+                    pizzas
+                      .map(pizza => pizza.price * pizza.quantity)
+                      .reduce((total, currentPizza) => total + currentPizza)
+                  ) * percentageCalculator
+                ).toFixed(2)}
+              </h2>
+            )}
+            {percentageCalculator !== 1 && (
+              <h2>
+                Total before discount: £
+                {Number(
+                  pizzas
+                    .map(pizza => pizza.price * pizza.quantity)
+                    .reduce((total, currentPizza) => total + currentPizza)
+                ).toFixed(2)}
+              </h2>
+            )}
+            {percentageCalculator !== 0 && (
+              <h2>Discount applied: {percentValue}%</h2>
+            )}
+            {percentageCalculator !== 1 && (
+              <h2>
+                Total after discount: £
+                {(
+                  Number(
+                    pizzas
+                      .map(pizza => pizza.price * pizza.quantity)
+                      .reduce((total, currentPizza) => total + currentPizza)
+                  ) * percentageCalculator
+                ).toFixed(2)}
+              </h2>
+            )}
 
             {metricUnits === false ? (
               <h2>
@@ -83,7 +115,8 @@ const PizzaCards = ({
                           pizza.quantity
                       )
                       .reduce((total, currentArea) => total + currentArea)) *
-                  100
+                  100 *
+                  percentageCalculator
                 ).toFixed(2)}
                 p
               </h2>
@@ -104,7 +137,8 @@ const PizzaCards = ({
                       .reduce((total, currentArea) => total + currentArea) *
                       2.54 *
                       2.54)) *
-                  100
+                  100 *
+                  percentageCalculator
                 ).toFixed(2)}
                 p
               </h2>
