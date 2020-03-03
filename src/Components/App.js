@@ -4,6 +4,7 @@ import "./InputForm";
 import InputForm from "./InputForm";
 import PizzaCards from "./PizzaCards";
 /* eslint no-restricted-globals:0 */
+
 class App extends React.Component {
   constructor(props) {
     super(props);

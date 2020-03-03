@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/PizzaCard.css";
+import UnitConverter from "./UnitConverter.jsx";
+
 const PizzaCard = ({
   name,
   diameter,
@@ -109,6 +111,7 @@ const PizzaCard = ({
           :{(Number(price / (area * 2.54 * 2.54)) * 100).toFixed(2)}p
         </p>
       )}
+      < UnitConverter /> //needs state
     </div>
   );
 };
