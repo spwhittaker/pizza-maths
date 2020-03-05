@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/PizzaCard.css";
+import "../styles/PizzaCard.scss";
 const PizzaCard = ({
   name,
   diameter,

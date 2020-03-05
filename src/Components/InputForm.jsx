@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/InputForm.css";
+import "../styles/InputForm.scss";
 import ToggleSwitch from "./Toggle.jsx";
 
 class InputForm extends Component {

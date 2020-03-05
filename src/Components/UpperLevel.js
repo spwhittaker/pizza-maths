@@ -1,5 +1,5 @@
 import App from "./App";
-import "../styles/UpperLevel.css";
+import "../styles/UpperLevel.scss";
 
 import React, { Component } from "react";
 
