@@ -96,6 +96,8 @@ class App extends React.Component {
         <InputForm
           updatePizzas={this.handlePizzaInput}
           pizzas={this.state.pizzas}
+          handleMetricConversion={this.props.handleMetricConversion}
+          handleImperialConversion={this.props.handleImperialConversion}
           instanceNumber={this.props.appInstance}
         />
         <Discount

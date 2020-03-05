@@ -11,6 +11,7 @@ class InputForm extends Component {
       priceInput: null
     };
   }
+
   handleInput = input => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;
@@ -18,7 +19,14 @@ class InputForm extends Component {
       document.getElementById(`switch_right${this.props.instanceNumber}`)
         .checked
     ) {
+      this.props.handleMetricConversion();
       inchesVal = this.state.diameterInput / 2.54;
+    }
+
+    if (
+      document.getElementById(`switch_left${this.props.instanceNumber}`).checked
+    ) {
+      this.props.handleImperialConversion();
     }
     const pizzaId = this.state.nameInput + new Date().getTime();
     const newPizza = {
@@ -67,6 +75,7 @@ class InputForm extends Component {
                   title="Pick a size"
                   leftLabel={`in`}
                   rightLabel={`cm`}
+                  handleUnitConversion={this.handleUnitConversion}
                 />
               </span>
             </div>
