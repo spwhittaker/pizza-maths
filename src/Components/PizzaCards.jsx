@@ -68,6 +68,12 @@ const PizzaCards = ({
                 {(totalVal * percentageMetThreshold).toFixed(2)}
               </h2>
             )}
+            {minSpend > 0 && minSpend > totalVal && (
+              <h2>
+                You've not met the minimum spend of <br />£{minSpend} to get{" "}
+                {percentValue}% off.
+              </h2>
+            )}
 
             {metricUnits === false ? (
               <h2>

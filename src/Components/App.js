@@ -3,7 +3,7 @@ import "../styles/App.css";
 import "./InputForm";
 import InputForm from "./InputForm";
 import PizzaCards from "./PizzaCards";
-import AddDiscounts from "./AddDiscounts";
+import Discount from "./Discount";
 /* eslint no-restricted-globals:0 */
 class App extends React.Component {
   constructor(props) {
@@ -19,23 +19,35 @@ class App extends React.Component {
           quantity: 2
         }
       ],
-      selectedDiscount: "",
+      selectedDiscount: "% off",
       percentage: 50,
       minSpend: ""
     };
     this.handlePizzaInput = this.handlePizzaInput.bind(this);
   }
 
-  handleDiscountInput = input => {
+  /*  handleDiscountInput = input => {
     this.setState({ selectedDiscount: input.value });
-  };
+  }; */
 
-  onApplyPercentageDiscount = (percentageValue = "", minSpendValue = "") => {
+  onApplyPercentageDiscount = (
+    selectedDiscount = "",
+    percentageValue = "",
+    minSpendValue = ""
+  ) => {
     this.setState({
+      selectedDiscount: selectedDiscount,
       percentage: percentageValue,
       minSpend: minSpendValue
     });
   };
+
+  clearDiscount = () =>
+    this.setState({
+      selectedDiscount: "",
+      percentage: "",
+      minSpend: ""
+    });
 
   handlePizzaInput(e) {
     if (
@@ -86,12 +98,15 @@ class App extends React.Component {
           pizzas={this.state.pizzas}
           instanceNumber={this.props.appInstance}
         />
-        <AddDiscounts
+        <Discount
           selectedDiscount={this.state.selectedDiscount}
           onSelectDiscount={this.handleDiscountInput}
           onApplyPercentageDiscount={this.onApplyPercentageDiscount}
           instanceNumber={this.props.appInstance}
           discountState={this.state.selectedDiscount}
+          percentageState={this.state.percentage}
+          minSpend={this.state.minSpend}
+          clearDiscount={this.clearDiscount}
         />
         <PizzaCards
           pizzas={this.state.pizzas}
