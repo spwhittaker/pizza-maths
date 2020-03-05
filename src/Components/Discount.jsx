@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Select from "react-select";
-import "../styles/Discount.css";
+import "../styles/Discount.scss";
 const options = [
   { value: "% off", label: "% off" },
   {

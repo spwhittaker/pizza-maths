@@ -1,7 +1,7 @@
 import React from "react";
 
 import PizzaCard from "./PizzaCard";
-import "../styles/PizzaCards.css";
+import "../styles/PizzaCards.scss";
 
 const PizzaCards = ({
   splitView,

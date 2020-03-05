@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/Toggle.css";
+import "../styles/Toggle.scss";
 
 class ToggleSwitch extends Component {
   constructor(props) {
