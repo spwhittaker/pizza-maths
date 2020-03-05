@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Select from "react-select";
-import "../styles/AddDiscounts.css";
+import "../styles/Discount.css";
 const options = [
   { value: "% off", label: "% off" },
   {
     value: "% off over minimum spend",
     label: "% off over minimum spend"
-  },
-  { value: "Buy one, get one free", label: "Buy one, get one free" }
+  }
+  /* { value: "Buy one, get one free", label: "Buy one, get one free" } */
 ];
 class Discount extends Component {
   constructor(props) {
