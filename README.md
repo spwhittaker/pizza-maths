@@ -36,3 +36,4 @@ The authors would like to thank the following people from Manchester Codes, who 
 * Susana Rodriguez
 * Daniel Cross
 * Ersel Aker
+* our fellow classmates! :vulcan_salute:
