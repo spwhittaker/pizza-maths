@@ -4,8 +4,8 @@ import "../styles/AddDiscounts.css";
 const options = [
   { value: "% off", label: "% off" },
   {
-    value: "% off over certain amount",
-    label: "% off over certain amount"
+    value: "% off over minimum spend",
+    label: "% off over minimum spend"
   },
   { value: "Buy one, get one free", label: "Buy one, get one free" }
 ];
@@ -14,7 +14,8 @@ class AddDiscounts extends Component {
     super(props);
     this.state = {
       selectedOption: null,
-      percentage: ""
+      percentage: "",
+      minSpend: ""
     };
   }
 
@@ -46,6 +47,49 @@ class AddDiscounts extends Component {
               onClick={e => {
                 console.log("test");
                 this.props.onApplyPercentageDiscount(this.state.percentage);
+              }}
+              label="submitPercentage"
+              value="Add discount"
+              id={`percentage-value${this.props.instanceNumber}`}
+            />
+          </span>
+        )}
+        {this.props.selectedDiscount === "% off over minimum spend" && (
+          <span>
+            <p>Percentage discount: %</p>
+            <input
+              type="number"
+              step="1"
+              min="1"
+              max="99"
+              id={`percentage${this.props.instanceNumber}`}
+              onChange={event =>
+                this.setState({ percentage: event.target.value })
+              }
+            />
+            <p>Minimum spend: £: </p>{" "}
+            <input
+              type="number"
+              step="1"
+              max="99"
+              onChange={event =>
+                this.setState({ minSpend: event.target.value })
+              }
+            />
+            <input
+              type="button"
+              onClick={e => {
+                if (this.props.selectedDiscount === "% off") {
+                  this.props.onApplyPercentageDiscount(this.state.percentage);
+                }
+                if (
+                  this.props.selectedDiscount === "% off over minimum spend"
+                ) {
+                  this.props.onApplyPercentageDiscount(
+                    this.state.percentage,
+                    this.state.minSpend
+                  );
+                }
               }}
               label="submitPercentage"
               value="Add discount"

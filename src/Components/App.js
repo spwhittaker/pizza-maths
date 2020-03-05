@@ -21,7 +21,7 @@ class App extends React.Component {
       ],
       selectedDiscount: "",
       percentage: 50,
-      threshold: ""
+      minSpend: ""
     };
     this.handlePizzaInput = this.handlePizzaInput.bind(this);
   }
@@ -30,9 +30,10 @@ class App extends React.Component {
     this.setState({ selectedDiscount: input.value });
   };
 
-  onApplyPercentageDiscount = e => {
+  onApplyPercentageDiscount = (percentageValue = "", minSpendValue = "") => {
     this.setState({
-      percentage: e
+      percentage: percentageValue,
+      minSpend: minSpendValue
     });
   };
 
@@ -103,6 +104,7 @@ class App extends React.Component {
             1 - (this.state.percentage / 100).toFixed(2)
           )}
           percentValue={this.state.percentage}
+          minSpend={this.state.minSpend}
         />
       </div>
     );
