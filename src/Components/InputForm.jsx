@@ -14,8 +14,7 @@ class InputForm extends Component {
   handleInput = input => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;
-    if (!document.getElementById("switch_right").checked) {
-    } else {
+    if (document.getElementById("switch_right").checked) {
       inchesVal = this.state.diameterInput / 2.54;
     }
     const pizzaId = this.state.nameInput + new Date().getTime();
