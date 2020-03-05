@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/InputForm.css";
-import ToggleSwitch from './Toggle.jsx';
+import ToggleSwitch from "./Toggle.jsx";
 
 class InputForm extends Component {
   constructor(props) {
@@ -14,7 +14,10 @@ class InputForm extends Component {
   handleInput = input => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;
-    if (document.getElementById("switch_right").checked) {
+    if (
+      document.getElementById(`switch_right${this.props.instanceNumber}`)
+        .checked
+    ) {
       inchesVal = this.state.diameterInput / 2.54;
     }
     const pizzaId = this.state.nameInput + new Date().getTime();
@@ -59,8 +62,12 @@ class InputForm extends Component {
                   }
                 />
 
-                < ToggleSwitch/>
-
+                <ToggleSwitch
+                  instanceNumber={this.props.instanceNumber}
+                  title="Pick a size"
+                  leftLabel={`in`}
+                  rightLabel={`cm`}
+                />
               </span>
             </div>
             <div className="pizza-option">
@@ -80,13 +87,11 @@ class InputForm extends Component {
             </div>
           </div>
 
-          <button type="submit">
-            I'm hungry!
-          </button>
+          <button type="submit">I'm hungry!</button>
         </form>
       </div>
-    )
+    );
   }
-};
+}
 
 export default InputForm;
