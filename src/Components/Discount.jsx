@@ -46,7 +46,6 @@ class Discount extends Component {
             <input
               type="button"
               onClick={e => {
-                console.log("test");
                 this.props.onApplyPercentageDiscount(
                   this.state.selectedDiscount,
                   this.state.percentage
