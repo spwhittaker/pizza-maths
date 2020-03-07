@@ -14,13 +14,6 @@ class UpperLevel extends Component {
     };
   }
 
-  setMetric = () => {
-    this.setState({ metricUnits: true });
-  };
-  setImperial = () => {
-    this.setState({ metricUnits: false });
-  };
-
   handleAddComparison = event => {
     this.setState({
       comparisonDiv: true,
@@ -37,13 +30,15 @@ class UpperLevel extends Component {
     });
   };
 
-  handleMetricConversion = event => {
+  handleMetricConversion = () => {
+    console.log("card right clicked");
     this.setState({ metricUnits: true });
   };
-  handleImperialConversion = event => {
+  handleImperialConversion = () => {
+    console.log("card left clicked");
     this.setState({ metricUnits: false });
   };
-  handleConversionInput = input => {
+  /*  handleConversionInput = input => {
     input.preventDefault();
     if (document.getElementById(`switch_right${this.props.instance}`).checked) {
       this.setState({ metricUnits: true });
@@ -51,7 +46,7 @@ class UpperLevel extends Component {
     if (document.getElementById(`switch_left${this.props.instance}`).checked) {
       this.setState({ metricUnits: false });
     }
-  };
+  }; */
 
   render() {
     return (
@@ -89,9 +84,6 @@ class UpperLevel extends Component {
             appInstance={"0"}
             handleMetricConversion={this.handleMetricConversion}
             handleImperialConversion={this.handleImperialConversion}
-            conversionToggle={this.handleConversionInput}
-            setMetric={this.setMetric}
-            setImperial={this.setImperial}
           />
           {this.state.comparisonDiv && (
             <App
@@ -101,9 +93,6 @@ class UpperLevel extends Component {
               appInstance={"1"}
               handleMetricConversion={this.handleMetricConversion}
               handleImperialConversion={this.handleImperialConversion}
-              conversionToggle={this.handleConversionInput}
-              setMetric={this.setMetric}
-              setImperial={this.setImperial}
             />
           )}
         </span>

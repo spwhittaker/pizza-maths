@@ -16,9 +16,7 @@ const PizzaCards = ({
   minSpend,
   conversionToggle,
   handleMetricConversion,
-  handleImperialConversion,
-  setMetric,
-  setImperial
+  handleImperialConversion
 }) => {
   let totalVal = 0;
   let areaVal = 0;
@@ -40,6 +38,8 @@ const PizzaCards = ({
   } else {
     percentageMetThreshold = 1;
   }
+  console.log("metric pizza cards", handleMetricConversion);
+  console.log("imperial pizza cards", handleImperialConversion);
   return (
     <div className="pizza-cards-container">
       {" "}
@@ -52,12 +52,9 @@ const PizzaCards = ({
               addButtonClick={addButton}
               minusButtonClick={minusButton}
               removeButtonClick={removeButton}
-              setMetric={setMetric}
-              setImperial={setImperial}
               metricUnits={metricUnits}
-              conversionToggle={conversionToggle}
-              handleMetricConversion={handleMetricConversion}
-              handleImperialConversion={handleImperialConversion}
+              handleMetric={handleMetricConversion}
+              handleImperial={handleImperialConversion}
             />
           );
         })}
