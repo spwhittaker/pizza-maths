@@ -30,12 +30,21 @@ class UpperLevel extends Component {
     });
   };
 
-  handleMetricConversion = event => {
+  handleMetricConversion = () => {
     this.setState({ metricUnits: true });
   };
-  handleImperialConversion = event => {
+  handleImperialConversion = () => {
     this.setState({ metricUnits: false });
   };
+  /*  handleConversionInput = input => {
+    input.preventDefault();
+    if (document.getElementById(`switch_right${this.props.instance}`).checked) {
+      this.setState({ metricUnits: true });
+    }
+    if (document.getElementById(`switch_left${this.props.instance}`).checked) {
+      this.setState({ metricUnits: false });
+    }
+  }; */
 
   render() {
     return (
@@ -64,14 +73,6 @@ class UpperLevel extends Component {
               Remove second comparison
             </button>
           )}
-          {/* <button
-            type="button"
-            onClick={this.handleUnitConversion}
-            className="top-level-button"
-          >
-            Change values to {this.state.metricUnits === false && "cm"}
-            {this.state.metricUnits === true && "inches"}
-          </button> */}
         </div>
         <span className="apps">
           <App

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/InputForm.scss";
-import ToggleSwitch from "./Toggle.jsx";
+import ToggleSwitch from "./ToggleSwitch.jsx";
 
 class InputForm extends Component {
   constructor(props) {
@@ -8,24 +8,22 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: null
+      priceInput: null,
+      metricInput: this.props.metricUnits
     };
   }
 
+  onChangeLeft = () => this.setState({ metricInput: false });
+  onChangeRight = () => this.setState({ metricInput: true });
   handleInput = input => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;
-    if (
-      document.getElementById(`switch_right${this.props.instanceNumber}`)
-        .checked
-    ) {
+    if (this.state.metricInput === true) {
       this.props.handleMetricConversion();
       inchesVal = this.state.diameterInput / 2.54;
     }
 
-    if (
-      document.getElementById(`switch_left${this.props.instanceNumber}`).checked
-    ) {
+    if (this.state.metricInput === false) {
       this.props.handleImperialConversion();
     }
     const pizzaId = this.state.nameInput + new Date().getTime();
@@ -71,11 +69,11 @@ class InputForm extends Component {
                 />
 
                 <ToggleSwitch
-                  instanceNumber={this.props.instanceNumber}
+                  uniqueId={this.props.instanceNumber}
                   title="Pick a size"
-                  leftLabel={`in`}
-                  rightLabel={`cm`}
-                  handleUnitConversion={this.handleUnitConversion}
+                  isMetric={this.state.metricInput}
+                  onChangeLeft={this.onChangeLeft}
+                  onChangeRight={this.onChangeRight}
                 />
               </span>
             </div>

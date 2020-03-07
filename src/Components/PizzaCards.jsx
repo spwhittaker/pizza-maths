@@ -12,7 +12,10 @@ const PizzaCards = ({
   metricUnits,
   percentageCalculator,
   percentValue,
-  minSpend
+  minSpend,
+  conversionToggle,
+  handleMetricConversion,
+  handleImperialConversion
 }) => {
   let totalVal = 0;
   let areaVal = 0;
@@ -36,6 +39,7 @@ const PizzaCards = ({
   }
   return (
     <div className="pizza-cards-container">
+      {" "}
       <div className={`all-pizzas ${splitView}`}>
         {pizzas.map((pie, index) => {
           return (
@@ -46,6 +50,8 @@ const PizzaCards = ({
               minusButtonClick={minusButton}
               removeButtonClick={removeButton}
               metricUnits={metricUnits}
+              handleMetric={handleMetricConversion}
+              handleImperial={handleImperialConversion}
             />
           );
         })}

@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/PizzaCard.scss";
+import ToggleSwitch from "./ToggleSwitch";
 const PizzaCard = ({
   name,
   diameter,
@@ -9,7 +10,9 @@ const PizzaCard = ({
   addButtonClick,
   minusButtonClick,
   removeButtonClick,
-  metricUnits
+  metricUnits,
+  handleMetric,
+  handleImperial
 }) => {
   let roundedDiameter;
   if (diameter % 1 === 0) {
@@ -17,6 +20,7 @@ const PizzaCard = ({
   } else {
     roundedDiameter = Number(diameter).toFixed(1);
   }
+
   const area = Math.PI * Math.pow(diameter / 2, 2);
   const circumference = Math.PI * diameter;
   return (
@@ -65,6 +69,12 @@ const PizzaCard = ({
         >
           Remove
         </button>
+        <ToggleSwitch
+          uniqueId={pizzaId}
+          isMetric={metricUnits}
+          onChangeLeft={handleImperial}
+          onChangeRight={handleMetric}
+        />
       </div>
 
       <p>
