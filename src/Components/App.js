@@ -17,6 +17,14 @@ class App extends React.Component {
           key: "Test guy 0",
           pizzaId: "test id",
           quantity: 2
+        },
+        {
+          name: "Test guy no. 2",
+          diameter: 10,
+          price: 6,
+          key: "Test guy 1",
+          pizzaId: "test id1",
+          quantity: 3
         }
       ],
       selectedDiscount: "% off",
@@ -25,10 +33,6 @@ class App extends React.Component {
     };
     this.handlePizzaInput = this.handlePizzaInput.bind(this);
   }
-
-  /*  handleDiscountInput = input => {
-    this.setState({ selectedDiscount: input.value });
-  }; */
 
   onApplyPercentageDiscount = (
     selectedDiscount = "",
@@ -116,7 +120,11 @@ class App extends React.Component {
           removeButton={this.handleRemove}
           minusButton={this.handleMinus}
           splitView={sideBySide}
+          setMetric={this.props.setMetric}
+          setImperial={this.props.setImperial}
           metricUnits={metricUnits}
+          handleMetricConversion={this.props.handleMetricConversion}
+          handleImperialConversion={this.props.handleImperialConversion}
           percentageCalculator={Number(
             1 - (this.state.percentage / 100).toFixed(2)
           )}

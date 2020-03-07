@@ -1,6 +1,7 @@
 import React from "react";
 
 import PizzaCard from "./PizzaCard";
+
 import "../styles/PizzaCards.css";
 
 const PizzaCards = ({
@@ -12,7 +13,12 @@ const PizzaCards = ({
   metricUnits,
   percentageCalculator,
   percentValue,
-  minSpend
+  minSpend,
+  conversionToggle,
+  handleMetricConversion,
+  handleImperialConversion,
+  setMetric,
+  setImperial
 }) => {
   let totalVal = 0;
   let areaVal = 0;
@@ -36,6 +42,7 @@ const PizzaCards = ({
   }
   return (
     <div className="pizza-cards-container">
+      {" "}
       <div className={`all-pizzas ${splitView}`}>
         {pizzas.map((pie, index) => {
           return (
@@ -45,7 +52,12 @@ const PizzaCards = ({
               addButtonClick={addButton}
               minusButtonClick={minusButton}
               removeButtonClick={removeButton}
+              setMetric={setMetric}
+              setImperial={setImperial}
               metricUnits={metricUnits}
+              conversionToggle={conversionToggle}
+              handleMetricConversion={handleMetricConversion}
+              handleImperialConversion={handleImperialConversion}
             />
           );
         })}

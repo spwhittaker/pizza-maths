@@ -14,6 +14,13 @@ class UpperLevel extends Component {
     };
   }
 
+  setMetric = () => {
+    this.setState({ metricUnits: true });
+  };
+  setImperial = () => {
+    this.setState({ metricUnits: false });
+  };
+
   handleAddComparison = event => {
     this.setState({
       comparisonDiv: true,
@@ -35,6 +42,15 @@ class UpperLevel extends Component {
   };
   handleImperialConversion = event => {
     this.setState({ metricUnits: false });
+  };
+  handleConversionInput = input => {
+    input.preventDefault();
+    if (document.getElementById(`switch_right${this.props.instance}`).checked) {
+      this.setState({ metricUnits: true });
+    }
+    if (document.getElementById(`switch_left${this.props.instance}`).checked) {
+      this.setState({ metricUnits: false });
+    }
   };
 
   render() {
@@ -64,14 +80,6 @@ class UpperLevel extends Component {
               Remove second comparison
             </button>
           )}
-          {/* <button
-            type="button"
-            onClick={this.handleUnitConversion}
-            className="top-level-button"
-          >
-            Change values to {this.state.metricUnits === false && "cm"}
-            {this.state.metricUnits === true && "inches"}
-          </button> */}
         </div>
         <span className="apps">
           <App
@@ -81,6 +89,9 @@ class UpperLevel extends Component {
             appInstance={"0"}
             handleMetricConversion={this.handleMetricConversion}
             handleImperialConversion={this.handleImperialConversion}
+            conversionToggle={this.handleConversionInput}
+            setMetric={this.setMetric}
+            setImperial={this.setImperial}
           />
           {this.state.comparisonDiv && (
             <App
@@ -90,6 +101,9 @@ class UpperLevel extends Component {
               appInstance={"1"}
               handleMetricConversion={this.handleMetricConversion}
               handleImperialConversion={this.handleImperialConversion}
+              conversionToggle={this.handleConversionInput}
+              setMetric={this.setMetric}
+              setImperial={this.setImperial}
             />
           )}
         </span>
