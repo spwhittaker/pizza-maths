@@ -13,10 +13,8 @@ class InputForm extends Component {
     };
   }
 
-  onChangeLeft = () =>
-    console.log("left clicked") || this.setState({ metricInput: false });
-  onChangeRight = () =>
-    console.log("right clicked") || this.setState({ metricInput: true });
+  onChangeLeft = () => this.setState({ metricInput: false });
+  onChangeRight = () => this.setState({ metricInput: true });
   handleInput = input => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;

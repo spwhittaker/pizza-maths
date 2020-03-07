@@ -38,8 +38,6 @@ const PizzaCards = ({
   } else {
     percentageMetThreshold = 1;
   }
-  console.log("metric pizza cards", handleMetricConversion);
-  console.log("imperial pizza cards", handleImperialConversion);
   return (
     <div className="pizza-cards-container">
       {" "}

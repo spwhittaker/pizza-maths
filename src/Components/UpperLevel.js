@@ -31,11 +31,9 @@ class UpperLevel extends Component {
   };
 
   handleMetricConversion = () => {
-    console.log("card right clicked");
     this.setState({ metricUnits: true });
   };
   handleImperialConversion = () => {
-    console.log("card left clicked");
     this.setState({ metricUnits: false });
   };
   /*  handleConversionInput = input => {

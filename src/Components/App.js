@@ -95,8 +95,6 @@ class App extends React.Component {
 
   render() {
     const { sideBySide, metricUnits } = this.props;
-    console.log("metric", this.props.handleMetricConversion);
-    console.log("imperial", this.props.handleImperialConversion);
     return (
       <div className="App">
         <InputForm

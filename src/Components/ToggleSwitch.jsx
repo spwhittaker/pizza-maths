@@ -8,7 +8,6 @@ const ToggleSwitch = ({
   onChangeRight,
   isMetric
 }) => {
-  console.log(isMetric, "metric prop");
   return (
     <div className="switch-field">
       <div className="switch-title">{title}</div>
