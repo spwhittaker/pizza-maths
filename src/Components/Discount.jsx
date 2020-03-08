@@ -6,6 +6,10 @@ const options = [
   {
     value: "% off over minimum spend",
     label: "% off over minimum spend"
+  },
+  {
+    value: "Buy 2 pizzas, get cheapest free",
+    label: "Buy 2 pizzas, get cheapest free"
   }
   /* { value: "Buy one, get one free", label: "Buy one, get one free" } */
 ];
@@ -21,6 +25,14 @@ class Discount extends Component {
   handleDiscountInput = input => {
     this.setState({ selectedDiscount: input.value });
   };
+  handleClear = () => {
+    this.props.clearDiscount();
+    this.setState({
+      percentage: "",
+      minSpend: "",
+      selectedDiscount: ""
+    });
+  };
 
   render() {
     return (
@@ -31,6 +43,23 @@ class Discount extends Component {
           options={options}
           onChange={this.handleDiscountInput}
         />
+        {this.state.selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+          <span>
+            <input
+              type="button"
+              onClick={e => {
+                this.props.onApplyPercentageDiscount(
+                  this.state.selectedDiscount,
+                  "",
+                  ""
+                );
+              }}
+              label="submitBuyOneGetCheapestFree"
+              value="Add discount"
+              id={`percentage-value${this.props.instanceNumber}`}
+            />
+          </span>
+        )}
         {this.state.selectedDiscount === "% off" && (
           <span>
             <p>Percentage discount</p>
@@ -115,12 +144,11 @@ class Discount extends Component {
               {this.props.minSpend}
             </p>
           )}
+        {this.props.selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+          <p>Selected discount: {this.props.selectedDiscount}</p>
+        )}
         {this.props.selectedDiscount !== "" && (
-          <input
-            type="button"
-            value="Clear"
-            onClick={this.props.clearDiscount}
-          />
+          <input type="button" value="Clear" onClick={this.handleClear} />
         )}
       </div>
     );

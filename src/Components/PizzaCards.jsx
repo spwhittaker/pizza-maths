@@ -15,7 +15,8 @@ const PizzaCards = ({
   minSpend,
   conversionToggle,
   handleMetricConversion,
-  handleImperialConversion
+  handleImperialConversion,
+  selectedDiscount
 }) => {
   let totalVal = 0;
   let areaVal = 0;
@@ -37,6 +38,35 @@ const PizzaCards = ({
   } else {
     percentageMetThreshold = 1;
   }
+
+  const buyOneCheapestFree = () => {
+    let allPizzaPrices = [];
+    pizzas
+      .map(pizza => {
+        const arr = [];
+        for (let i = 0; i < pizza.quantity; i++) {
+          arr.push(pizza.price);
+        }
+        return arr;
+      })
+      .forEach(element =>
+        element.forEach(nestedElement => allPizzaPrices.push(nestedElement))
+      );
+    const sortedPizzaPrices = allPizzaPrices.sort();
+    const freePizzasNumber = Math.floor(sortedPizzaPrices.length / 2);
+    const pizzasToSubtractValue = sortedPizzaPrices
+      .slice(0, freePizzasNumber)
+      .reduce((a, b) => a + b);
+    return pizzasToSubtractValue;
+  };
+  const buyOneCheapestFreeReduction = buyOneCheapestFree();
+  let totalAfterDiscount = totalVal;
+  if (selectedDiscount === "Buy 2 pizzas, get cheapest free") {
+    totalAfterDiscount = totalVal - buyOneCheapestFreeReduction;
+  } else {
+    totalAfterDiscount = totalVal * percentageCalculator;
+  }
+
   return (
     <div className="pizza-cards-container">
       {" "}
@@ -69,16 +99,24 @@ const PizzaCards = ({
               <h2>Discount applied: {percentValue}%</h2>
             )}
             {percentageMetThreshold !== 1 && (
-              <h2>
-                Total after discount: £
-                {(totalVal * percentageMetThreshold).toFixed(2)}
-              </h2>
+              <h2>Total after discount: £{totalAfterDiscount.toFixed(2)}</h2>
             )}
             {minSpend > 0 && minSpend > totalVal && (
               <h2>
                 You've not met the minimum spend of <br />£{minSpend} to get{" "}
                 {percentValue}% off.
               </h2>
+            )}
+            {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+              <h2>Total before discount: £{totalVal.toFixed(2)}</h2>
+            )}
+            {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+              <h2>
+                Discount applied: £{buyOneCheapestFreeReduction.toFixed(2)}
+              </h2>
+            )}
+            {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+              <h2>Total after discount: £{totalAfterDiscount.toFixed(2)}</h2>
             )}
 
             {metricUnits === false ? (
@@ -93,22 +131,18 @@ const PizzaCards = ({
             {metricUnits === false ? (
               <h2>
                 Total price per in<sup>2</sup>:{" "}
-                {((totalVal / areaVal) * 100 * percentageMetThreshold).toFixed(
-                  2
-                )}
-                p
+                {((totalAfterDiscount / areaVal) * 100).toFixed(2)}p
               </h2>
             ) : (
               <h2>
                 Total price per cm<sup>2</sup>:{" "}
-                {(
-                  (totalVal / (areaVal * 2.54 * 2.54)) *
-                  100 *
-                  percentageMetThreshold
-                ).toFixed(2)}
+                {((totalAfterDiscount / (areaVal * 2.54 * 2.54)) * 100).toFixed(
+                  2
+                )}
                 p
               </h2>
             )}
+
             <h2>
               Total area to crust ratio:{" "}
               {(

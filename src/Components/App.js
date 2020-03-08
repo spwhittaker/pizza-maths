@@ -131,6 +131,7 @@ class App extends React.Component {
           )}
           percentValue={this.state.percentage}
           minSpend={this.state.minSpend}
+          selectedDiscount={this.state.selectedDiscount}
         />
       </div>
     );
