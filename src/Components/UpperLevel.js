@@ -1,5 +1,5 @@
 import App from "./App";
-import "../styles/UpperLevel.css";
+import "../styles/UpperLevel.scss";
 
 import React, { Component } from "react";
 
@@ -30,9 +30,22 @@ class UpperLevel extends Component {
     });
   };
 
-  handleUnitConversion = event => {
-    this.setState({ metricUnits: !this.state.metricUnits });
+  handleMetricConversion = () => {
+    this.setState({ metricUnits: true });
   };
+  handleImperialConversion = () => {
+    this.setState({ metricUnits: false });
+  };
+  /*  handleConversionInput = input => {
+    input.preventDefault();
+    if (document.getElementById(`switch_right${this.props.instance}`).checked) {
+      this.setState({ metricUnits: true });
+    }
+    if (document.getElementById(`switch_left${this.props.instance}`).checked) {
+      this.setState({ metricUnits: false });
+    }
+  }; */
+
   render() {
     return (
       <div className="upper-level">
@@ -60,14 +73,6 @@ class UpperLevel extends Component {
               Remove second comparison
             </button>
           )}
-          <button
-            type="button"
-            onClick={this.handleUnitConversion}
-            className="top-level-button"
-          >
-            Change values to {this.state.metricUnits === false && "cm"}
-            {this.state.metricUnits === true && "inches"}
-          </button>
         </div>
         <span className="apps">
           <App
@@ -75,6 +80,8 @@ class UpperLevel extends Component {
             sideBySide={this.state.splitViewClass}
             metricUnits={this.state.metricUnits}
             appInstance={"0"}
+            handleMetricConversion={this.handleMetricConversion}
+            handleImperialConversion={this.handleImperialConversion}
           />
           {this.state.comparisonDiv && (
             <App
@@ -82,6 +89,8 @@ class UpperLevel extends Component {
               sideBySide={this.state.splitViewClass}
               metricUnits={this.state.metricUnits}
               appInstance={"1"}
+              handleMetricConversion={this.handleMetricConversion}
+              handleImperialConversion={this.handleImperialConversion}
             />
           )}
         </span>

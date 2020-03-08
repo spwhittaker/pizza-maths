@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "../styles/InputForm.css";
-import ToggleSwitch from './Toggle.jsx';
+import "../styles/InputForm.scss";
+import ToggleSwitch from "./ToggleSwitch.jsx";
 
 class InputForm extends Component {
   constructor(props) {
@@ -8,14 +8,23 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: null
+      priceInput: null,
+      metricInput: this.props.metricUnits
     };
   }
+
+  onChangeLeft = () => this.setState({ metricInput: false });
+  onChangeRight = () => this.setState({ metricInput: true });
   handleInput = input => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;
-    if (document.getElementById("cm").checked) {
+    if (this.state.metricInput === true) {
+      this.props.handleMetricConversion();
       inchesVal = this.state.diameterInput / 2.54;
+    }
+
+    if (this.state.metricInput === false) {
+      this.props.handleImperialConversion();
     }
     const pizzaId = this.state.nameInput + new Date().getTime();
     const newPizza = {
@@ -59,8 +68,13 @@ class InputForm extends Component {
                   }
                 />
 
-                < ToggleSwitch/>
-
+                <ToggleSwitch
+                  uniqueId={this.props.instanceNumber}
+                  title="Pick a size"
+                  isMetric={this.state.metricInput}
+                  onChangeLeft={this.onChangeLeft}
+                  onChangeRight={this.onChangeRight}
+                />
               </span>
             </div>
             <div className="pizza-option">
@@ -80,13 +94,11 @@ class InputForm extends Component {
             </div>
           </div>
 
-          <button type="submit">
-            I'm hungry!
-          </button>
+          <button type="submit">I'm hungry!</button>
         </form>
       </div>
-    )
+    );
   }
-};
+}
 
 export default InputForm;
