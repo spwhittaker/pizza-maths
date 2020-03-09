@@ -1,3 +1,5 @@
+@import "../_variables.scss";
+
 .apps {
   display: flex;
   flex-wrap: nowrap;
@@ -16,7 +18,7 @@
 }
 
 .top-level-button {
-  background-color: #ffec64;
+  background-color: $addComparison;
   border-radius: 6px;
   border: 1px solid #ffaa22;
 
@@ -43,3 +45,7 @@
   align-items: stretch;
   width: 100vw;
 }
+
+//TODO:
+//* Move components + styles
+//* Check colour/style guide
