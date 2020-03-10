@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
+import "./_variables.scss";
 import UpperLevel from "./Components/UpperLevel";
 import * as serviceWorker from "./serviceWorker";
 
