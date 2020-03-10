@@ -13,7 +13,7 @@ const PizzaCards = ({
   percentageCalculator,
   percentValue,
   minSpend,
-  conversionToggle,
+  /* conversionToggle. */
   handleMetricConversion,
   handleImperialConversion,
   selectedDiscount
@@ -52,12 +52,12 @@ const PizzaCards = ({
       .forEach(element =>
         element.forEach(nestedElement => allPizzaPrices.push(nestedElement))
       );
-    const sortedPizzaPrices = allPizzaPrices.sort();
-    const freePizzasNumber = Math.floor(sortedPizzaPrices.length / 2);
-    const pizzasToSubtractValue = sortedPizzaPrices
+
+    const freePizzasNumber = Math.floor(allPizzaPrices.length / 2);
+    return allPizzaPrices
+      .sort()
       .slice(0, freePizzasNumber)
       .reduce((a, b) => a + b);
-    return pizzasToSubtractValue;
   };
   const buyOneCheapestFreeReduction = buyOneCheapestFree();
   let totalAfterDiscount = totalVal;
@@ -89,7 +89,7 @@ const PizzaCards = ({
       <div className="total-values">
         {pizzas.length > 0 && (
           <div>
-            {percentageMetThreshold === 1 && (
+            {(totalVal === totalAfterDiscount || minSpend > totalVal) && (
               <h2>Total: £{totalVal.toFixed(2)}</h2>
             )}
             {percentageMetThreshold !== 1 && (

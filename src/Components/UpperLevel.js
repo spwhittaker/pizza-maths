@@ -36,22 +36,13 @@ class UpperLevel extends Component {
   handleImperialConversion = () => {
     this.setState({ metricUnits: false });
   };
-  /*  handleConversionInput = input => {
-    input.preventDefault();
-    if (document.getElementById(`switch_right${this.props.instance}`).checked) {
-      this.setState({ metricUnits: true });
-    }
-    if (document.getElementById(`switch_left${this.props.instance}`).checked) {
-      this.setState({ metricUnits: false });
-    }
-  }; */
 
   render() {
     return (
       <div className="upper-level">
         <header className="App-header">
           <h1>Pizzarithmetic</h1>
-          <h3>...best thing since sliced bread(pizza)</h3>
+          <h3>...best thing since sliced bread (pizza)</h3>
           <p>Add some pizza details below and compare for the best value</p>
         </header>
         <div className="top-level-options">

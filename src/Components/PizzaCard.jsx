@@ -116,7 +116,7 @@ const PizzaCard = ({
           <strong>
             Price per cm<sup>2</sup>
           </strong>
-          :{(Number(price / (area * 2.54 * 2.54)) * 100).toFixed(2)}p
+          : {(Number(price / (area * 2.54 * 2.54)) * 100).toFixed(2)}p
         </p>
       )}
     </div>

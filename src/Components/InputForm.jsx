@@ -38,6 +38,7 @@ class InputForm extends Component {
     this.props.updatePizzas(newPizza);
   };
   render() {
+    const { instanceNumber } = this.props;
     return (
       <div>
         <form onSubmit={this.handleInput}>
@@ -69,7 +70,7 @@ class InputForm extends Component {
                 />
 
                 <ToggleSwitch
-                  uniqueId={this.props.instanceNumber}
+                  uniqueId={instanceNumber}
                   title="Pick a size"
                   isMetric={this.state.metricInput}
                   onChangeLeft={this.onChangeLeft}
