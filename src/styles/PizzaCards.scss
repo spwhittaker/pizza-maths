@@ -22,3 +22,10 @@
   max-width: 100%;
   border-radius: 5px;
 }
+.total-label-and-value {
+  display: flex;
+  justify-content: space-between;
+}
+.total-label-and-value > * {
+  padding: 5px;
+}

@@ -103,16 +103,27 @@ const PizzaCards = ({
         {pizzas.length > 0 && (
           <div>
             {(totalVal === totalAfterDiscount || minSpend > totalVal) && (
-              <h2>Total: £{totalVal.toFixed(2)}</h2>
+              <h2 className="total-label-and-value">
+                <span>Total:</span> <span>£{totalVal.toFixed(2)}</span>
+              </h2>
             )}
             {percentageMetThreshold !== 1 && (
-              <h2>Total before discount: £{totalVal.toFixed(2)}</h2>
+              <h2 className="total-label-and-value">
+                <span>Total before discount: </span>
+                <span>£{totalVal.toFixed(2)}</span>
+              </h2>
             )}
             {percentageMetThreshold !== 1 && (
-              <h2>Discount applied: {percentValue}%</h2>
+              <h2 className="total-label-and-value">
+                <span>Discount applied: </span>
+                <span>{percentValue}%</span>
+              </h2>
             )}
             {percentageMetThreshold !== 1 && (
-              <h2>Total after discount: £{totalAfterDiscount.toFixed(2)}</h2>
+              <h2 className="total-label-and-value">
+                <span>Total after discount: </span>
+                <span>£{totalAfterDiscount.toFixed(2)}</span>
+              </h2>
             )}
             {minSpend > 0 && minSpend > totalVal && (
               <h2>
@@ -123,53 +134,75 @@ const PizzaCards = ({
             {totalPizzasQuantity >= 2 && (
               <div>
                 {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
-                  <h2>Total before discount: £{totalVal.toFixed(2)}</h2>
-                )}
-                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
-                  <h2>
-                    Discount applied: £{buyOneCheapestFreeReduction.toFixed(2)}
+                  <h2 className="total-label-and-value">
+                    <span>Total before discount: </span>
+                    <span>£{totalVal.toFixed(2)}</span>
                   </h2>
                 )}
                 {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
-                  <h2>
-                    Total after discount: £{totalAfterDiscount.toFixed(2)}
+                  <h2 className="total-label-and-value">
+                    <span>Discount applied: </span>
+                    <span>£{buyOneCheapestFreeReduction.toFixed(2)}</span>
+                  </h2>
+                )}
+                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+                  <h2 className="total-label-and-value">
+                    <span>Total after discount: </span>
+                    <span>£{totalAfterDiscount.toFixed(2)}</span>
                   </h2>
                 )}
               </div>
             )}
 
             {metricUnits === false ? (
-              <h2>
-                Total area: {areaVal.toFixed(2)} in<sup>2</sup>
+              <h2 className="total-label-and-value">
+                <span>Total area: </span>
+                <span>
+                  {areaVal.toFixed(2)} in<sup>2</sup>
+                </span>
               </h2>
             ) : (
-              <h2>
-                Total area: {(areaVal * 2.54 * 2.54).toFixed(2)} cm<sup>2</sup>
+              <h2 className="total-label-and-value">
+                <span>Total area: </span>
+                <span>
+                  {(areaVal * 2.54 * 2.54).toFixed(2)} cm<sup>2</sup>
+                </span>
               </h2>
             )}
             {metricUnits === false ? (
-              <h2>
-                Total price per in<sup>2</sup>:{" "}
-                {((totalAfterDiscount / areaVal) * 100).toFixed(2)}p
+              <h2 className="total-label-and-value">
+                <span>
+                  Total price per in<sup>2</sup>:{" "}
+                </span>
+                <span>
+                  {((totalAfterDiscount / areaVal) * 100).toFixed(2)}p
+                </span>
               </h2>
             ) : (
-              <h2>
-                Total price per cm<sup>2</sup>:{" "}
-                {((totalAfterDiscount / (areaVal * 2.54 * 2.54)) * 100).toFixed(
-                  2
-                )}
-                p
+              <h2 className="total-label-and-value">
+                <span>
+                  Total price per cm<sup>2</sup>:{" "}
+                </span>
+                <span>
+                  {(
+                    (totalAfterDiscount / (areaVal * 2.54 * 2.54)) *
+                    100
+                  ).toFixed(2)}
+                  p
+                </span>
               </h2>
             )}
 
-            <h2>
-              Total area to crust ratio:{" "}
-              {(
-                areaVal /
-                pizzas
-                  .map(pizza => Math.PI * pizza.diameter * pizza.quantity)
-                  .reduce((total, currentPizza) => total + currentPizza)
-              ).toFixed(2)}
+            <h2 className="total-label-and-value">
+              <span>Total area to crust ratio: </span>
+              <span>
+                {(
+                  areaVal /
+                  pizzas
+                    .map(pizza => Math.PI * pizza.diameter * pizza.quantity)
+                    .reduce((total, currentPizza) => total + currentPizza)
+                ).toFixed(2)}
+              </span>
             </h2>
           </div>
         )}
