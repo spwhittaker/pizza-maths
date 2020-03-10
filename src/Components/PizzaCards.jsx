@@ -27,6 +27,14 @@ const PizzaCards = ({
         .reduce((total, currentPizza) => total + currentPizza)
     );
   }
+  let totalPizzasQuantity = 0;
+  if (pizzas.length > 0) {
+    totalPizzasQuantity = pizzas
+      .map(pizza => pizza.quantity)
+      .reduce((a, b) => a + b);
+  }
+
+  console.log(totalPizzasQuantity, "pizzas total");
   if (pizzas.length > 0) {
     areaVal = pizzas
       .map(pizza => Math.PI * Math.pow(pizza.diameter / 2, 2) * pizza.quantity)
@@ -40,24 +48,29 @@ const PizzaCards = ({
   }
 
   const buyOneCheapestFree = () => {
-    let allPizzaPrices = [];
-    pizzas
-      .map(pizza => {
-        const arr = [];
-        for (let i = 0; i < pizza.quantity; i++) {
-          arr.push(pizza.price);
-        }
-        return arr;
-      })
-      .forEach(element =>
-        element.forEach(nestedElement => allPizzaPrices.push(nestedElement))
-      );
+    if (totalPizzasQuantity > 1) {
+      let allPizzaPrices = [];
+      pizzas
+        .map(pizza => {
+          const arr = [];
+          for (let i = 0; i < pizza.quantity; i++) {
+            arr.push(pizza.price);
+          }
+          return arr;
+        })
+        .forEach(element =>
+          element.forEach(nestedElement => allPizzaPrices.push(nestedElement))
+        );
 
-    const freePizzasNumber = Math.floor(allPizzaPrices.length / 2);
-    return allPizzaPrices
-      .sort()
-      .slice(0, freePizzasNumber)
-      .reduce((a, b) => a + b);
+      const freePizzasNumber = Math.floor(totalPizzasQuantity / 2);
+      if (totalPizzasQuantity > 1) {
+        return allPizzaPrices
+          .sort()
+          .slice(0, freePizzasNumber)
+          .reduce((a, b) => a + b);
+      }
+    }
+    return 0;
   };
   const buyOneCheapestFreeReduction = buyOneCheapestFree();
   let totalAfterDiscount = totalVal;
@@ -107,16 +120,22 @@ const PizzaCards = ({
                 {percentValue}% off.
               </h2>
             )}
-            {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
-              <h2>Total before discount: £{totalVal.toFixed(2)}</h2>
-            )}
-            {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
-              <h2>
-                Discount applied: £{buyOneCheapestFreeReduction.toFixed(2)}
-              </h2>
-            )}
-            {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
-              <h2>Total after discount: £{totalAfterDiscount.toFixed(2)}</h2>
+            {totalPizzasQuantity >= 2 && (
+              <div>
+                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+                  <h2>Total before discount: £{totalVal.toFixed(2)}</h2>
+                )}
+                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+                  <h2>
+                    Discount applied: £{buyOneCheapestFreeReduction.toFixed(2)}
+                  </h2>
+                )}
+                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+                  <h2>
+                    Total after discount: £{totalAfterDiscount.toFixed(2)}
+                  </h2>
+                )}
+              </div>
             )}
 
             {metricUnits === false ? (
