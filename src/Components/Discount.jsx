@@ -57,6 +57,7 @@ class Discount extends Component {
               }}
               label="submitBuyOneGetCheapestFree"
               value="Add discount"
+              className="button"
               /* id={`percentage-value${this.props.instanceNumber}`} */
             />
           </span>
@@ -83,6 +84,7 @@ class Discount extends Component {
               }}
               label="submitPercentage"
               value="Add discount"
+              className="button"
               /* id={`percentage-value${this.props.instanceNumber}`} */
             />
           </span>
@@ -109,7 +111,9 @@ class Discount extends Component {
                 this.setState({ minSpend: event.target.value })
               }
             />
+            <br />
             <input
+              className="button"
               type="button"
               onClick={e => {
                 if (this.state.selectedDiscount === "% off") {
@@ -147,7 +151,12 @@ class Discount extends Component {
           <p>Selected discount: {selectedDiscount}</p>
         )}
         {selectedDiscount !== "" && (
-          <input type="button" value="Clear" onClick={this.handleClear} />
+          <input
+            className="button"
+            type="button"
+            value="Clear"
+            onClick={this.handleClear}
+          />
         )}
       </div>
     );

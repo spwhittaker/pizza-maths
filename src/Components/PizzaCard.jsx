@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/PizzaCard.scss";
 import ToggleSwitch from "./ToggleSwitch";
+
 const PizzaCard = ({
   name,
   diameter,

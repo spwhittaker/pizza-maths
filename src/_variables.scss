@@ -2,9 +2,13 @@ $font-stack: "Open Sans", sans-serif;
 $primary-color: #333;
 $addComparison: skyblue;
 $grass: lawngreen;
-$mainBackground: #bea6a1;
+$mainBackground: rgba(190, 166, 161, 0.75);
+$altLightBackground: rgba(242, 226, 225, 0.9);
+$border: rgba(86, 66, 62, 1);
 $altBackground: rgba(192, 37, 37, 0.8);
-
+$accent: rgba(50, 114, 0, 1);
+$altAccent: rgba(107, 167, 27, 1);
+$altAccentShadow: rgba(232, 246, 208, 1);
 body {
   margin: 0;
   padding: 0;
@@ -26,5 +30,5 @@ html {
   overflow-x: hidden;
 }
 * {
-  font-size: calc(8px + 2vmin);
+  font-size: calc(6px + 2vmin);
 }
