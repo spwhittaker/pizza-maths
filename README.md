@@ -8,7 +8,7 @@ Stephen had a vision: he wanted a way to check (like mathematically check) the *
 **Frontend** | **Backend** | **Other Methodologies** 
 ------------ | ------------- | -----------
 HTML5 | Node.js | TDD
-CSS3 | Express | Wireframing
+CSS3 + Sass | Express | Wireframing
 React.js |  | Github
 
 We also employed modern responsive and user experience design concepts, as well as doing daily 'standups' and kept a Trello board to monitor progress and continuously assess priorities and respond to problems in a timely manner.
