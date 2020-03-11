@@ -1,7 +1,21 @@
+@import "../_variables";
 button {
   background-color: lightgrey;
   border-radius: 10%;
   width: 20%;
   margin-left: 40%;
   margin-right: 40%;
+}
+
+.pizza-input {
+  height: 15px;
+}
+
+.input-options {
+  align-items: center;
+}
+form {
+  background-color: $altBackground;
+  padding: 3px;
+  border-radius: 10px;
 }

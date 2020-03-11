@@ -53,6 +53,7 @@ class InputForm extends Component {
                   onChange={event =>
                     this.setState({ nameInput: event.target.value })
                   }
+                  className="pizza-input"
                 />
               </span>
             </div>
@@ -67,6 +68,7 @@ class InputForm extends Component {
                   onChange={event =>
                     this.setState({ diameterInput: event.target.value })
                   }
+                  className="pizza-input"
                 />
 
                 <ToggleSwitch
@@ -90,6 +92,7 @@ class InputForm extends Component {
                   onChange={event =>
                     this.setState({ priceInput: event.target.value })
                   }
+                  className="pizza-input"
                 />
               </span>
             </div>

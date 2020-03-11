@@ -1,22 +1,23 @@
-$font-stack: 'Open Sans', sans-serif;
+$font-stack: "Open Sans", sans-serif;
 $primary-color: #333;
 $addComparison: skyblue;
 $grass: lawngreen;
-
+$mainBackground: #bea6a1;
+$altBackground: rgba(192, 37, 37, 0.8);
 
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-  monospace;
+    monospace;
 }
 html {
   background: url("20200302_165804.jpg") no-repeat center center fixed;
