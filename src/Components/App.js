@@ -17,20 +17,23 @@ class App extends React.Component {
           key: "Test guy 0",
           pizzaId: "test id",
           quantity: 2
+        },
+        {
+          name: "Test guy no. 2",
+          diameter: 10,
+          price: 6,
+          key: "Test guy 1",
+          pizzaId: "test id1",
+          quantity: 3
         }
       ],
       selectedDiscount: "% off",
       percentage: 50,
       minSpend: ""
     };
-    this.handlePizzaInput = this.handlePizzaInput.bind(this);
   }
 
-  /*  handleDiscountInput = input => {
-    this.setState({ selectedDiscount: input.value });
-  }; */
-
-  onApplyPercentageDiscount = (
+  onApplyDiscount = (
     selectedDiscount = "",
     percentageValue = "",
     minSpendValue = ""
@@ -49,7 +52,7 @@ class App extends React.Component {
       minSpend: ""
     });
 
-  handlePizzaInput(e) {
+  handlePizzaInput = e => {
     if (
       !this.state.pizzas.some(
         obj =>
@@ -58,7 +61,7 @@ class App extends React.Component {
     ) {
       this.setState({ pizzas: [...this.state.pizzas, e] });
     }
-  }
+  };
 
   handleRemove = e => {
     if (confirm("Are you completely sure you want to remove this pizza?")) {
@@ -90,20 +93,29 @@ class App extends React.Component {
   };
 
   render() {
-    const { sideBySide, metricUnits } = this.props;
+    const {
+      sideBySide,
+      metricUnits,
+      handleMetricConversion,
+      handleImperialConversion,
+      appInstance
+    } = this.props;
     return (
       <div className="App">
         <InputForm
           updatePizzas={this.handlePizzaInput}
-          pizzas={this.state.pizzas}
-          instanceNumber={this.props.appInstance}
+          metricUnits={metricUnits}
+          /* pizzas={this.state.pizzas} */
+          handleMetricConversion={handleMetricConversion}
+          handleImperialConversion={handleImperialConversion}
+          instanceNumber={appInstance}
         />
         <Discount
           selectedDiscount={this.state.selectedDiscount}
-          onSelectDiscount={this.handleDiscountInput}
-          onApplyPercentageDiscount={this.onApplyPercentageDiscount}
-          instanceNumber={this.props.appInstance}
-          discountState={this.state.selectedDiscount}
+          /* onSelectDiscount={this.handleDiscountInput} */
+          onApplyDiscount={this.onApplyDiscount}
+          /* instanceNumber={this.props.appInstance} */
+          /* discountState={this.state.selectedDiscount} */
           percentageState={this.state.percentage}
           minSpend={this.state.minSpend}
           clearDiscount={this.clearDiscount}
@@ -114,12 +126,17 @@ class App extends React.Component {
           removeButton={this.handleRemove}
           minusButton={this.handleMinus}
           splitView={sideBySide}
+          /* setMetric={this.props.setMetric} */
+          /* setImperial={this.props.setImperial} */
           metricUnits={metricUnits}
+          handleMetricConversion={handleMetricConversion}
+          handleImperialConversion={handleImperialConversion}
           percentageCalculator={Number(
             1 - (this.state.percentage / 100).toFixed(2)
           )}
           percentValue={this.state.percentage}
           minSpend={this.state.minSpend}
+          selectedDiscount={this.state.selectedDiscount}
         />
       </div>
     );

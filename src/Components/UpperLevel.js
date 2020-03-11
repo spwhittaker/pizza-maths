@@ -30,15 +30,19 @@ class UpperLevel extends Component {
     });
   };
 
-  handleUnitConversion = event => {
-    this.setState({ metricUnits: !this.state.metricUnits });
+  handleMetricConversion = () => {
+    this.setState({ metricUnits: true });
   };
+  handleImperialConversion = () => {
+    this.setState({ metricUnits: false });
+  };
+
   render() {
     return (
       <div className="upper-level">
         <header className="App-header">
           <h1>Pizzarithmetic</h1>
-          <h3>...best thing since sliced bread(pizza)</h3>
+          <h3>...best thing since sliced bread (pizza)</h3>
           <p>Add some pizza details below and compare for the best value</p>
         </header>
         <div className="top-level-options">
@@ -60,14 +64,6 @@ class UpperLevel extends Component {
               Remove second comparison
             </button>
           )}
-          <button
-            type="button"
-            onClick={this.handleUnitConversion}
-            className="top-level-button"
-          >
-            Change values to {this.state.metricUnits === false && "cm"}
-            {this.state.metricUnits === true && "inches"}
-          </button>
         </div>
         <span className="apps">
           <App
@@ -75,6 +71,8 @@ class UpperLevel extends Component {
             sideBySide={this.state.splitViewClass}
             metricUnits={this.state.metricUnits}
             appInstance={"0"}
+            handleMetricConversion={this.handleMetricConversion}
+            handleImperialConversion={this.handleImperialConversion}
           />
           {this.state.comparisonDiv && (
             <App
@@ -82,6 +80,8 @@ class UpperLevel extends Component {
               sideBySide={this.state.splitViewClass}
               metricUnits={this.state.metricUnits}
               appInstance={"1"}
+              handleMetricConversion={this.handleMetricConversion}
+              handleImperialConversion={this.handleImperialConversion}
             />
           )}
         </span>

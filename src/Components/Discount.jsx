@@ -6,8 +6,11 @@ const options = [
   {
     value: "% off over minimum spend",
     label: "% off over minimum spend"
+  },
+  {
+    value: "Buy 2 pizzas, get cheapest free",
+    label: "Buy 2 pizzas, get cheapest free"
   }
-  /* { value: "Buy one, get one free", label: "Buy one, get one free" } */
 ];
 class Discount extends Component {
   constructor(props) {
@@ -21,8 +24,22 @@ class Discount extends Component {
   handleDiscountInput = input => {
     this.setState({ selectedDiscount: input.value });
   };
+  handleClear = () => {
+    this.props.clearDiscount();
+    this.setState({
+      percentage: "",
+      minSpend: "",
+      selectedDiscount: ""
+    });
+  };
 
   render() {
+    const {
+      onApplyDiscount,
+      selectedDiscount,
+      percentageState,
+      minSpend
+    } = this.props;
     return (
       <div className="add-discounts">
         <p>Add a discount if applicable:</p>
@@ -31,6 +48,19 @@ class Discount extends Component {
           options={options}
           onChange={this.handleDiscountInput}
         />
+        {this.state.selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+          <span>
+            <input
+              type="button"
+              onClick={e => {
+                onApplyDiscount(this.state.selectedDiscount, "", "");
+              }}
+              label="submitBuyOneGetCheapestFree"
+              value="Add discount"
+              /* id={`percentage-value${this.props.instanceNumber}`} */
+            />
+          </span>
+        )}
         {this.state.selectedDiscount === "% off" && (
           <span>
             <p>Percentage discount</p>
@@ -38,7 +68,7 @@ class Discount extends Component {
               type="number"
               step="1"
               max="99"
-              id={`percentage${this.props.instanceNumber}`}
+              /* id={`percentage${this.props.instanceNumber}`} */
               onChange={event =>
                 this.setState({ percentage: event.target.value })
               }
@@ -46,15 +76,14 @@ class Discount extends Component {
             <input
               type="button"
               onClick={e => {
-                console.log("test");
-                this.props.onApplyPercentageDiscount(
+                onApplyDiscount(
                   this.state.selectedDiscount,
                   this.state.percentage
                 );
               }}
               label="submitPercentage"
               value="Add discount"
-              id={`percentage-value${this.props.instanceNumber}`}
+              /* id={`percentage-value${this.props.instanceNumber}`} */
             />
           </span>
         )}
@@ -66,7 +95,7 @@ class Discount extends Component {
               step="1"
               min="1"
               max="99"
-              id={`percentage${this.props.instanceNumber}`}
+              /* id={`percentage${this.props.instanceNumber}`} */
               onChange={event =>
                 this.setState({ percentage: event.target.value })
               }
@@ -84,7 +113,7 @@ class Discount extends Component {
               type="button"
               onClick={e => {
                 if (this.state.selectedDiscount === "% off") {
-                  this.props.onApplyPercentageDiscount(
+                  onApplyDiscount(
                     this.state.selectedDiscount,
                     this.state.percentage
                   );
@@ -92,7 +121,7 @@ class Discount extends Component {
                 if (
                   this.state.selectedDiscount === "% off over minimum spend"
                 ) {
-                  this.props.onApplyPercentageDiscount(
+                  onApplyDiscount(
                     this.state.selectedDiscount,
                     this.state.percentage,
                     this.state.minSpend
@@ -101,27 +130,24 @@ class Discount extends Component {
               }}
               label="submitPercentage"
               value="Add discount"
-              id={`percentage-value${this.props.instanceNumber}`}
+              /* id={`percentage-value${this.props.instanceNumber}`} */
             />
           </span>
         )}
-        {this.props.selectedDiscount === "% off" &&
-          this.props.percentageState > 0 && (
-            <p>Selected discount: {this.props.percentageState}% off</p>
-          )}
-        {this.props.selectedDiscount === "% off over minimum spend" &&
-          this.props.percentageState > 0 && (
+        {selectedDiscount === "% off" && percentageState > 0 && (
+          <p>Selected discount: {percentageState}% off</p>
+        )}
+        {selectedDiscount === "% off over minimum spend" &&
+          percentageState > 0 && (
             <p>
-              Selected discount: {this.props.percentageState}% off over £
-              {this.props.minSpend}
+              Selected discount: {percentageState}% off over £{minSpend}
             </p>
           )}
-        {this.props.selectedDiscount !== "" && (
-          <input
-            type="button"
-            value="Clear"
-            onClick={this.props.clearDiscount}
-          />
+        {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+          <p>Selected discount: {selectedDiscount}</p>
+        )}
+        {selectedDiscount !== "" && (
+          <input type="button" value="Clear" onClick={this.handleClear} />
         )}
       </div>
     );

@@ -1,3 +1,5 @@
+@import "../_variables";
+
 .all-pizzas {
   display: flex;
   flex-wrap: wrap;
@@ -15,10 +17,18 @@
 
 .total-values {
   align-self: center;
-  background-color: red;
+  /* background-color: rgba(192, 37, 37, 0.904); */
+  background-color: $altBackground;
   margin: 5px;
   padding: 5px;
   border: solid maroon 3px;
   max-width: 100%;
   border-radius: 5px;
+}
+.total-label-and-value {
+  display: flex;
+  justify-content: space-between;
+}
+.total-label-and-value > * {
+  padding: 5px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../styles/InputForm.scss";
-import ToggleSwitch from "./Toggle.jsx";
+import ToggleSwitch from "./ToggleSwitch.jsx";
 
 class InputForm extends Component {
   constructor(props) {
@@ -8,17 +8,23 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: null
+      priceInput: null,
+      metricInput: this.props.metricUnits
     };
   }
+
+  onChangeLeft = () => this.setState({ metricInput: false });
+  onChangeRight = () => this.setState({ metricInput: true });
   handleInput = input => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;
-    if (
-      document.getElementById(`switch_right${this.props.instanceNumber}`)
-        .checked
-    ) {
+    if (this.state.metricInput === true) {
+      this.props.handleMetricConversion();
       inchesVal = this.state.diameterInput / 2.54;
+    }
+
+    if (this.state.metricInput === false) {
+      this.props.handleImperialConversion();
     }
     const pizzaId = this.state.nameInput + new Date().getTime();
     const newPizza = {
@@ -32,6 +38,7 @@ class InputForm extends Component {
     this.props.updatePizzas(newPizza);
   };
   render() {
+    const { instanceNumber } = this.props;
     return (
       <div>
         <form onSubmit={this.handleInput}>
@@ -46,6 +53,7 @@ class InputForm extends Component {
                   onChange={event =>
                     this.setState({ nameInput: event.target.value })
                   }
+                  className="pizza-input"
                 />
               </span>
             </div>
@@ -60,13 +68,15 @@ class InputForm extends Component {
                   onChange={event =>
                     this.setState({ diameterInput: event.target.value })
                   }
+                  className="pizza-input"
                 />
 
                 <ToggleSwitch
-                  instanceNumber={this.props.instanceNumber}
+                  uniqueId={instanceNumber}
                   title="Pick a size"
-                  leftLabel={`in`}
-                  rightLabel={`cm`}
+                  isMetric={this.state.metricInput}
+                  onChangeLeft={this.onChangeLeft}
+                  onChangeRight={this.onChangeRight}
                 />
               </span>
             </div>
@@ -82,6 +92,7 @@ class InputForm extends Component {
                   onChange={event =>
                     this.setState({ priceInput: event.target.value })
                   }
+                  className="pizza-input"
                 />
               </span>
             </div>
