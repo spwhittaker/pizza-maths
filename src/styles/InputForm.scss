@@ -1,13 +1,22 @@
 @import "../_variables";
+
+form {
+  background-color: lightgrey;
+  margin: 1em 4em 1em;
+  border-radius: 10px;
+}
+
 button {
   background-color: #35c02a;
   border-radius: 10px;
-  width: 20%;
+  width: 30%;
   margin: 0em 40% 1em;
+  text-align: center;
 }
 
 .pizza-input {
   height: 2em;
+  align-items: center;
 }
 
 .input-options {
@@ -15,8 +24,4 @@ button {
   padding: 0em 2em;
 }
 
-form {
-  background-color: lightgrey;
-  margin: 1em 0em 1em;
-  border-radius: 10px;
-}
+
