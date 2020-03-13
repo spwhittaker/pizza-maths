@@ -13,10 +13,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: stretch;
+  height: max-content;
 }
 
 .total-values {
   align-self: center;
+  justify-self: flex-end;
   /* background-color: rgba(192, 37, 37, 0.904); */
   background-color: $altBackground;
   margin: 5px;

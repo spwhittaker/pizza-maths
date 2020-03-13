@@ -29,19 +29,22 @@ class App extends React.Component {
       ],
       selectedDiscount: "% off",
       percentage: 50,
-      minSpend: ""
+      minSpend: "",
+      xPizzas: null
     };
   }
 
   onApplyDiscount = (
     selectedDiscount = "",
     percentageValue = "",
-    minSpendValue = ""
+    minSpendValue = "",
+    xPizzas: null
   ) => {
     this.setState({
       selectedDiscount: selectedDiscount,
       percentage: percentageValue,
-      minSpend: minSpendValue
+      minSpend: minSpendValue,
+      xPizzas: xPizzas
     });
   };
 
@@ -49,7 +52,8 @@ class App extends React.Component {
     this.setState({
       selectedDiscount: "",
       percentage: "",
-      minSpend: ""
+      minSpend: "",
+      xPizzas: null
     });
 
   handlePizzaInput = e => {
@@ -64,11 +68,10 @@ class App extends React.Component {
   };
 
   handleRemove = e => {
-    if (confirm("Are you completely sure you want to remove this pizza?")) {
+    if (confirm("Are you sure you want to remove this pizza?")) {
       this.setState({
         pizzas: this.state.pizzas.filter(arrPizza => arrPizza.pizzaId !== e)
       });
-    } else {
     }
   };
 
@@ -105,17 +108,13 @@ class App extends React.Component {
         <InputForm
           updatePizzas={this.handlePizzaInput}
           metricUnits={metricUnits}
-          /* pizzas={this.state.pizzas} */
           handleMetricConversion={handleMetricConversion}
           handleImperialConversion={handleImperialConversion}
           instanceNumber={appInstance}
         />
         <Discount
           selectedDiscount={this.state.selectedDiscount}
-          /* onSelectDiscount={this.handleDiscountInput} */
           onApplyDiscount={this.onApplyDiscount}
-          /* instanceNumber={this.props.appInstance} */
-          /* discountState={this.state.selectedDiscount} */
           percentageState={this.state.percentage}
           minSpend={this.state.minSpend}
           clearDiscount={this.clearDiscount}
@@ -126,8 +125,6 @@ class App extends React.Component {
           removeButton={this.handleRemove}
           minusButton={this.handleMinus}
           splitView={sideBySide}
-          /* setMetric={this.props.setMetric} */
-          /* setImperial={this.props.setImperial} */
           metricUnits={metricUnits}
           handleMetricConversion={handleMetricConversion}
           handleImperialConversion={handleImperialConversion}
@@ -137,6 +134,7 @@ class App extends React.Component {
           percentValue={this.state.percentage}
           minSpend={this.state.minSpend}
           selectedDiscount={this.state.selectedDiscount}
+          xPizzas={this.state.xPizzas}
         />
       </div>
     );

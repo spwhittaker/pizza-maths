@@ -13,10 +13,10 @@ const PizzaCards = ({
   percentageCalculator,
   percentValue,
   minSpend,
-  /* conversionToggle. */
   handleMetricConversion,
   handleImperialConversion,
-  selectedDiscount
+  selectedDiscount,
+  xPizzas
 }) => {
   let totalVal = 0;
   let areaVal = 0;
@@ -40,8 +40,6 @@ const PizzaCards = ({
   const indexOfBestValuePizza = pricePerAreas.indexOf(
     Math.min.apply(null, pricePerAreas)
   );
-  console.log(indexOfBestValuePizza);
-
   if (pizzas.length > 0) {
     areaVal = pizzas
       .map(pizza => Math.PI * Math.pow(pizza.diameter / 2, 2) * pizza.quantity)
@@ -54,7 +52,7 @@ const PizzaCards = ({
     percentageMetThreshold = 1;
   }
 
-  const buyOneCheapestFree = () => {
+  const buyXCheapestFree = (xValue = 2) => {
     if (totalPizzasQuantity > 1) {
       let allPizzaPrices = [];
       pizzas
@@ -69,8 +67,9 @@ const PizzaCards = ({
           element.forEach(nestedElement => allPizzaPrices.push(nestedElement))
         );
 
-      const freePizzasNumber = Math.floor(totalPizzasQuantity / 2);
-      if (totalPizzasQuantity > 1) {
+      const freePizzasNumber = Math.floor(totalPizzasQuantity / xValue);
+
+      if (allPizzaPrices.length > 0 && freePizzasNumber > 0) {
         return allPizzaPrices
           .sort()
           .slice(0, freePizzasNumber)
@@ -79,10 +78,13 @@ const PizzaCards = ({
     }
     return 0;
   };
-  const buyOneCheapestFreeReduction = buyOneCheapestFree();
+  const buyOneCheapestFreeReduction = buyXCheapestFree();
+  const buyXCheapestFreeReduction = buyXCheapestFree(xPizzas);
   let totalAfterDiscount = totalVal;
   if (selectedDiscount === "Buy 2 pizzas, get cheapest free") {
     totalAfterDiscount = totalVal - buyOneCheapestFreeReduction;
+  } else if (selectedDiscount === "Buy x number of pizzas, get cheapest free") {
+    totalAfterDiscount = totalVal - buyXCheapestFree(xPizzas);
   } else {
     totalAfterDiscount = totalVal * percentageCalculator;
   }
@@ -139,28 +141,27 @@ const PizzaCards = ({
                 {percentValue}% off.
               </h2>
             )}
-            {totalPizzasQuantity >= 2 && (
-              <div>
-                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+            {totalPizzasQuantity >= xPizzas &&
+              (selectedDiscount ===
+                "Buy x number of pizzas, get cheapest free" ||
+                selectedDiscount === "Buy 2 pizzas, get cheapest free") && (
+                <div>
                   <h2 className="total-label-and-value">
                     <span>Total before discount: </span>
                     <span>£{totalVal.toFixed(2)}</span>
                   </h2>
-                )}
-                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+
                   <h2 className="total-label-and-value">
                     <span>Discount applied: </span>
-                    <span>£{buyOneCheapestFreeReduction.toFixed(2)}</span>
+                    <span>£{buyXCheapestFreeReduction.toFixed(2)}</span>
                   </h2>
-                )}
-                {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
+
                   <h2 className="total-label-and-value">
                     <span>Total after discount: </span>
                     <span>£{totalAfterDiscount.toFixed(2)}</span>
                   </h2>
-                )}
-              </div>
-            )}
+                </div>
+              )}
 
             {metricUnits === false ? (
               <h2 className="total-label-and-value">

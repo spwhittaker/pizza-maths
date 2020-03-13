@@ -10,6 +10,10 @@ const options = [
   {
     value: "Buy 2 pizzas, get cheapest free",
     label: "Buy 2 pizzas, get cheapest free"
+  },
+  {
+    value: "Buy x number of pizzas, get cheapest free",
+    label: "Buy x number of pizzas, get cheapest free"
   }
 ];
 class Discount extends Component {
@@ -18,12 +22,14 @@ class Discount extends Component {
     this.state = {
       percentage: "",
       minSpend: "",
-      selectedDiscount: ""
+      selectedDiscount: "",
+      xPizzas: ""
     };
   }
   handleDiscountInput = input => {
     this.setState({ selectedDiscount: input.value });
   };
+
   handleClear = () => {
     this.props.clearDiscount();
     this.setState({
@@ -53,11 +59,35 @@ class Discount extends Component {
             <input
               type="button"
               onClick={e => {
-                onApplyDiscount(this.state.selectedDiscount, "", "");
+                onApplyDiscount(this.state.selectedDiscount, "", "", "");
               }}
               label="submitBuyOneGetCheapestFree"
-              value="Add discount"
-              /* id={`percentage-value${this.props.instanceNumber}`} */
+              value="Set discount"
+            />
+          </span>
+        )}
+        {this.state.selectedDiscount ===
+          "Buy x number of pizzas, get cheapest free" && (
+          <span>
+            <p>x number of pizzas</p>
+            <input
+              type="number"
+              step="1"
+              min="1"
+              onChange={event => this.setState({ xPizzas: event.target.value })}
+            />
+            <input
+              type="button"
+              onClick={e => {
+                onApplyDiscount(
+                  this.state.selectedDiscount,
+                  "",
+                  "",
+                  this.state.xPizzas
+                );
+              }}
+              label="submitBuyNGetCheapestFree"
+              value="Set discount"
             />
           </span>
         )}
@@ -67,8 +97,8 @@ class Discount extends Component {
             <input
               type="number"
               step="1"
+              min="1"
               max="99"
-              /* id={`percentage${this.props.instanceNumber}`} */
               onChange={event =>
                 this.setState({ percentage: event.target.value })
               }
@@ -82,8 +112,7 @@ class Discount extends Component {
                 );
               }}
               label="submitPercentage"
-              value="Add discount"
-              /* id={`percentage-value${this.props.instanceNumber}`} */
+              value="Set discount"
             />
           </span>
         )}
@@ -95,7 +124,6 @@ class Discount extends Component {
               step="1"
               min="1"
               max="99"
-              /* id={`percentage${this.props.instanceNumber}`} */
               onChange={event =>
                 this.setState({ percentage: event.target.value })
               }
@@ -129,8 +157,7 @@ class Discount extends Component {
                 }
               }}
               label="submitPercentage"
-              value="Add discount"
-              /* id={`percentage-value${this.props.instanceNumber}`} */
+              value="Set discount"
             />
           </span>
         )}
@@ -145,6 +172,12 @@ class Discount extends Component {
           )}
         {selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
           <p>Selected discount: {selectedDiscount}</p>
+        )}
+        {selectedDiscount === "Buy x number of pizzas, get cheapest free" && (
+          <p>
+            Selected discount:{" "}
+            {`Buy ${this.state.xPizzas} pizzas, get cheapest free`}
+          </p>
         )}
         {selectedDiscount !== "" && (
           <input type="button" value="Clear" onClick={this.handleClear} />
