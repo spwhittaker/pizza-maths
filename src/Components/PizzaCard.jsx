@@ -12,7 +12,8 @@ const PizzaCard = ({
   removeButtonClick,
   metricUnits,
   handleMetric,
-  handleImperial
+  handleImperial,
+  isBestValue
 }) => {
   let roundedDiameter;
   if (diameter % 1 === 0) {
@@ -20,11 +21,16 @@ const PizzaCard = ({
   } else {
     roundedDiameter = Number(diameter).toFixed(1);
   }
+  let classNames = "PizzaCard";
+  if (isBestValue === true) {
+    classNames = "PizzaCard best-value-pizza";
+  }
 
   const area = Math.PI * Math.pow(diameter / 2, 2);
   const circumference = Math.PI * diameter;
+
   return (
-    <div className="PizzaCard" key={pizzaId}>
+    <div className={classNames} key={pizzaId}>
       <p>
         <strong>Name</strong>: {name}
       </p>
@@ -76,7 +82,6 @@ const PizzaCard = ({
           onChangeRight={handleMetric}
         />
       </div>
-
       <p>
         <strong>Total</strong>: £{Number(price * quantity).toFixed(2)}
       </p>
@@ -119,6 +124,9 @@ const PizzaCard = ({
           : {(Number(price / (area * 2.54 * 2.54)) * 100).toFixed(2)}p
         </p>
       )}
+      {isBestValue === true && (
+        <p className="best-value-text">(Best value for money!)</p>
+      )}{" "}
     </div>
   );
 };
