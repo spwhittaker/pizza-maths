@@ -34,7 +34,14 @@ const PizzaCards = ({
       .reduce((a, b) => a + b);
   }
 
-  console.log(totalPizzasQuantity, "pizzas total");
+  const pricePerAreas = pizzas.map(
+    pizza => Number(pizza.price) / (Math.pow(pizza.diameter / 2, 2) * Math.PI)
+  );
+  const indexOfBestValuePizza = pricePerAreas.indexOf(
+    Math.min.apply(null, pricePerAreas)
+  );
+  console.log(indexOfBestValuePizza);
+
   if (pizzas.length > 0) {
     areaVal = pizzas
       .map(pizza => Math.PI * Math.pow(pizza.diameter / 2, 2) * pizza.quantity)
@@ -88,6 +95,7 @@ const PizzaCards = ({
           return (
             <PizzaCard
               {...pie}
+              isBestValue={index === indexOfBestValuePizza ? true : false}
               pizzaId={pie.pizzaId}
               addButtonClick={addButton}
               minusButtonClick={minusButton}
