@@ -6,6 +6,8 @@
   padding: 0.3em 2.5em;
   background-color: whitesmoke;
   opacity: 0.75;
+  display: flex;
+  flex-direction: column;
 }
 .best-value-pizza {
   background-color: green;

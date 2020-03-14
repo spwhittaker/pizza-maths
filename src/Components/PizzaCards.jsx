@@ -4,6 +4,18 @@ import PizzaCard from "./PizzaCard";
 import "../styles/PizzaCards.scss";
 import PropTypes from "prop-types";
 
+const pounds = new Intl.NumberFormat("en-UK", {
+  style: "currency",
+  currency: "GBP",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
+const pence = new Intl.NumberFormat("en-UK", {
+  style: "currency",
+  currency: "GBP",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 5
+});
 const PizzaCards = ({
   splitView,
   pizzas,
@@ -34,7 +46,7 @@ const PizzaCards = ({
   }
 
   const pricePerAreas = pizzas.map(
-    pizza => Number(pizza.price) / (Math.pow(pizza.diameter / 2, 2) * Math.PI)
+    pizza => pizza.price / (Math.pow(pizza.diameter / 2, 2) * Math.PI)
   );
   const indexOfBestValuePizza = pricePerAreas.indexOf(
     Math.min.apply(null, pricePerAreas)
@@ -112,13 +124,13 @@ const PizzaCards = ({
           <div>
             {(totalVal === totalAfterDiscount || minSpend > totalVal) && (
               <h2 className="total-label-and-value">
-                <span>Total:</span> <span>£{totalVal.toFixed(2)}</span>
+                <span>Total:</span> <span>{pounds.format(totalVal)}</span>
               </h2>
             )}
             {percentageMetThreshold !== 1 && (
               <h2 className="total-label-and-value">
                 <span>Total before discount: </span>
-                <span>£{totalVal.toFixed(2)}</span>
+                <span>{pounds.format(totalVal)}</span>
               </h2>
             )}
             {percentageMetThreshold !== 1 && (
@@ -130,13 +142,13 @@ const PizzaCards = ({
             {percentageMetThreshold !== 1 && (
               <h2 className="total-label-and-value">
                 <span>Total after discount: </span>
-                <span>£{totalAfterDiscount.toFixed(2)}</span>
+                <span>{pounds.format(totalAfterDiscount)}</span>
               </h2>
             )}
             {minSpend > 0 && minSpend > totalVal && (
               <h2>
-                You've not met the minimum spend of <br />£{minSpend} to get{" "}
-                {percentValue}% off.
+                You've not met the minimum spend of <br />
+                {pounds.format(minSpend)} to get {percentValue}% off.
               </h2>
             )}
             {totalPizzasQuantity >= xPizzas &&
@@ -146,17 +158,17 @@ const PizzaCards = ({
                 <div>
                   <h2 className="total-label-and-value">
                     <span>Total before discount: </span>
-                    <span>£{totalVal.toFixed(2)}</span>
+                    <span>{pounds.format(totalVal)}</span>
                   </h2>
 
                   <h2 className="total-label-and-value">
                     <span>Discount applied: </span>
-                    <span>£{buyXCheapestFree(xPizzas).toFixed(2)}</span>
+                    <span>{pounds.format(buyXCheapestFree(xPizzas))}</span>
                   </h2>
 
                   <h2 className="total-label-and-value">
                     <span>Total after discount: </span>
-                    <span>£{totalAfterDiscount.toFixed(2)}</span>
+                    <span>{pounds.format(totalAfterDiscount)}</span>
                   </h2>
                 </div>
               )}
@@ -181,9 +193,7 @@ const PizzaCards = ({
                 <span>
                   Total price per in<sup>2</sup>:{" "}
                 </span>
-                <span>
-                  {((totalAfterDiscount / areaVal) * 100).toFixed(2)}p
-                </span>
+                <span>{pence.format(totalAfterDiscount / areaVal)}</span>
               </h2>
             ) : (
               <h2 className="total-label-and-value">
@@ -191,11 +201,7 @@ const PizzaCards = ({
                   Total price per cm<sup>2</sup>:{" "}
                 </span>
                 <span>
-                  {(
-                    (totalAfterDiscount / (areaVal * 2.54 * 2.54)) *
-                    100
-                  ).toFixed(2)}
-                  p
+                  {pence.format(totalAfterDiscount / (areaVal * 2.54 * 2.54))}
                 </span>
               </h2>
             )}
