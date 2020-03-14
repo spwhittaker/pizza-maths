@@ -1,0 +1,66 @@
+Props and Types
+
+App 
+
+className: PropTypes.string
+sideBySide: PropTypes.string
+metricUnits: PropTypes.bool
+appInstance: PropTypes.string
+handleMetricConversion: PropTypes.func
+handleImperialConversion: PropTypes.func
+
+Discount
+
+selectedDiscount: PropTypes.string
+onApplyDiscount: PropTypes.func
+percentageState: PropTypes.number
+minSpend: PropTypes.number
+clearDiscount: PropTypes.func
+
+InputForm
+
+updatePizzas: PropTypes.func
+metricUnits: PropTypes.bool
+handleMetricConversion: PropTypes.func
+handleImperialConversion: PropTypes.func
+appInstance: PropTypes.string
+
+
+PizzaCard
+
+addButtonClick: PropTypes.func
+diameter: PropTypes.number
+handleImperial: PropTypes.func
+handleMetric: PropTypes.func
+isBestValue: PropTypes.bool
+metricUnits: PropTypes.bool
+minusButtonClick: PropTypes.func
+name: PropTypes.string
+pizzaId: PropTypes.string
+price: PropTypes.number
+quantity: PropTypes.number
+removeButtonClick: PropTypes.func
+
+PizzaCards
+
+pizzas: PropTypes.array
+addButton: PropTypes.func
+removeButton: PropTypes.func
+minusButton: PropTypes.func
+splitView: PropTypes.string
+metricUnits: PropTypes.bool
+handleMetricConversion: PropTypes.func
+handleImperialConversion: PropTypes.func
+percentageCalculator: PropTypes.number
+percentValue: PropTypes.number
+minSpend: PropTypes.number
+selectedDiscount: PropTypes.string
+xPizzas: PropTypes.number
+
+ToggleSwitch
+
+uniqueId: PropTypes.string
+title: PropTypes.string
+isMetric: PropTypes.bool
+onChangeLeft: PropTypes.func
+onChangeRight: PropTypes.func

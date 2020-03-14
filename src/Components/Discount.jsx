@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Select from "react-select";
+import PropTypes from "prop-types";
 import "../styles/Discount.scss";
 const options = [
   { value: "% off", label: "% off" },
@@ -20,10 +21,10 @@ class Discount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      percentage: "",
-      minSpend: "",
+      percentage: 0,
+      minSpend: 0,
       selectedDiscount: "",
-      xPizzas: ""
+      xPizzas: 0
     };
   }
   handleDiscountInput = input => {
@@ -33,9 +34,10 @@ class Discount extends Component {
   handleClear = () => {
     this.props.clearDiscount();
     this.setState({
-      percentage: "",
-      minSpend: "",
-      selectedDiscount: ""
+      percentage: 0,
+      minSpend: 0,
+      selectedDiscount: "",
+      xPizzas: 0
     });
   };
 
@@ -59,7 +61,7 @@ class Discount extends Component {
             <input
               type="button"
               onClick={e => {
-                onApplyDiscount(this.state.selectedDiscount, "", "", "");
+                onApplyDiscount(this.state.selectedDiscount, "", "", 2);
               }}
               label="submitBuyOneGetCheapestFree"
               value="Set discount"
@@ -186,5 +188,13 @@ class Discount extends Component {
     );
   }
 }
+
+Discount.propTypes = {
+  selectedDiscount: PropTypes.string.isRequired,
+  onApplyDiscount: PropTypes.func.isRequired,
+  percentageState: PropTypes.number.isRequired,
+  minSpend: PropTypes.number.isRequired,
+  clearDiscount: PropTypes.func.isRequired
+};
 
 export default Discount;

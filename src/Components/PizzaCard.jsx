@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/PizzaCard.scss";
 import ToggleSwitch from "./ToggleSwitch";
+import PropTypes from "prop-types";
 const PizzaCard = ({
   name,
   diameter,
@@ -129,6 +130,21 @@ const PizzaCard = ({
       )}{" "}
     </div>
   );
+};
+
+PizzaCard.propTypes = {
+  addButtonClick: PropTypes.func.isRequired,
+  diameter: PropTypes.number.isRequired,
+  handleImperial: PropTypes.func.isRequired,
+  handleMetric: PropTypes.func.isRequired,
+  isBestValue: PropTypes.bool.isRequired,
+  metricUnits: PropTypes.bool.isRequired,
+  minusButtonClick: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  pizzaId: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
+  removeButtonClick: PropTypes.func.isRequired
 };
 
 export default PizzaCard;

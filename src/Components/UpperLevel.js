@@ -8,8 +8,8 @@ class UpperLevel extends Component {
     super(props);
     this.state = {
       comparisonDiv: false,
-      comparisonClass: "",
-      splitView: "",
+      comparisonClass: "single-view-comparison",
+      splitView: "split-view",
       metricUnits: false
     };
   }
@@ -18,15 +18,15 @@ class UpperLevel extends Component {
     this.setState({
       comparisonDiv: true,
       comparisonClass: "side-by-side-comparison",
-      splitViewClass: "split-view"
+      splitView: "split-view"
     });
   };
 
   handleRemoveComparison = event => {
     this.setState({
       comparisonDiv: false,
-      comparisonClass: "",
-      splitViewClass: ""
+      comparisonClass: "single-view-comparison",
+      splitView: "single-view"
     });
   };
 
@@ -68,7 +68,7 @@ class UpperLevel extends Component {
         <span className="apps">
           <App
             className={this.state.comparisonClass}
-            sideBySide={this.state.splitViewClass}
+            sideBySide={this.state.splitView}
             metricUnits={this.state.metricUnits}
             appInstance={"0"}
             handleMetricConversion={this.handleMetricConversion}
@@ -76,8 +76,8 @@ class UpperLevel extends Component {
           />
           {this.state.comparisonDiv && (
             <App
-              className={this.state.splitViewClass}
-              sideBySide={this.state.splitViewClass}
+              className={this.state.splitView}
+              sideBySide={this.state.splitView}
               metricUnits={this.state.metricUnits}
               appInstance={"1"}
               handleMetricConversion={this.handleMetricConversion}

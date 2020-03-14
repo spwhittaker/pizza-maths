@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/ToggleSwitch.scss";
+import PropTypes from "prop-types";
 
 const ToggleSwitch = ({
   title,
@@ -28,6 +29,14 @@ const ToggleSwitch = ({
       <label htmlFor={`switch_right${uniqueId}`}>cm</label>
     </div>
   );
+};
+
+ToggleSwitch.propTypes = {
+  uniqueId: PropTypes.string,
+  title: PropTypes.string,
+  isMetric: PropTypes.bool.isRequired,
+  onChangeLeft: PropTypes.func.isRequired,
+  onChangeRight: PropTypes.func.isRequired
 };
 
 export default ToggleSwitch;

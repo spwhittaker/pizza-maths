@@ -4,6 +4,7 @@ import "./InputForm";
 import InputForm from "./InputForm";
 import PizzaCards from "./PizzaCards";
 import Discount from "./Discount";
+import PropTypes from "prop-types";
 /* eslint no-restricted-globals:0 */
 class App extends React.Component {
   constructor(props) {
@@ -29,16 +30,16 @@ class App extends React.Component {
       ],
       selectedDiscount: "% off",
       percentage: 50,
-      minSpend: "",
-      xPizzas: null
+      minSpend: 0,
+      xPizzas: 0
     };
   }
 
   onApplyDiscount = (
     selectedDiscount = "",
-    percentageValue = "",
-    minSpendValue = "",
-    xPizzas: null
+    percentageValue = 0,
+    minSpendValue = 0,
+    xPizzas = 0
   ) => {
     this.setState({
       selectedDiscount: selectedDiscount,
@@ -51,12 +52,12 @@ class App extends React.Component {
   clearDiscount = () =>
     this.setState({
       selectedDiscount: "",
-      percentage: "",
-      minSpend: "",
-      xPizzas: null
+      percentage: 0,
+      minSpend: 0,
+      xPizzas: 0
     });
 
-  handlePizzaInput = e => {
+  updatePizzas = e => {
     if (
       !this.state.pizzas.some(
         obj =>
@@ -106,11 +107,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <InputForm
-          updatePizzas={this.handlePizzaInput}
+          updatePizzas={this.updatePizzas}
           metricUnits={metricUnits}
           handleMetricConversion={handleMetricConversion}
           handleImperialConversion={handleImperialConversion}
-          instanceNumber={appInstance}
+          appInstance={appInstance}
         />
         <Discount
           selectedDiscount={this.state.selectedDiscount}
@@ -128,9 +129,7 @@ class App extends React.Component {
           metricUnits={metricUnits}
           handleMetricConversion={handleMetricConversion}
           handleImperialConversion={handleImperialConversion}
-          percentageCalculator={Number(
-            1 - (this.state.percentage / 100).toFixed(2)
-          )}
+          percentageCalculator={1 - (this.state.percentage / 100).toFixed(2)}
           percentValue={this.state.percentage}
           minSpend={this.state.minSpend}
           selectedDiscount={this.state.selectedDiscount}
@@ -140,5 +139,14 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  className: PropTypes.string.isRequired,
+  sideBySide: PropTypes.string.isRequired,
+  metricUnits: PropTypes.bool.isRequired,
+  appInstance: PropTypes.string.isRequired,
+  handleMetricConversion: PropTypes.func.isRequired,
+  handleImperialConversion: PropTypes.func.isRequired
+};
 
 export default App;

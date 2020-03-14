@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../styles/InputForm.scss";
 import ToggleSwitch from "./ToggleSwitch.jsx";
+import PropTypes from "prop-types";
 
 class InputForm extends Component {
   constructor(props) {
@@ -104,5 +105,12 @@ class InputForm extends Component {
     );
   }
 }
+InputForm.propTypes = {
+  updatePizzas: PropTypes.func.isRequired,
+  metricUnits: PropTypes.bool.isRequired,
+  handleMetricConversion: PropTypes.func.isRequired,
+  handleImperialConversion: PropTypes.func.isRequired,
+  appInstance: PropTypes.string.isRequired
+};
 
 export default InputForm;

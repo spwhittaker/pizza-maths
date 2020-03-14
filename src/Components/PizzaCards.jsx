@@ -2,6 +2,7 @@ import React from "react";
 
 import PizzaCard from "./PizzaCard";
 import "../styles/PizzaCards.scss";
+import PropTypes from "prop-types";
 
 const PizzaCards = ({
   splitView,
@@ -21,11 +22,9 @@ const PizzaCards = ({
   let totalVal = 0;
   let areaVal = 0;
   if (pizzas.length > 0) {
-    totalVal = Number(
-      pizzas
-        .map(pizza => pizza.price * pizza.quantity)
-        .reduce((total, currentPizza) => total + currentPizza)
-    );
+    totalVal = pizzas
+      .map(pizza => pizza.price * pizza.quantity)
+      .reduce((total, currentPizza) => total + currentPizza);
   }
   let totalPizzasQuantity = 0;
   if (pizzas.length > 0) {
@@ -52,7 +51,8 @@ const PizzaCards = ({
     percentageMetThreshold = 1;
   }
 
-  const buyXCheapestFree = (xValue = 2) => {
+  let totalAfterDiscount = totalVal;
+  const buyXCheapestFree = xValue => {
     if (totalPizzasQuantity > 1) {
       let allPizzaPrices = [];
       pizzas
@@ -78,12 +78,10 @@ const PizzaCards = ({
     }
     return 0;
   };
-  const buyOneCheapestFreeReduction = buyXCheapestFree();
-  const buyXCheapestFreeReduction = buyXCheapestFree(xPizzas);
-  let totalAfterDiscount = totalVal;
-  if (selectedDiscount === "Buy 2 pizzas, get cheapest free") {
-    totalAfterDiscount = totalVal - buyOneCheapestFreeReduction;
-  } else if (selectedDiscount === "Buy x number of pizzas, get cheapest free") {
+  if (
+    selectedDiscount === "Buy x number of pizzas, get cheapest free" ||
+    selectedDiscount === "Buy 2 pizzas, get cheapest free"
+  ) {
     totalAfterDiscount = totalVal - buyXCheapestFree(xPizzas);
   } else {
     totalAfterDiscount = totalVal * percentageCalculator;
@@ -153,7 +151,7 @@ const PizzaCards = ({
 
                   <h2 className="total-label-and-value">
                     <span>Discount applied: </span>
-                    <span>£{buyXCheapestFreeReduction.toFixed(2)}</span>
+                    <span>£{buyXCheapestFree(xPizzas).toFixed(2)}</span>
                   </h2>
 
                   <h2 className="total-label-and-value">
@@ -220,6 +218,21 @@ const PizzaCards = ({
       </div>
     </div>
   );
+};
+PizzaCards.propTypes = {
+  pizzas: PropTypes.array.isRequired,
+  addButton: PropTypes.func.isRequired,
+  removeButton: PropTypes.func.isRequired,
+  minusButton: PropTypes.func.isRequired,
+  splitView: PropTypes.string.isRequired,
+  metricUnits: PropTypes.bool.isRequired,
+  handleMetricConversion: PropTypes.func.isRequired,
+  handleImperialConversion: PropTypes.func.isRequired,
+  percentageCalculator: PropTypes.number.isRequired,
+  percentValue: PropTypes.number.isRequired,
+  minSpend: PropTypes.number.isRequired,
+  selectedDiscount: PropTypes.string.isRequired,
+  xPizzas: PropTypes.number.isRequired
 };
 
 export default PizzaCards;
