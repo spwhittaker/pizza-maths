@@ -2,18 +2,8 @@ import React from "react";
 import "../styles/PizzaCard.scss";
 import ToggleSwitch from "./ToggleSwitch";
 import PropTypes from "prop-types";
-const pounds = new Intl.NumberFormat("en-UK", {
-  style: "currency",
-  currency: "GBP",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2
-});
-const pence = new Intl.NumberFormat("en-UK", {
-  style: "currency",
-  currency: "GBP",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 5
-});
+import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
+
 const PizzaCard = ({
   name,
   diameter,
@@ -61,7 +51,7 @@ const PizzaCard = ({
         </p>
       )}
       <p>
-        <strong>Price per pizza</strong>: {pounds.format(price)}
+        <strong>Price per pizza</strong>: {localCurrency(price)}
       </p>
       <div className="quantity-buttons">
         <p>
@@ -96,7 +86,7 @@ const PizzaCard = ({
         />
       </div>
       <p>
-        <strong>Total</strong>: {pounds.format(price * quantity)}
+        <strong>Total</strong>: {localCurrency(price * quantity)}
       </p>
       {metricUnits === false ? (
         <p>
@@ -127,14 +117,14 @@ const PizzaCard = ({
           <strong>
             Price per in<sup>2</sup>
           </strong>
-          : {pence.format(price / area)}
+          : {localCurrencyDetailed(price / area)}
         </p>
       ) : (
         <p>
           <strong>
             Price per cm<sup>2</sup>
           </strong>
-          : {pence.format(price / (area * 2.54 * 2.54))}
+          : {localCurrencyDetailed(price / (area * 2.54 * 2.54))}
         </p>
       )}
       {isBestValue === true && (

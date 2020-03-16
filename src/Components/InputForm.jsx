@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/InputForm.scss";
 import ToggleSwitch from "./ToggleSwitch.jsx";
 import PropTypes from "prop-types";
+import { localCurrency } from "../currencyFormatter";
 
 class InputForm extends Component {
   constructor(props) {
@@ -83,7 +84,7 @@ class InputForm extends Component {
             </div>
             <div className="pizza-option">
               <span className="input-options">
-                <p>Price (£)</p>
+                <p>Price ({localCurrency(1).replace(/[0-9.,]/gi, "")})</p>
                 <input
                   type="number"
                   required
