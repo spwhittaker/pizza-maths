@@ -769,8 +769,11 @@ export let localCurrency = (function currencyConvert() {
     maximumFractionDigits: 2,
     minimumFractionDigits: 2
   };
+
+  const currencyFormat = new Intl.NumberFormat(locale, format);
+
   return function(val) {
-    return val.toLocaleString(locale, format);
+    return currencyFormat.format(val);
   };
 })();
 
@@ -784,8 +787,10 @@ export let localCurrencyDetailed = (function currencyConvert() {
     maximumFractionDigits: 5,
     minimumFractionDigits: 2
   };
+  const currencyFormat = new Intl.NumberFormat(locale, format);
+
   return function(val) {
-    return val.toLocaleString(locale, format);
+    return currencyFormat.format(val);
   };
 })();
 

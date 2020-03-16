@@ -84,7 +84,7 @@ class InputForm extends Component {
             </div>
             <div className="pizza-option">
               <span className="input-options">
-                <p>Price ({localCurrency(1).replace(/[0-9.,]/gi, "")})</p>
+                <p>Price ({localCurrency(1).replace(/[\s0-9.,]/gi, "")})</p>
                 <input
                   type="number"
                   required
