@@ -756,12 +756,15 @@ function getCurrencyDetailsByLocale(locale) {
       locale: "af-ZA"
     }
   ];
+
   return currencyNames.find(l => l.locale === locale);
 }
 
 export let localCurrency = (function currencyConvert() {
   let locale = navigator.language;
+  console.log(locale, "is the locale");
   let thisCurrency = getCurrencyDetailsByLocale(locale);
+  console.log(thisCurrency);
   if (thisCurrency == null) thisCurrency = getCurrencyDetailsByLocale("en-GB");
   let format = {
     style: "currency",
