@@ -1,3 +1,5 @@
+@import "../_variables";
+
 .PizzaCard {
   margin: 0.1em;
   border: solid #333333 0.1em;
@@ -10,7 +12,7 @@
   flex-direction: column;
 }
 .best-value-pizza {
-  background-color: green;
+  background-color: $bestChoice;
 }
 .best-value-text {
   font-size: 1em;

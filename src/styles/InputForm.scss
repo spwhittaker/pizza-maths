@@ -1,6 +1,8 @@
 @import "../_variables";
+
+
 button {
-  background-color: #35c02a;
+  background-color: $submitButton;
   border-radius: 10px;
   width: 20%;
   margin: 0em 40% 1em;
@@ -16,7 +18,7 @@ button {
 }
 
 form {
-  background-color: lightgrey;
+  background-color: $inputForm-bg;
   margin: 1em 0em 1em;
   border-radius: 10px;
 }

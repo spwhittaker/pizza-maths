@@ -1,3 +1,6 @@
+@import "../_variables";
+
+
 .App {
   width: 80%;
 }
@@ -14,7 +17,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: $header;
   min-height: 30vh;
   display: flex;
   
