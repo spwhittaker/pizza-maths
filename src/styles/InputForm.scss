@@ -3,7 +3,6 @@
 @import "mixins";
 .input-form {
   max-width: 1200px;
-  align-self: stretch;
 
   button {
     @include font-size($p-font-sizes);
