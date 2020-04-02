@@ -1,20 +1,26 @@
 @import "../_variables";
 
-
 button {
   background-color: $submitButton;
   border-radius: 10px;
-  width: 20%;
+  min-width: 20%;
   margin: 0em 40% 1em;
 }
 
 .pizza-input {
-  height: 2em;
+  height: 1.5em;
+  width: auto;
 }
 
 .input-options {
   align-items: center;
-  padding: 0em 2em;
+  padding: 0em 1em;
+  display: flex;
+  flex-wrap: wrap;
+  p {
+    min-width: 100px;
+    padding: 5px;
+  }
 }
 
 form {

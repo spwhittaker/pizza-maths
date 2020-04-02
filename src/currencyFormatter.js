@@ -1,763 +1,1097 @@
 function getCurrencyDetailsByLocale(locale) {
-  let currencyNames = [
+  const countries = [
+    {
+      code: "EUR",
+      locale: ["ca"]
+    },
     {
       code: "AED",
-      name: "Arab Emirates Dirham",
-      locale: "ar-AE"
+      locale: ["ar-AE", "fa", "en", "hi", "ur"]
     },
     {
       code: "AFN",
-      name: "Afghanistan Afghani",
-      locale: "ps-AF"
+      locale: ["fa-AF", "ps", "uz-AF", "tk"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-AG"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-AI"]
     },
     {
       code: "ALL",
-      name: "Albanian Lek",
-      locale: "sq-AL"
+      locale: ["sq", "el"]
     },
     {
       code: "AMD",
-      name: "Armenian Dram",
-      locale: "hy-AM"
-    },
-    {
-      code: "ANG",
-      name: "Netherlands Antillean Guilder",
-      locale: "nl-CW"
+      locale: ["hy"]
     },
     {
       code: "AOA",
-      name: "Angolan Kwanza",
-      locale: "ln-AO"
+      locale: ["pt-AO"]
+    },
+    {
+      code: "",
+      locale: [""]
     },
     {
       code: "ARS",
-      name: "Argentine Peso",
-      locale: "es-AR"
-    },
-    {
-      code: "AUD",
-      name: "Australian Dollar",
-      locale: "en-AU"
-    },
-    {
-      code: "AWG",
-      name: "Aruban Guilder",
-      locale: "nl-AW"
-    },
-    {
-      code: "AZN",
-      name: "Azerbaijan New Manat",
-      locale: "az-Cyrl-AZ"
-    },
-    {
-      code: "BAM",
-      name: "Marka",
-      locale: "bs-Cyrl-BA"
-    },
-    {
-      code: "BBD",
-      name: "Barbados Dollar",
-      locale: "en-BB"
-    },
-    {
-      code: "BDT",
-      name: "Bangladeshi Taka",
-      locale: "bn-BD"
-    },
-    {
-      code: "BGN",
-      name: "Bulgarian Lev",
-      locale: "bg-BG"
-    },
-    {
-      code: "BHD",
-      name: "Bahraini Dinar",
-      locale: "ar-BH"
-    },
-    {
-      code: "BIF",
-      name: "Burundi Franc",
-      locale: "rn-BI"
-    },
-    {
-      code: "BMD",
-      name: "Bermudian Dollar",
-      locale: "en-BM"
-    },
-    {
-      code: "BND",
-      name: "Brunei Dollar",
-      locale: "ms-Latn-BN"
-    },
-    {
-      code: "BOB",
-      name: "Boliviano",
-      locale: "es-BO"
-    },
-    {
-      code: "BRL",
-      name: "Brazilian Real",
-      locale: "pt-BR"
-    },
-    {
-      code: "BSD",
-      name: "Bahamian Dollar",
-      locale: "en-BS"
-    },
-    {
-      code: "BTN",
-      name: "Bhutan Ngultrum",
-      locale: "dz-BT"
-    },
-    {
-      code: "BWP",
-      name: "Botswana Pula",
-      locale: "en-BW"
-    },
-    {
-      code: "BYR",
-      name: "Belarussian Ruble",
-      locale: "ru-BY"
-    },
-    {
-      code: "BZD",
-      name: "Belize Dollar",
-      locale: "en-BZ"
-    },
-    {
-      code: "CAD",
-      name: "Canadian Dollar",
-      locale: "fr-CA"
-    },
-    {
-      code: "CDF",
-      name: "Congo/Kinshasa Franc",
-      locale: "lu-CD"
-    },
-    {
-      code: "CHF",
-      name: "Swiss Franc",
-      locale: "rm-CH"
-    },
-    {
-      code: "CLP",
-      name: "Chilean Peso",
-      locale: "es-CL"
-    },
-    {
-      code: "CNY",
-      name: "Yuan Renminbi",
-      locale: "ii-CN"
-    },
-    {
-      code: "COP",
-      name: "Colombian Peso",
-      locale: "es-CO"
-    },
-    {
-      code: "CRC",
-      name: "Costa Rican Colon",
-      locale: "es-CR"
-    },
-    {
-      code: "CUP",
-      name: "Cuban Peso",
-      locale: "es-CU"
-    },
-    {
-      code: "CVE",
-      name: "Cape Verde Escudo",
-      locale: "pt-CV"
-    },
-    {
-      code: "CZK",
-      name: "Czech Koruna",
-      locale: "en-CZ"
-    },
-    {
-      code: "DJF",
-      name: "Djibouti Franc",
-      locale: "ar-DJ"
-    },
-    {
-      code: "DKK",
-      name: "Danish Krone",
-      locale: "da-DK"
-    },
-    {
-      code: "DOP",
-      name: "Dominican Peso",
-      locale: "es-DO"
-    },
-    {
-      code: "DZD",
-      name: "Algerian Dinar",
-      locale: "kab-DZ"
-    },
-    {
-      code: "EGP",
-      name: "Egyptian Pound",
-      locale: "ar-EG"
-    },
-    {
-      code: "ERN",
-      name: "Eritrean Nakfa",
-      locale: "ar-ER"
-    },
-    {
-      code: "ETB",
-      name: "Ethiopian Birr",
-      locale: "om-ET"
-    },
-    {
-      code: "EUR",
-      name: "Euro",
-      locale: "en-DE"
-    },
-    {
-      code: "FJD",
-      name: "Fiji Dollar",
-      locale: "en-FJ"
-    },
-    {
-      code: "FKP",
-      name: "Falkland Islands Pound",
-      locale: "en-FK"
-    },
-    {
-      code: "GBP",
-      name: "Pound Sterling",
-      locale: "en-GB"
-    },
-    {
-      code: "GEL",
-      name: "Georgian Lari",
-      locale: "ka-GE"
-    },
-    {
-      code: "GHS",
-      name: "Ghanaian Cedi",
-      locale: "ak-GH"
-    },
-    {
-      code: "GGP",
-      name: "Guernsey Pound",
-      locale: "en-GG"
-    },
-    {
-      code: "GIP",
-      name: "Gibraltar Pound",
-      locale: "en-GI"
-    },
-    {
-      code: "GMD",
-      name: "Gambian Dalasi",
-      locale: "en-GM"
-    },
-    {
-      code: "GNF",
-      name: "Guinea Franc",
-      locale: "fr-GN"
-    },
-    {
-      code: "GTQ",
-      name: "Guatemalan Quetzal",
-      locale: "es-GT"
-    },
-    {
-      code: "GYD",
-      name: "Guyana Dollar",
-      locale: "en-GY"
-    },
-    {
-      code: "HKD",
-      name: "Hong Kong Dollar",
-      locale: "zh-Hans-HK"
-    },
-    {
-      code: "HNL",
-      name: "Honduran Lempira",
-      locale: "es-HN"
-    },
-    {
-      code: "HRK",
-      name: "Croatian Kuna",
-      locale: "hr-HR"
-    },
-    {
-      code: "HTG",
-      name: "Haitian Gourde",
-      locale: "fr-HT"
-    },
-    {
-      code: "HUF",
-      name: "Hungarian Forint",
-      locale: "en-HU"
-    },
-    {
-      code: "IDR",
-      name: "Indonesian Rupiah",
-      locale: "id-ID"
-    },
-    {
-      code: "ILS",
-      name: "Israeli New Shekel",
-      locale: "ar-IL"
-    },
-    {
-      code: "INR",
-      name: "Indian Rupee",
-      locale: "kok-IN"
-    },
-    {
-      code: "IQD",
-      name: "Iraqi Dinar",
-      locale: "ar-IQ"
-    },
-    {
-      code: "IRR",
-      name: "Iranian Rial",
-      locale: "fa-IR"
-    },
-    {
-      code: "ISK",
-      name: "Iceland Krona",
-      locale: "en-IS"
-    },
-    {
-      code: "JMD",
-      name: "Jamaican Dollar",
-      locale: "en-JM"
-    },
-    {
-      code: "JOD",
-      name: "Jordanian Dinar",
-      locale: "ar-JO"
-    },
-    {
-      code: "JPY",
-      name: "Japanese Yen",
-      locale: "ja-JP"
-    },
-    {
-      code: "KES",
-      name: "Kenyan Shilling",
-      locale: "saq-KE"
-    },
-    {
-      code: "KGS",
-      name: "Som",
-      locale: "ru-KG"
-    },
-    {
-      code: "KHR",
-      name: "Kampuchean Riel",
-      locale: "km-KH"
-    },
-    {
-      code: "KMF",
-      name: "Comoros Franc",
-      locale: "ar-KM"
-    },
-    {
-      code: "KPW",
-      name: "North Korean Won",
-      locale: "ko-KP"
-    },
-    {
-      code: "KRW",
-      name: "Korean Won",
-      locale: "ko-KR"
-    },
-    {
-      code: "KWD",
-      name: "Kuwaiti Dinar",
-      locale: "ar-KW"
-    },
-    {
-      code: "KYD",
-      name: "Cayman Islands Dollar",
-      locale: "en-KY"
-    },
-    {
-      code: "KZT",
-      name: "Kazakhstan Tenge",
-      locale: "kk-Cyrl-KZ"
-    },
-    {
-      code: "LAK",
-      name: "Lao Kip",
-      locale: "lo-LA"
-    },
-    {
-      code: "LBP",
-      name: "Lebanese Pound",
-      locale: "ar-LB"
-    },
-    {
-      code: "LKR",
-      name: "Sri Lanka Rupee",
-      locale: "ta-LK"
-    },
-    {
-      code: "LRD",
-      name: "Liberian Dollar",
-      locale: "vai-Latn-LR"
-    },
-    {
-      code: "LSL",
-      name: "Lesotho loti",
-      locale: "en-LS"
-    },
-    {
-      code: "LTL",
-      name: "Lithuanian Litas",
-      locale: "en-LT"
-    },
-    {
-      code: "LVL",
-      name: "Latvian Lats",
-      locale: "en-LV"
-    },
-    {
-      code: "LYD",
-      name: "Libyan Dinar",
-      locale: "ar-LY"
-    },
-    {
-      code: "MAD",
-      name: "Moroccan Dirham",
-      locale: "ar-MA"
-    },
-    {
-      code: "MDL",
-      name: "Moldovan Leu",
-      locale: "ru-MD"
-    },
-    {
-      code: "MGA",
-      name: "Malagasy Ariary",
-      locale: "mg-MG"
-    },
-    {
-      code: "MKD",
-      name: "Denar",
-      locale: "sq-MK"
-    },
-    {
-      code: "MMK",
-      name: "Myanmar Kyat",
-      locale: "my-MM"
-    },
-    {
-      code: "MNT",
-      name: "Mongolian Tugrik",
-      locale: "mn-Cyrl-MN"
-    },
-    {
-      code: "MOP",
-      name: "Macau Pataca",
-      locale: "zh-Hant-MO"
-    },
-    {
-      code: "MRO",
-      name: "Mauritanian Ouguiya",
-      locale: "ar-MR"
-    },
-    {
-      code: "MUR",
-      name: "Mauritius Rupee",
-      locale: "en-MU"
-    },
-    {
-      code: "MWK",
-      name: "Malawi Kwacha",
-      locale: "en-MW"
-    },
-    {
-      code: "MXN",
-      name: "Mexican Nuevo Peso",
-      locale: "es-MX"
-    },
-    {
-      code: "MYR",
-      name: "Malaysian Ringgit",
-      locale: "ms-Latn-MY"
-    },
-    {
-      code: "MZN",
-      name: "Mozambique Metical",
-      locale: "mgh-MZ"
-    },
-    {
-      code: "NAD",
-      name: "Namibian Dollar",
-      locale: "naq-NA"
-    },
-    {
-      code: "NGN",
-      name: "Nigerian Naira",
-      locale: "ha-Latn-NG"
-    },
-    {
-      code: "NIO",
-      name: "Nicaraguan Cordoba Oro",
-      locale: "es-NI"
-    },
-    {
-      code: "NOK",
-      name: "Norwegian Krone",
-      locale: "nn-NO"
-    },
-    {
-      code: "NPR",
-      name: "Nepalese Rupee",
-      locale: "ne-NP"
-    },
-    {
-      code: "NZD",
-      name: "New Zealand Dollar",
-      locale: "en-NZ"
-    },
-    {
-      code: "OMR",
-      name: "Omani Rial",
-      locale: "ar-OM"
-    },
-    {
-      code: "PAB",
-      name: "Panamanian Balboa",
-      locale: "es-PA"
-    },
-    {
-      code: "PEN",
-      name: "Peruvian Nuevo Sol",
-      locale: "es-PE"
-    },
-    {
-      code: "PGK",
-      name: "Papua New Guinea Kina",
-      locale: "en-PG"
-    },
-    {
-      code: "PHP",
-      name: "Philippine Peso",
-      locale: "es-PH"
-    },
-    {
-      code: "PKR",
-      name: "Pakistan Rupee",
-      locale: "pa-Arab-PK"
-    },
-    {
-      code: "PLN",
-      name: "Polish Zloty",
-      locale: "en-PL"
-    },
-    {
-      code: "PYG",
-      name: "Paraguay Guarani",
-      locale: "es-PY"
-    },
-    {
-      code: "QAR",
-      name: "Qatari Rial",
-      locale: "ar-QA"
-    },
-    {
-      code: "RON",
-      name: "Romanian New Leu",
-      locale: "en-RO"
-    },
-    {
-      code: "RSD",
-      name: "Dinar",
-      locale: "sr-Latn-RS"
-    },
-    {
-      code: "RUB",
-      name: "Russian Ruble",
-      locale: "ru-RU"
-    },
-    {
-      code: "RWF",
-      name: "Rwanda Franc",
-      locale: "rw-RW"
-    },
-    {
-      code: "SAR",
-      name: "Saudi Riyal",
-      locale: "ar-SA"
-    },
-    {
-      code: "SBD",
-      name: "Solomon Islands Dollar",
-      locale: "en-SB"
-    },
-    {
-      code: "SCR",
-      name: "Seychelles Rupee",
-      locale: "en-SC"
-    },
-    {
-      code: "SDG",
-      name: "Sudanese Pound",
-      locale: "ar-SD"
-    },
-    {
-      code: "SEK",
-      name: "Swedish Krona",
-      locale: "sv-SE"
-    },
-    {
-      code: "SGD",
-      name: "Singapore Dollar",
-      locale: "ms-Latn-SG"
-    },
-    {
-      code: "SHP",
-      name: "Saint Helena Pound",
-      locale: "en-SH"
-    },
-    {
-      code: "SLL",
-      name: "Sierra Leone Leone",
-      locale: "en-SL"
-    },
-    {
-      code: "SOS",
-      name: "Somali Shilling",
-      locale: "ar-SO"
-    },
-    {
-      code: "SRD",
-      name: "Surinam Dollar",
-      locale: "nl-SR"
-    },
-    {
-      code: "STD",
-      name: "Dobra",
-      locale: "pt-ST"
-    },
-    {
-      code: "SYP",
-      name: "Syrian Pound",
-      locale: "ar-SY"
-    },
-    {
-      code: "SZL",
-      name: "Swaziland Lilangeni",
-      locale: "en-SZ"
-    },
-    {
-      code: "THB",
-      name: "Thai Baht",
-      locale: "th-TH"
-    },
-    {
-      code: "TJS",
-      name: "Tajik Somoni",
-      locale: "tg-Cyrl-TJ"
-    },
-    {
-      code: "TMT",
-      name: "Manat",
-      locale: "tk-Latn-TM"
-    },
-    {
-      code: "TND",
-      name: "Tunisian Dollar",
-      locale: "ar-TN"
-    },
-    {
-      code: "TOP",
-      name: "Tongan Pa'anga",
-      locale: "to-TO"
-    },
-    {
-      code: "TRY",
-      name: "Turkish Lira",
-      locale: "tr-TR"
-    },
-    {
-      code: "TTD",
-      name: "Trinidad and Tobago Dollar",
-      locale: "en-TT"
-    },
-    {
-      code: "TWD",
-      name: "Taiwan Dollar",
-      locale: "zh-Hant-TW"
-    },
-    {
-      code: "TZS",
-      name: "Tanzanian Shilling",
-      locale: "sw-TZ"
-    },
-    {
-      code: "UAH",
-      name: "Ukraine Hryvnia",
-      locale: "ru-UA"
-    },
-    {
-      code: "UGX",
-      name: "Uganda Shilling",
-      locale: "teo-UG"
+      locale: ["es-AR", "en", "it", "de", "fr", "gn"]
     },
     {
       code: "USD",
-      name: "US Dollar",
-      locale: "en-US-POSIX"
+      locale: ["en-AS", "sm", "to"]
+    },
+    {
+      code: "EUR",
+      locale: ["de-AT", "hr", "hu", "sl"]
+    },
+    {
+      code: "AUD",
+      locale: ["en-AU"]
+    },
+    {
+      code: "AWG",
+      locale: ["nl-AW", "pap", "es", "en"]
+    },
+    {
+      code: "EUR",
+      locale: ["sv-AX"]
+    },
+    {
+      code: "AZN",
+      locale: ["az", "ru", "hy"]
+    },
+    {
+      code: "BAM",
+      locale: ["bs", "hr-BA", "sr-BA"]
+    },
+    {
+      code: "BBD",
+      locale: ["en-BB"]
+    },
+    {
+      code: "BDT",
+      locale: ["bn-BD", "en"]
+    },
+    {
+      code: "EUR",
+      locale: ["nl-BE", "fr-BE", "de-BE"]
+    },
+    {
+      code: "XOF",
+      locale: ["fr-BF", "mos"]
+    },
+    {
+      code: "BGN",
+      locale: ["bg", "tr-BG", "rom"]
+    },
+    {
+      code: "BHD",
+      locale: ["ar-BH", "en", "fa", "ur"]
+    },
+    {
+      code: "BIF",
+      locale: ["fr-BI", "rn"]
+    },
+    {
+      code: "XOF",
+      locale: ["fr-BJ"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr"]
+    },
+    {
+      code: "BMD",
+      locale: ["en-BM", "pt"]
+    },
+    {
+      code: "BND",
+      locale: ["ms-BN", "en-BN"]
+    },
+    {
+      code: "BOB",
+      locale: ["es-BO", "qu", "ay"]
+    },
+    {
+      code: "USD",
+      locale: ["nl", "pap", "en"]
+    },
+    {
+      code: "BRL",
+      locale: ["pt-BR", "es", "en", "fr"]
+    },
+    {
+      code: "BSD",
+      locale: ["en-BS"]
+    },
+    {
+      code: "BTN",
+      locale: ["dz"]
+    },
+    {
+      code: "NOK",
+      locale: [""]
+    },
+    {
+      code: "BWP",
+      locale: ["en-BW", "tn-BW"]
+    },
+    {
+      code: "BYN",
+      locale: ["be", "ru"]
+    },
+    {
+      code: "BZD",
+      locale: ["en-BZ", "es"]
+    },
+    {
+      code: "CAD",
+      locale: ["en-CA", "fr-CA", "iu"]
+    },
+    {
+      code: "AUD",
+      locale: ["ms-CC", "en"]
+    },
+    {
+      code: "CDF",
+      locale: ["fr-CD", "ln", "ktu", "kg", "sw", "lua"]
+    },
+    {
+      code: "XAF",
+      locale: ["fr-CF", "sg", "ln", "kg"]
+    },
+    {
+      code: "XAF",
+      locale: ["fr-CG", "kg", "ln-CG"]
+    },
+    {
+      code: "CHF",
+      locale: ["de-CH", "fr-CH", "it-CH", "rm"]
+    },
+    {
+      code: "XOF",
+      locale: ["fr-CI"]
+    },
+    {
+      code: "NZD",
+      locale: ["en-CK", "mi"]
+    },
+    {
+      code: "CLP",
+      locale: ["es-CL"]
+    },
+    {
+      code: "XAF",
+      locale: ["en-CM", "fr-CM"]
+    },
+    {
+      code: "CNY",
+      locale: ["zh-CN", "yue", "wuu", "dta", "ug", "za"]
+    },
+    {
+      code: "COP",
+      locale: ["es-CO"]
+    },
+    {
+      code: "CRC",
+      locale: ["es-CR", "en"]
+    },
+    {
+      code: "CUP",
+      locale: ["es-CU", "pap"]
+    },
+    {
+      code: "CVE",
+      locale: ["pt-CV"]
+    },
+    {
+      code: "ANG",
+      locale: ["nl", "pap"]
+    },
+    {
+      code: "AUD",
+      locale: ["en", "zh", "ms-CC"]
+    },
+    {
+      code: "EUR",
+      locale: ["el-CY", "tr-CY", "en"]
+    },
+    {
+      code: "CZK",
+      locale: ["cs", "sk"]
+    },
+    {
+      code: "EUR",
+      locale: ["de"]
+    },
+    {
+      code: "DJF",
+      locale: ["fr-DJ", "ar", "so-DJ", "aa"]
+    },
+    {
+      code: "DKK",
+      locale: ["da-DK", "en", "fo", "de-DK"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-DM"]
+    },
+    {
+      code: "DOP",
+      locale: ["es-DO"]
+    },
+    {
+      code: "DZD",
+      locale: ["ar-DZ"]
+    },
+    {
+      code: "USD",
+      locale: ["es-EC"]
+    },
+    {
+      code: "EUR",
+      locale: ["et", "ru"]
+    },
+    {
+      code: "EGP",
+      locale: ["ar-EG", "en", "fr"]
+    },
+    {
+      code: "MAD",
+      locale: ["ar", "mey"]
+    },
+    {
+      code: "ERN",
+      locale: ["aa-ER", "ar", "tig", "kun", "ti-ER"]
+    },
+    {
+      code: "EUR",
+      locale: ["es-ES", "ca", "gl", "eu", "oc"]
+    },
+    {
+      code: "ETB",
+      locale: ["am", "en-ET", "om-ET", "ti-ET", "so-ET", "sid"]
+    },
+    {
+      code: "EUR",
+      locale: ["fi-FI", "sv-FI", "smn"]
+    },
+    {
+      code: "FJD",
+      locale: ["en-FJ", "fj"]
+    },
+    {
+      code: "FKP",
+      locale: ["en-FK"]
+    },
+    {
+      code: "USD",
+      locale: ["en-FM", "chk", "pon", "yap", "kos", "uli", "woe", "nkr", "kpg"]
+    },
+    {
+      code: "DKK",
+      locale: ["fo", "da-FO"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-FR", "frp", "br", "co", "ca", "eu", "oc"]
+    },
+    {
+      code: "XAF",
+      locale: ["fr-GA"]
+    },
+    {
+      code: "GBP",
+      locale: ["en-GB", "cy-GB", "gd"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-GD"]
+    },
+    {
+      code: "GEL",
+      locale: ["ka", "ru", "hy", "az"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-GF"]
+    },
+    {
+      code: "GBP",
+      locale: ["en", "nrf"]
+    },
+    {
+      code: "GHS",
+      locale: ["en-GH", "ak", "ee", "tw"]
+    },
+    {
+      code: "GIP",
+      locale: ["en-GI", "es", "it", "pt"]
+    },
+    {
+      code: "DKK",
+      locale: ["kl", "da-GL", "en"]
+    },
+    {
+      code: "GMD",
+      locale: ["en-GM", "mnk", "wof", "wo", "ff"]
+    },
+    {
+      code: "GNF",
+      locale: ["fr-GN"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-GP"]
+    },
+    {
+      code: "XAF",
+      locale: ["es-GQ", "fr"]
+    },
+    {
+      code: "EUR",
+      locale: ["el-GR", "en", "fr"]
+    },
+    {
+      code: "GBP",
+      locale: ["en"]
+    },
+    {
+      code: "GTQ",
+      locale: ["es-GT"]
+    },
+    {
+      code: "USD",
+      locale: ["en-GU", "ch-GU"]
+    },
+    {
+      code: "XOF",
+      locale: ["pt-GW", "pov"]
+    },
+    {
+      code: "GYD",
+      locale: ["en-GY"]
+    },
+    {
+      code: "HKD",
+      locale: ["zh-HK", "yue", "zh", "en"]
+    },
+    {
+      code: "AUD",
+      locale: [""]
+    },
+    {
+      code: "HNL",
+      locale: ["es-HN", "cab", "miq"]
+    },
+    {
+      code: "HRK",
+      locale: ["hr-HR", "sr"]
+    },
+    {
+      code: "HTG",
+      locale: ["ht", "fr-HT"]
+    },
+    {
+      code: "HUF",
+      locale: ["hu-HU"]
+    },
+    {
+      code: "IDR",
+      locale: ["id", "en", "nl", "jv"]
+    },
+    {
+      code: "EUR",
+      locale: ["en-IE", "ga-IE"]
+    },
+    {
+      code: "ILS",
+      locale: ["he", "ar-IL", "en-IL", ""]
+    },
+    {
+      code: "GBP",
+      locale: ["en", "gv"]
+    },
+    {
+      code: "INR",
+      locale: [
+        "en-IN",
+        "hi",
+        "bn",
+        "te",
+        "mr",
+        "ta",
+        "ur",
+        "gu",
+        "kn",
+        "ml",
+        "or",
+        "pa",
+        "as",
+        "bh",
+        "sat",
+        "ks",
+        "ne",
+        "sd",
+        "kok",
+        "doi",
+        "mni",
+        "sit",
+        "sa",
+        "fr",
+        "lus",
+        "inc"
+      ]
+    },
+    {
+      code: "USD",
+      locale: ["en-IO"]
+    },
+    {
+      code: "IQD",
+      locale: ["ar-IQ", "ku", "hy"]
+    },
+    {
+      code: "IRR",
+      locale: ["fa-IR", "ku"]
+    },
+    {
+      code: "ISK",
+      locale: ["is", "en", "de", "da", "sv", "no"]
+    },
+    {
+      code: "EUR",
+      locale: ["it-IT", "de-IT", "fr-IT", "sc", "ca", "co", "sl"]
+    },
+    {
+      code: "GBP",
+      locale: ["en", "fr", "nrf"]
+    },
+    {
+      code: "JMD",
+      locale: ["en-JM"]
+    },
+    {
+      code: "JOD",
+      locale: ["ar-JO", "en"]
+    },
+    {
+      code: "JPY",
+      locale: ["ja"]
+    },
+    {
+      code: "KES",
+      locale: ["en-KE", "sw-KE"]
+    },
+    {
+      code: "KGS",
+      locale: ["ky", "uz", "ru"]
+    },
+    {
+      code: "KHR",
+      locale: ["km", "fr", "en"]
+    },
+    {
+      code: "AUD",
+      locale: ["en-KI", "gil"]
+    },
+    {
+      code: "KMF",
+      locale: ["ar", "fr-KM"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-KN"]
+    },
+    {
+      code: "KPW",
+      locale: ["ko-KP"]
+    },
+    {
+      code: "KRW",
+      locale: ["ko-KR", "en"]
+    },
+    {
+      code: "KWD",
+      locale: ["ar-KW", "en"]
+    },
+    {
+      code: "KYD",
+      locale: ["en-KY"]
+    },
+    {
+      code: "KZT",
+      locale: ["kk", "ru"]
+    },
+    {
+      code: "LAK",
+      locale: ["lo", "fr", "en"]
+    },
+    {
+      code: "LBP",
+      locale: ["ar-LB", "fr-LB", "en", "hy"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-LC"]
+    },
+    {
+      code: "CHF",
+      locale: ["de-LI"]
+    },
+    {
+      code: "LKR",
+      locale: ["si", "ta", "en"]
+    },
+    {
+      code: "LRD",
+      locale: ["en-LR"]
+    },
+    {
+      code: "LSL",
+      locale: ["en-LS", "st", "zu", "xh"]
+    },
+    {
+      code: "EUR",
+      locale: ["lt", "ru", "pl"]
+    },
+    {
+      code: "EUR",
+      locale: ["lb", "de-LU", "fr-LU"]
+    },
+    {
+      code: "EUR",
+      locale: ["lv", "ru", "lt"]
+    },
+    {
+      code: "LYD",
+      locale: ["ar-LY", "it", "en"]
+    },
+    {
+      code: "MAD",
+      locale: ["ar-MA", "ber", "fr"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-MC", "en", "it"]
+    },
+    {
+      code: "MDL",
+      locale: ["ro", "ru", "gag", "tr"]
+    },
+    {
+      code: "EUR",
+      locale: ["sr", "hu", "bs", "sq", "hr", "rom"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr"]
+    },
+    {
+      code: "MGA",
+      locale: ["fr-MG", "mg"]
+    },
+    {
+      code: "USD",
+      locale: ["mh", "en-MH"]
+    },
+    {
+      code: "MKD",
+      locale: ["mk", "sq", "tr", "rmm", "sr"]
+    },
+    {
+      code: "XOF",
+      locale: ["fr-ML", "bm"]
+    },
+    {
+      code: "MMK",
+      locale: ["my"]
+    },
+    {
+      code: "MNT",
+      locale: ["mn", "ru"]
+    },
+    {
+      code: "MOP",
+      locale: ["zh", "zh-MO", "pt"]
+    },
+    {
+      code: "USD",
+      locale: ["fil", "tl", "zh", "ch-MP", "en-MP"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-MQ"]
+    },
+    {
+      code: "MRU",
+      locale: ["ar-MR", "fuc", "snk", "fr", "mey", "wo"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-MS"]
+    },
+    {
+      code: "EUR",
+      locale: ["mt", "en-MT"]
+    },
+    {
+      code: "MUR",
+      locale: ["en-MU", "bho", "fr"]
+    },
+    {
+      code: "MVR",
+      locale: ["dv", "en"]
+    },
+    {
+      code: "MWK",
+      locale: ["ny", "yao", "tum", "swk"]
+    },
+    {
+      code: "MXN",
+      locale: ["es-MX"]
+    },
+    {
+      code: "MYR",
+      locale: ["ms-MY", "en", "zh", "ta", "te", "ml", "pa", "th"]
+    },
+    {
+      code: "MZN",
+      locale: ["pt-MZ", "vmw"]
+    },
+    {
+      code: "NAD",
+      locale: ["en-NA", "af", "de", "hz", "naq"]
+    },
+    {
+      code: "XPF",
+      locale: ["fr-NC"]
+    },
+    {
+      code: "XOF",
+      locale: ["fr-NE", "ha", "kr", "dje"]
+    },
+    {
+      code: "AUD",
+      locale: ["en-NF"]
+    },
+    {
+      code: "NGN",
+      locale: ["en-NG", "ha", "yo", "ig", "ff"]
+    },
+    {
+      code: "NIO",
+      locale: ["es-NI", "en"]
+    },
+    {
+      code: "EUR",
+      locale: ["nl-NL", "fy-NL"]
+    },
+    {
+      code: "NOK",
+      locale: ["no", "nb", "nn", "se", "fi"]
+    },
+    {
+      code: "NPR",
+      locale: ["ne", "en"]
+    },
+    {
+      code: "AUD",
+      locale: ["na", "en-NR"]
+    },
+    {
+      code: "NZD",
+      locale: ["niu", "en-NU"]
+    },
+    {
+      code: "NZD",
+      locale: ["en-NZ", "mi"]
+    },
+    {
+      code: "OMR",
+      locale: ["ar-OM", "en", "bal", "ur"]
+    },
+    {
+      code: "PAB",
+      locale: ["es-PA", "en"]
+    },
+    {
+      code: "PEN",
+      locale: ["es-PE", "qu", "ay"]
+    },
+    {
+      code: "XPF",
+      locale: ["fr-PF", "ty"]
+    },
+    {
+      code: "PGK",
+      locale: ["en-PG", "ho", "meu", "tpi"]
+    },
+    {
+      code: "PHP",
+      locale: [
+        "tl",
+        "en-PH",
+        "fil",
+        "ceb",
+        "tgl",
+        "ilo",
+        "hil",
+        "war",
+        "pam",
+        "bik",
+        "bcl",
+        "pag",
+        "mrw",
+        "tsg",
+        "mdh",
+        "cbk",
+        "krj",
+        "sgd",
+        "msb",
+        "akl",
+        "ibg",
+        "yka",
+        "mta",
+        "abx"
+      ]
+    },
+    {
+      code: "PKR",
+      locale: ["ur-PK", "en-PK", "pa", "sd", "ps", "brh"]
+    },
+    {
+      code: "PLN",
+      locale: ["pl"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-PM"]
+    },
+    {
+      code: "NZD",
+      locale: ["en-PN"]
+    },
+    {
+      code: "USD",
+      locale: ["en-PR", "es-PR"]
+    },
+    {
+      code: "ILS",
+      locale: ["ar-PS"]
+    },
+    {
+      code: "EUR",
+      locale: ["pt-PT", "mwl"]
+    },
+    {
+      code: "USD",
+      locale: ["pau", "sov", "en-PW", "tox", "ja", "fil", "zh"]
+    },
+    {
+      code: "PYG",
+      locale: ["es-PY", "gn"]
+    },
+    {
+      code: "QAR",
+      locale: ["ar-QA", "es"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-RE"]
+    },
+    {
+      code: "RON",
+      locale: ["ro", "hu", "rom"]
+    },
+    {
+      code: "RSD",
+      locale: ["sr", "hu", "bs", "rom"]
+    },
+    {
+      code: "RUB",
+      locale: [
+        "ru",
+        "tt",
+        "xal",
+        "cau",
+        "ady",
+        "kv",
+        "ce",
+        "tyv",
+        "cv",
+        "udm",
+        "tut",
+        "mns",
+        "bua",
+        "myv",
+        "mdf",
+        "chm",
+        "ba",
+        "inh",
+        "tut",
+        "kbd",
+        "krc",
+        "av",
+        "sah",
+        "nog"
+      ]
+    },
+    {
+      code: "RWF",
+      locale: ["rw", "en-RW", "fr-RW", "sw"]
+    },
+    {
+      code: "SAR",
+      locale: ["ar-SA"]
+    },
+    {
+      code: "SBD",
+      locale: ["en-SB", "tpi"]
+    },
+    {
+      code: "SCR",
+      locale: ["en-SC", "fr-SC"]
+    },
+    {
+      code: "SDG",
+      locale: ["ar-SD", "en", "fia"]
+    },
+    {
+      code: "SEK",
+      locale: ["sv-SE", "se", "sma", "fi-SE"]
+    },
+    {
+      code: "SGD",
+      locale: ["cmn", "en-SG", "ms-SG", "ta-SG", "zh-SG"]
+    },
+    {
+      code: "SHP",
+      locale: ["en-SH"]
+    },
+    {
+      code: "EUR",
+      locale: ["sl", "sh"]
+    },
+    {
+      code: "NOK",
+      locale: ["no", "ru"]
+    },
+    {
+      code: "EUR",
+      locale: ["sk", "hu"]
+    },
+    {
+      code: "SLL",
+      locale: ["en-SL", "men", "tem"]
+    },
+    {
+      code: "EUR",
+      locale: ["it-SM"]
+    },
+    {
+      code: "XOF",
+      locale: ["fr-SN", "wo", "fuc", "mnk"]
+    },
+    {
+      code: "SOS",
+      locale: ["so-SO", "ar-SO", "it", "en-SO"]
+    },
+    {
+      code: "SRD",
+      locale: ["nl-SR", "en", "srn", "hns", "jv"]
+    },
+    {
+      code: "SSP",
+      locale: ["en"]
+    },
+    {
+      code: "STD",
+      locale: ["pt-ST"]
+    },
+    {
+      code: "USD",
+      locale: ["es-SV"]
+    },
+    {
+      code: "ANG",
+      locale: ["nl", "en"]
+    },
+    {
+      code: "SYP",
+      locale: ["ar-SY", "ku", "hy", "arc", "fr", "en"]
+    },
+    {
+      code: "SZL",
+      locale: ["en-SZ", "ss-SZ"]
+    },
+    {
+      code: "USD",
+      locale: ["en-TC"]
+    },
+    {
+      code: "XAF",
+      locale: ["fr-TD", "ar-TD", "sre"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr"]
+    },
+    {
+      code: "XOF",
+      locale: ["fr-TG", "ee", "hna", "kbp", "dag", "ha"]
+    },
+    {
+      code: "THB",
+      locale: ["th", "en"]
+    },
+    {
+      code: "TJS",
+      locale: ["tg", "ru"]
+    },
+    {
+      code: "NZD",
+      locale: ["tkl", "en-TK"]
+    },
+    {
+      code: "USD",
+      locale: ["tet", "pt-TL", "id", "en"]
+    },
+    {
+      code: "TMT",
+      locale: ["tk", "ru", "uz"]
+    },
+    {
+      code: "TND",
+      locale: ["ar-TN", "fr"]
+    },
+    {
+      code: "TOP",
+      locale: ["to", "en-TO"]
+    },
+    {
+      code: "TRY",
+      locale: ["tr-TR", "ku", "diq", "az", "av"]
+    },
+    {
+      code: "TTD",
+      locale: ["en-TT", "hns", "fr", "es", "zh"]
+    },
+    {
+      code: "AUD",
+      locale: ["tvl", "en", "sm", "gil"]
+    },
+    {
+      code: "TWD",
+      locale: ["zh-TW", "zh", "nan", "hak"]
+    },
+    {
+      code: "TZS",
+      locale: ["sw-TZ", "en", "ar"]
+    },
+    {
+      code: "UAH",
+      locale: ["uk", "ru-UA", "rom", "pl", "hu"]
+    },
+    {
+      code: "UGX",
+      locale: ["en-UG", "lg", "sw", "ar"]
+    },
+    {
+      code: "USD",
+      locale: ["en-UM"]
+    },
+    {
+      code: "USD",
+      locale: ["en-US", "es-US", "haw", "fr"]
     },
     {
       code: "UYU",
-      name: "Uruguayan Peso",
-      locale: "es-UY"
+      locale: ["es-UY"]
     },
     {
       code: "UZS",
-      name: "Uzbekistan Sum",
-      locale: "uz-Cyrl-UZ"
+      locale: ["uz", "ru", "tg"]
     },
     {
-      code: "VEF",
-      name: "Venezuelan Bolivar",
-      locale: "es-VE"
+      code: "EUR",
+      locale: ["la", "it", "fr"]
+    },
+    {
+      code: "XCD",
+      locale: ["en-VC", "fr"]
+    },
+    {
+      code: "VES",
+      locale: ["es-VE"]
+    },
+    {
+      code: "USD",
+      locale: ["en-VG"]
+    },
+    {
+      code: "USD",
+      locale: ["en-VI"]
     },
     {
       code: "VND",
-      name: "Vietnamese Dong",
-      locale: "vi-VN"
+      locale: ["vi", "en", "fr", "zh", "km"]
     },
     {
       code: "VUV",
-      name: "Vanuatu Vatu",
-      locale: "en-VU"
+      locale: ["bi", "en-VU", "fr-VU"]
+    },
+    {
+      code: "XPF",
+      locale: ["wls", "fud", "fr-WF"]
     },
     {
       code: "WST",
-      name: "Samoan Tala",
-      locale: "en-WS"
+      locale: ["sm", "en-WS"]
+    },
+    {
+      code: "EUR",
+      locale: ["sq", "sr"]
     },
     {
       code: "YER",
-      name: "Yemeni Rial",
-      locale: "ar-YE"
+      locale: ["ar-YE"]
+    },
+    {
+      code: "EUR",
+      locale: ["fr-YT"]
     },
     {
       code: "ZAR",
-      name: "South African Rand",
-      locale: "en-LS"
+      locale: [
+        "zu",
+        "xh",
+        "af",
+        "nso",
+        "en-ZA",
+        "tn",
+        "st",
+        "ts",
+        "ss",
+        "ve",
+        "nr"
+      ]
     },
     {
       code: "ZMW",
-      name: "Zambian Kwacha",
-      locale: "af-ZA"
+      locale: ["en-ZM", "bem", "loz", "lun", "lue", "ny", "toi"]
+    },
+    {
+      code: "ZWL",
+      locale: ["en-ZW", "sn", "nr", "nd"]
     }
   ];
 
-  return currencyNames.find(l => l.locale === locale);
+  return countries.find(l => l.locale.includes(locale));
 }
 
 export let localCurrency = (function currencyConvert() {
@@ -783,7 +1117,7 @@ export let localCurrency = (function currencyConvert() {
 export let localCurrencyDetailed = (function currencyConvert() {
   let locale = navigator.language;
   let thisCurrency = getCurrencyDetailsByLocale(locale);
-  if (thisCurrency == null) thisCurrency = getCurrencyDetailsByLocale("en-GB");
+  if (thisCurrency == null) thisCurrency = getCurrencyDetailsByLocale();
   let format = {
     style: "currency",
     currency: thisCurrency.code,
