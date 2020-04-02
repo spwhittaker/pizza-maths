@@ -23,11 +23,15 @@
     background-color: $bestChoice;
   }
   .best-value-text {
-    font-size: 15px;
-    background-color: hotpink;
-    color: purple;
-    display: inline;
-    padding: 5px;
+    font-size: 105%;
+    font-weight: bolder;
+    background-color: $addComparison;
+    color: $primary-colour;
+    display: inline-block;
+    padding: 5px 10px;
+    width: auto;
+    align-self: flex-start;
+    border-radius: 5px;
   }
   .quantity-buttons {
     button {

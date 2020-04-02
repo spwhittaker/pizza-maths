@@ -52,12 +52,13 @@ class Discount extends Component {
       <div className="add-discounts">
         <p>Add a discount if applicable:</p>
         <Select
+          className="selector"
           value={{ label: this.state.selectedDiscount }}
           options={options}
           onChange={this.handleDiscountInput}
         />
         {this.state.selectedDiscount === "Buy 2 pizzas, get cheapest free" && (
-          <span>
+          <div className="select-discount">
             <input
               type="button"
               onClick={e => {
@@ -66,11 +67,11 @@ class Discount extends Component {
               label="submitBuyOneGetCheapestFree"
               value="Set discount"
             />
-          </span>
+          </div>
         )}
         {this.state.selectedDiscount ===
           "Buy x number of pizzas, get cheapest free" && (
-          <span>
+          <div className="select-discount">
             <p>x number of pizzas</p>
             <input
               type="number"
@@ -91,10 +92,10 @@ class Discount extends Component {
               label="submitBuyNGetCheapestFree"
               value="Set discount"
             />
-          </span>
+          </div>
         )}
         {this.state.selectedDiscount === "% off" && (
-          <span>
+          <div className="select-discount">
             <p>Percentage discount</p>
             <input
               type="number"
@@ -116,10 +117,10 @@ class Discount extends Component {
               label="submitPercentage"
               value="Set discount"
             />
-          </span>
+          </div>
         )}
         {this.state.selectedDiscount === "% off over minimum spend" && (
-          <span>
+          <div className="select-discount">
             <p>Percentage discount: %</p>
             <input
               type="number"
@@ -161,7 +162,7 @@ class Discount extends Component {
               label="submitPercentage"
               value="Set discount"
             />
-          </span>
+          </div>
         )}
         {selectedDiscount === "% off" && percentageState > 0 && (
           <p>Selected discount: {percentageState}% off</p>
@@ -182,7 +183,9 @@ class Discount extends Component {
           </p>
         )}
         {selectedDiscount !== "" && (
-          <input type="button" value="Clear" onClick={this.handleClear} />
+          <div className="select-discount">
+            <input type="button" value="Clear" onClick={this.handleClear} />
+          </div>
         )}
       </div>
     );

@@ -1,13 +1,22 @@
 @import "../_variables.scss";
-
+@import "mixins";
 body {
   margin: 0;
   padding: 0;
   font-family: $font-stack;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  h1 {
+    @include font-size($h1-font-sizes);
+  }
 
+  h2 {
+    @include font-size($h2-font-sizes);
+  }
+  p {
+    @include font-size($p-font-sizes);
+  }
+}
 html {
   background-color: $primary-colour;
   background-size: cover;

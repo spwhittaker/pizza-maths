@@ -1,45 +1,57 @@
 @import "../_variables";
 
+@import "mixins";
 .input-form {
   max-width: 1200px;
   align-self: stretch;
 
   button {
+    @include font-size($p-font-sizes);
     background-color: $submitButton;
     border-radius: 10px;
-    min-width: 25px;
-    margin: 5px 50% 5px 50%;
+    margin: 5px;
     padding: 5px;
   }
-  .pizza-option {
+  .add-pizza {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0 5vw;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
   }
 
   .pizza-input {
     width: 100%;
     max-width: 500px;
+    min-width: 100px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-
+  .input-texts {
+    * {
+      padding: 3px;
+    }
+  }
   .input-options {
     padding: 3px;
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    justify-items: stretch;
     min-width: fit-content;
     justify-content: space-between;
+
     p {
-      min-width: 100px;
-      padding: 5px;
+      min-width: fit-content;
+      padding: 0 5px 0 0;
     }
   }
 
   form {
     background-color: $inputForm-bg;
-    margin: 1em 0em 1em;
+    margin: 10px 0em 10px;
     border-radius: 10px;
   }
 }

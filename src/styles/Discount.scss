@@ -1,12 +1,43 @@
+@import "../_variables";
+
+@import "mixins";
+
 .add-discounts {
   background-color: rgba(241, 241, 241, 0.9);
   padding: 10px;
   border-radius: 10px;
   margin: 10px;
-  align-self: stretch;
+  max-width: 90%;
 
-  input {
+  .selector {
+    * {
+      font-size: 10px;
+    }
+    padding: 2px;
+  }
+  .select-discount {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="text"] {
     padding: auto;
     margin: auto auto 5px auto;
+    width: 100%;
+    max-width: 500px;
+    min-width: 100px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  input[type="button"] {
+    @include font-size($p-font-sizes);
+    background-color: #ff9f1c;
+    border-radius: 10px;
+    margin: 5px;
+    align-self: center;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
   }
 }

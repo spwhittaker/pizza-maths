@@ -61,7 +61,7 @@ class InputForm extends Component {
                 />
               </span>
             </div>
-            <span className="pizza-option" id="toggle">
+            <div className="pizza-option" id="toggle">
               <span className="input-options">
                 <p>Diameter</p>
 
@@ -86,7 +86,7 @@ class InputForm extends Component {
                   className="pizza-input"
                 />
               </span>
-            </span>
+            </div>
             <div className="pizza-option">
               <span className="input-options">
                 <p>Price ({localCurrency(1).replace(/[\s0-9.,]/gi, "")})</p>
@@ -106,7 +106,9 @@ class InputForm extends Component {
             </div>
           </div>
 
-          <button type="submit">I'm hungry!</button>
+          <div className="add-pizza">
+            <button type="submit">I'm hungry!</button>
+          </div>
         </form>
       </div>
     );

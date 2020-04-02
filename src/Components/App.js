@@ -105,7 +105,7 @@ class App extends React.Component {
       appInstance
     } = this.props;
     return (
-      <div className={`App ${sideBySide}`}>
+      <div className={`App ${sideBySide} app-number-${appInstance}`}>
         <div className="input-and-discounts">
           <InputForm
             updatePizzas={this.updatePizzas}

@@ -1,39 +1,43 @@
 $font-stack: "Open Sans", sans-serif;
-$primary-colour: #fdfffc;
+$primary-colour: rgb(253, 255, 252);
 $addComparison: #f71735;
 $bestChoice: #1b7317;
 $header: #011627;
 $submitButton: #ff9f1c;
 $altBackground: rgba(192, 37, 37, 0.9);
 $inputForm-bg: rgba(197, 197, 197, 0.9);
-$p-font-sizes: (
-  null: 15px,
-  small: 16px,
-  medium: 17px,
-  900px: 18px,
-  large: 19px,
-  1440px: 20px
-);
-
 $breakpoints: (
   small: 480px,
   medium: 700px,
-  // Previously 640px
-    large: 1024px
+  large: 1024px
 );
-
 $p-font-sizes: (
-  null: 15px,
-  small: 16px,
-  medium: 17px,
-  large: 19px
+  null: 10px,
+  small: 12px,
+  medium: 15px,
+  900px: 17px,
+  large: 20px,
+  1440px: 21px
 );
 
 $h1-font-sizes: (
-  null: 28px,
-  small: 31px,
-  medium: 33px,
-  large: 36px
+  null: 16px,
+  small: 21px,
+  medium: 24px,
+  large: 26px
+);
+
+$h2-font-sizes: (
+  null: 13px,
+  small: 18px,
+  medium: 20px,
+  large: 22px
+);
+$h3-font-sizes: (
+  null: 12px,
+  small: 17px,
+  medium: 19px,
+  large: 20px
 );
 /* * {
   font-size: calc(8px + 2vmin);

@@ -1,5 +1,7 @@
 @import "../_variables";
 
+@import "mixins";
+
 .pizza-cards-container {
   display: flex;
   flex-direction: column;
@@ -27,9 +29,7 @@
     max-width: 100%;
     border-radius: 5px;
   }
-  h2 {
-    font-size: 16px;
-  }
+
   .total-label-and-value {
     display: flex;
     justify-content: space-between;
