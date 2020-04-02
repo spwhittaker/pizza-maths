@@ -1,8 +1,9 @@
 .add-discounts {
-  background-color: rgb(241, 241, 241);
+  background-color: rgba(241, 241, 241, 0.9);
   padding: 10px;
   border-radius: 10px;
   margin: 10px;
+  align-self: stretch;
 
   input {
     padding: auto;

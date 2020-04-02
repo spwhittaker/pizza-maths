@@ -16,4 +16,11 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+  .input-and-discounts {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    justify-items: flex-start;
+  }
 }

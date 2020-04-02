@@ -1,6 +1,9 @@
 @import "../_variables";
 
 .input-form {
+  max-width: 1200px;
+  align-self: stretch;
+
   button {
     background-color: $submitButton;
     border-radius: 10px;
@@ -24,7 +27,7 @@
   .input-options {
     padding: 3px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     min-width: fit-content;
     justify-content: space-between;

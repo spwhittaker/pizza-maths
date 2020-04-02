@@ -106,20 +106,22 @@ class App extends React.Component {
     } = this.props;
     return (
       <div className={`App ${sideBySide}`}>
-        <InputForm
-          updatePizzas={this.updatePizzas}
-          metricUnits={metricUnits}
-          handleMetricConversion={handleMetricConversion}
-          handleImperialConversion={handleImperialConversion}
-          appInstance={appInstance}
-        />
-        <Discount
-          selectedDiscount={this.state.selectedDiscount}
-          onApplyDiscount={this.onApplyDiscount}
-          percentageState={this.state.percentage}
-          minSpend={this.state.minSpend}
-          clearDiscount={this.clearDiscount}
-        />
+        <div className="input-and-discounts">
+          <InputForm
+            updatePizzas={this.updatePizzas}
+            metricUnits={metricUnits}
+            handleMetricConversion={handleMetricConversion}
+            handleImperialConversion={handleImperialConversion}
+            appInstance={appInstance}
+          />
+          <Discount
+            selectedDiscount={this.state.selectedDiscount}
+            onApplyDiscount={this.onApplyDiscount}
+            percentageState={this.state.percentage}
+            minSpend={this.state.minSpend}
+            clearDiscount={this.clearDiscount}
+          />
+        </div>
         <PizzaCards
           pizzas={this.state.pizzas}
           addButton={this.handleAdd}
