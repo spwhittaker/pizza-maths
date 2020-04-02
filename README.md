@@ -18,7 +18,7 @@ We also employed modern responsive and user experience design concepts, as well 
 Using the app is very intuitive-- just fill in the name, diameter/size (in cm or in) and the price of the pizza. It computes for the area (in sq. in or sq. cm) and the area to crust (size) ratio. 
 
 ### How to replicate Pizzarithmetic in your machine
-* Pre-requisites: npm, node, Github|| optional: hunger
+* Pre-requisites: npm, node, Github || optional: hunger
 * Open Terminal, clone Git repository: ```git clone git@github.com:spwhittaker/pizza-maths.git```
 * Go into the folder: ```cd pizza-maths```
 * Install node dependencies ```npm i```
