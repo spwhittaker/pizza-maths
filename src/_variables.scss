@@ -1,28 +1,40 @@
 $font-stack: "Open Sans", sans-serif;
-$primary-colour: #FDFFFC;
-$addComparison: #F71735;
+$primary-colour: #fdfffc;
+$addComparison: #f71735;
 $bestChoice: #1b7317;
 $header: #011627;
-$submitButton: #FF9F1C;
+$submitButton: #ff9f1c;
 $altBackground: rgba(192, 37, 37, 0.8);
-$inputForm-bg: #C5C5C5;
+$inputForm-bg: #c5c5c5;
+$p-font-sizes: (
+  null: 15px,
+  small: 16px,
+  medium: 17px,
+  900px: 18px,
+  large: 19px,
+  1440px: 20px
+);
 
+$breakpoints: (
+  small: 480px,
+  medium: 700px,
+  // Previously 640px
+    large: 1024px
+);
 
-* {
+$p-font-sizes: (
+  null: 15px,
+  small: 16px,
+  medium: 17px,
+  large: 19px
+);
+
+$h1-font-sizes: (
+  null: 28px,
+  small: 31px,
+  medium: 33px,
+  large: 36px
+);
+/* * {
   font-size: calc(8px + 2vmin);
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: $font-stack;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  background-color: $primary-colour;
-  background-size: cover;
-  height: 100%;
-  overflow-x: hidden;
-}
+} */

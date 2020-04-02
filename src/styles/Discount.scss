@@ -1,6 +1,11 @@
 .add-discounts {
   background-color: rgb(241, 241, 241);
-  padding: 1em;
+  padding: 10px;
   border-radius: 10px;
-  margin: 1em;
+  margin: 10px;
+
+  input {
+    padding: auto;
+    margin: auto auto 5px auto;
+  }
 }

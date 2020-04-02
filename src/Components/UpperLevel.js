@@ -9,7 +9,7 @@ class UpperLevel extends Component {
     this.state = {
       comparisonDiv: false,
       comparisonClass: "single-view-comparison",
-      splitView: "split-view",
+      splitView: "single-view",
       metricUnits: false
     };
   }

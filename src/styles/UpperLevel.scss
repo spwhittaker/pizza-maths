@@ -1,40 +1,18 @@
 @import "../_variables.scss";
 
-.apps {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-}
-.top-level-options {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.side-by-side-comparison {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-stack;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.top-level-button {
-  background-color: $addComparison;
-  border-radius: 6px;
-
-  cursor: pointer;
-  color: #333333;
-  font-family: Arial;
-  font-size: 0.6em;
-  font-weight: bold;
-  padding: 0.5em 0.2em;
-  text-decoration: none;
-  width: max-content;
-  margin-left: 40%;
-  margin-right: 40%;
-
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
+html {
+  background-color: $primary-colour;
+  background-size: cover;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 .upper-level {
@@ -42,6 +20,59 @@
   flex-direction: column;
   align-items: stretch;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  li {
+    list-style-type: none;
+  }
+  .App-header {
+    background-color: $header;
+    min-height: 20vh;
+    display: flex;
+
+    padding: 10px;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(6px + 2vmin);
+    color: white;
+  }
+  .apps {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  }
+
+  .side-by-side-comparison {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .top-level-options {
+    display: flex;
+    justify-content: space-around;
+  }
+  .top-level-button {
+    background-color: $addComparison;
+    border-radius: 6px;
+
+    cursor: pointer;
+    color: #333333;
+    font-family: Arial;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 10px 5px;
+    text-decoration: none;
+    width: max-content;
+    margin-left: 40%;
+    margin-right: 40%;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
 }
 
 //TODO:

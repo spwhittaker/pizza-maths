@@ -1,30 +1,42 @@
 @import "../_variables";
 
-button {
-  background-color: $submitButton;
-  border-radius: 10px;
-  min-width: 20%;
-  margin: 0em 40% 1em;
-}
-
-.pizza-input {
-  height: 1.5em;
-  width: auto;
-}
-
-.input-options {
-  align-items: center;
-  padding: 0em 1em;
-  display: flex;
-  flex-wrap: wrap;
-  p {
-    min-width: 100px;
+.input-form {
+  button {
+    background-color: $submitButton;
+    border-radius: 10px;
+    min-width: 25px;
+    margin: 5px 50% 5px 50%;
     padding: 5px;
   }
-}
+  .pizza-option {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 5vw;
+  }
 
-form {
-  background-color: $inputForm-bg;
-  margin: 1em 0em 1em;
-  border-radius: 10px;
+  .pizza-input {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+  }
+
+  .input-options {
+    padding: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: fit-content;
+    justify-content: space-between;
+    p {
+      min-width: 100px;
+      padding: 5px;
+    }
+  }
+
+  form {
+    background-color: $inputForm-bg;
+    margin: 1em 0em 1em;
+    border-radius: 10px;
+  }
 }

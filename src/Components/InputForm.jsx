@@ -43,12 +43,13 @@ class InputForm extends Component {
     const { appInstance } = this.props;
 
     return (
-      <div>
+      <div className="input-form">
         <form onSubmit={this.handleInput}>
           <div className="input-texts">
             <div className="pizza-option">
               <span className="input-options">
                 <p>Name</p>
+
                 <input
                   type="text"
                   required
@@ -60,7 +61,7 @@ class InputForm extends Component {
                 />
               </span>
             </div>
-            <div className="pizza-option" id="toggle">
+            <span className="pizza-option" id="toggle">
               <span className="input-options">
                 <p>Diameter</p>
 
@@ -74,19 +75,22 @@ class InputForm extends Component {
                   }
                   className="pizza-input"
                 />
-
+              </span>
+              <span className="input-options">
                 <ToggleSwitch
                   uniqueId={`${appInstance}`}
                   title="Pick a size"
                   isMetric={this.state.metricInput}
                   onChangeLeft={this.onChangeLeft}
                   onChangeRight={this.onChangeRight}
+                  className="pizza-input"
                 />
               </span>
-            </div>
+            </span>
             <div className="pizza-option">
               <span className="input-options">
                 <p>Price ({localCurrency(1).replace(/[\s0-9.,]/gi, "")})</p>
+
                 <input
                   type="number"
                   required

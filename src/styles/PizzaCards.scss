@@ -1,36 +1,43 @@
 @import "../_variables";
 
-.all-pizzas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.split-view {
-  flex-direction: column;
-}
 .pizza-cards-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: stretch;
-  height: max-content;
-}
+  width: 100%;
+  /*  align-items: stretch; */
+  height: 100%;
+  .all-pizzas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-.total-values {
-  align-self: center;
-  justify-self: flex-end;
-  background-color: $altBackground;
-  margin: 5px;
-  padding: 5px;
-  border: solid maroon 3px;
-  max-width: 100%;
-  border-radius: 5px;
-}
-.total-label-and-value {
-  display: flex;
-  justify-content: space-between;
-  * {
+  .split-view {
+    flex-direction: column;
+  }
+
+  .total-values {
+    align-self: center;
+    justify-self: flex-end;
+    background-color: $altBackground;
+    margin: 5px;
     padding: 5px;
+    border: solid maroon 3px;
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+  .total-label-and-value {
+    display: flex;
+    justify-content: space-between;
+    span {
+      padding: 5px;
+    }
+    sup {
+      font-size: 50%;
+    }
   }
 }
