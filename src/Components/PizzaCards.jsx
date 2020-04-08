@@ -102,7 +102,11 @@ const PizzaCards = ({
 
   return (
     <div className="pizza-cards-container">
-      {" "}
+      {console.log(
+        `total after Discount is ${totalAfterDiscount}, totalVal is ${totalVal}, buy x cheapest pizzas is ${buyXCheapestFree(
+          xPizzas
+        )}`
+      )}{" "}
       <div className={`all-pizzas ${splitView}`}>
         {pizzas.map((pie, index) => {
           return (

@@ -76,7 +76,7 @@ class Discount extends Component {
             <input
               type="number"
               step="1"
-              min="1"
+              min="2"
               onChange={event => this.setState({ xPizzas: event.target.value })}
             />
             <input

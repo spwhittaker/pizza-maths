@@ -11,7 +11,8 @@ class InputForm extends Component {
       nameInput: "",
       diameterInput: "",
       priceInput: null,
-      metricInput: this.props.metricUnits
+      metricInput: this.props.metricUnits,
+      quantityInput: 1
     };
   }
 
@@ -33,7 +34,7 @@ class InputForm extends Component {
       name: this.state.nameInput,
       diameter: inchesVal,
       price: this.state.priceInput,
-      quantity: 1,
+      quantity: this.state.quantityInput,
       key: pizzaId,
       pizzaId: pizzaId
     };
@@ -99,6 +100,24 @@ class InputForm extends Component {
                   min="1"
                   onChange={event =>
                     this.setState({ priceInput: event.target.value })
+                  }
+                  className="pizza-input"
+                />
+              </span>
+            </div>
+            <div className="pizza-option">
+              <span className="input-options">
+                <p>Quantity</p>
+
+                <input
+                  type="number"
+                  required
+                  name="quantity"
+                  step="1"
+                  min="1"
+                  defaultValue="1"
+                  onChange={event =>
+                    this.setState({ quantityInput: event.target.value })
                   }
                   className="pizza-input"
                 />

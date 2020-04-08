@@ -21,6 +21,7 @@
   flex-direction: column;
   &.best-value-pizza {
     background-color: $bestChoice;
+    color: whitesmoke;
   }
   .best-value-text {
     font-size: 105%;
