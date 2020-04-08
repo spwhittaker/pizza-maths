@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       pizzas: [
-        {
+        /* {
           name: "Test guy",
           diameter: 12,
           price: 7,
@@ -26,10 +26,10 @@ class App extends React.Component {
           key: "Test guy 1",
           pizzaId: "test id1",
           quantity: 3
-        }
+        } */
       ],
-      selectedDiscount: "% off",
-      percentage: 50,
+      selectedDiscount: "",
+      percentage: 0,
       minSpend: 0,
       xPizzas: 0
     };
