@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       pizzas: [
-        {
+        /* {
           name: "Test guy",
           diameter: 12,
           price: 7,
@@ -26,10 +26,10 @@ class App extends React.Component {
           key: "Test guy 1",
           pizzaId: "test id1",
           quantity: 3
-        }
+        } */
       ],
-      selectedDiscount: "% off",
-      percentage: 50,
+      selectedDiscount: "",
+      percentage: 0,
       minSpend: 0,
       xPizzas: 0
     };
@@ -79,7 +79,7 @@ class App extends React.Component {
   handleAdd = e => {
     let foundPizza = this.state.pizzas.find(arrPizza => arrPizza.pizzaId === e);
     let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
-    foundPizza.quantity += 1;
+    foundPizza.quantity = Number(foundPizza.quantity) + 1;
     const newPizzas = [...this.state.pizzas];
     newPizzas[pizzaIndex] = foundPizza;
     this.setState({ pizzas: newPizzas });
@@ -89,7 +89,7 @@ class App extends React.Component {
     let foundPizza = this.state.pizzas.find(arrPizza => arrPizza.pizzaId === e);
     let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
     if (foundPizza.quantity > 1) {
-      foundPizza.quantity -= 1;
+      foundPizza.quantity = Number(foundPizza.quantity) - 1;
       const newPizzas = [...this.state.pizzas];
       newPizzas[pizzaIndex] = foundPizza;
       this.setState({ pizzas: newPizzas });
