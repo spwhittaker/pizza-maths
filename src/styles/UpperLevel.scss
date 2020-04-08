@@ -13,6 +13,10 @@ body {
   h2 {
     @include font-size($h2-font-sizes);
   }
+
+  h3 {
+    @include font-size($h3-font-sizes);
+  }
   p {
     @include font-size($p-font-sizes);
   }
@@ -47,15 +51,14 @@ html {
   }
   .App-header {
     background-color: $header;
-    min-height: 20vh;
     display: flex;
-
-    padding: 10px;
+    text-align: center;
+    padding: 5px;
     margin: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(6px + 2vmin);
+
     color: white;
   }
   .apps {
