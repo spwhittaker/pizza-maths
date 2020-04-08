@@ -52,7 +52,7 @@ class UpperLevel extends Component {
               onClick={this.handleAddComparison}
               className="top-level-button"
             >
-              Add comparison
+              Add second order to compare
             </button>
           )}
           {this.state.comparisonDiv === true && (

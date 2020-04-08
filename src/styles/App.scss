@@ -22,7 +22,15 @@
     padding-left: 2px;
     padding-right: 20px;
   }
-
+  .order-heading {
+    color: $primary-colour;
+    background-color: $header;
+    text-align: center;
+    display: inline;
+    margin: auto;
+    padding: 5px;
+    border-radius: 3px;
+  }
   .input-and-discounts {
     display: flex;
     flex-wrap: wrap;

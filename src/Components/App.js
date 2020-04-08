@@ -122,6 +122,13 @@ class App extends React.Component {
             clearDiscount={this.clearDiscount}
           />
         </div>
+        {sideBySide === "single-view" && (
+          <h1 className="order-heading">Single Order</h1>
+        )}
+        {sideBySide === "split-view" && (
+          <h1 className="order-heading">{`Order ${Number(appInstance) +
+            1}`}</h1>
+        )}
         <PizzaCards
           pizzas={this.state.pizzas}
           addButton={this.handleAdd}
