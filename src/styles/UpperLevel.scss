@@ -25,30 +25,32 @@ body {
   }
 }
 html {
-  background-color: $primary-colour;
-  background-size: cover;
-  height: 100%;
   overflow-x: hidden;
 
+  width: 100%;
+  height: calc(100% + 60px);
+  min-height: calc(100% + 60px);
+  left: 0;
+  top: 0;
   background: url(https://res.cloudinary.com/spwhittaker/image/upload/v1584033879/pizza_ib8xge.jpg)
     no-repeat center center fixed;
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100%;
 }
 
 .upper-level {
   display: flex;
   flex-direction: column;
+
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
-
   li {
     list-style-type: none;
   }
