@@ -16,38 +16,38 @@ $breakpoints: (
 $p-font-sizes: (
   null: 10px,
   small: 12px,
-  medium: 15px,
-  900px: 17px,
-  large: 20px,
-  1440px: 21px,
+  medium: 13px,
+  900px: 14px,
+  large: 15px,
+  1440px: 16px,
 );
 
 $h1-font-sizes: (
   null: 16px,
-  small: 21px,
-  medium: 24px,
-  large: 26px,
-);
-
-$h2-font-sizes: (
-  null: 13px,
   small: 18px,
   medium: 20px,
   large: 22px,
 );
+
+$h2-font-sizes: (
+  null: 13px,
+  small: 15px,
+  medium: 17px,
+  large: 19px,
+);
 $h3-font-sizes: (
   null: 12px,
-  small: 17px,
-  medium: 19px,
-  large: 20px,
+  small: 13px,
+  medium: 15px,
+  large: 17px,
 );
 $button-font-sizes: (
   null: 8px,
-  small: 10px,
-  medium: 12px,
-  900px: 15px,
-  large: 17px,
-  1440px: 19px,
+  small: 9px,
+  medium: 10px,
+  900px: 12px,
+  large: 14px,
+  1440px: 15px,
 );
 $card-sizes: (
   200px: 200px,

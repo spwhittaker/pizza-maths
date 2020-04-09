@@ -18,7 +18,7 @@
 @mixin card-size($cs-map, $cs-breakpoints: $breakpoints) {
   @each $cs-breakpoint, $cs-size in $cs-map {
     @if $cs-breakpoint == null {
-      width: cs-size;
+      width: $cs-size;
     } @else {
       @if map-has-key($cs-breakpoints, $cs-breakpoint) {
         $cs-breakpoint: map-get($cs-breakpoints, $cs-breakpoint);

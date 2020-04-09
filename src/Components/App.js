@@ -17,7 +17,7 @@ class App extends React.Component {
           price: 7,
           key: "Test guy 0",
           pizzaId: "test id",
-          quantity: 2
+          quantity: 2,
         },
         {
           name: "Test guy no. 2",
@@ -25,13 +25,13 @@ class App extends React.Component {
           price: 6,
           key: "Test guy 1",
           pizzaId: "test id1",
-          quantity: 3
-        } */
+          quantity: 3,
+        }, */
       ],
       selectedDiscount: "",
       percentage: 0,
       minSpend: 0,
-      xPizzas: 0
+      xPizzas: 0,
     };
   }
 
@@ -45,7 +45,7 @@ class App extends React.Component {
       selectedDiscount: selectedDiscount,
       percentage: percentageValue,
       minSpend: minSpendValue,
-      xPizzas: xPizzas
+      xPizzas: xPizzas,
     });
   };
 
@@ -54,13 +54,13 @@ class App extends React.Component {
       selectedDiscount: "",
       percentage: 0,
       minSpend: 0,
-      xPizzas: 0
+      xPizzas: 0,
     });
 
-  updatePizzas = e => {
+  updatePizzas = (e) => {
     if (
       !this.state.pizzas.some(
-        obj =>
+        (obj) =>
           obj.name === e.name && Number(obj.diameter) === Number(e.diameter)
       )
     ) {
@@ -68,16 +68,18 @@ class App extends React.Component {
     }
   };
 
-  handleRemove = e => {
+  handleRemove = (e) => {
     if (confirm("Are you sure you want to remove this pizza?")) {
       this.setState({
-        pizzas: this.state.pizzas.filter(arrPizza => arrPizza.pizzaId !== e)
+        pizzas: this.state.pizzas.filter((arrPizza) => arrPizza.pizzaId !== e),
       });
     }
   };
 
-  handleAdd = e => {
-    let foundPizza = this.state.pizzas.find(arrPizza => arrPizza.pizzaId === e);
+  handleAdd = (e) => {
+    let foundPizza = this.state.pizzas.find(
+      (arrPizza) => arrPizza.pizzaId === e
+    );
     let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
     foundPizza.quantity = Number(foundPizza.quantity) + 1;
     const newPizzas = [...this.state.pizzas];
@@ -85,8 +87,10 @@ class App extends React.Component {
     this.setState({ pizzas: newPizzas });
   };
 
-  handleMinus = e => {
-    let foundPizza = this.state.pizzas.find(arrPizza => arrPizza.pizzaId === e);
+  handleMinus = (e) => {
+    let foundPizza = this.state.pizzas.find(
+      (arrPizza) => arrPizza.pizzaId === e
+    );
     let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
     if (foundPizza.quantity > 1) {
       foundPizza.quantity = Number(foundPizza.quantity) - 1;
@@ -102,7 +106,7 @@ class App extends React.Component {
       metricUnits,
       handleMetricConversion,
       handleImperialConversion,
-      appInstance
+      appInstance,
     } = this.props;
     return (
       <div className={`App ${sideBySide} app-number-${appInstance}`}>
@@ -126,8 +130,9 @@ class App extends React.Component {
           <h1 className="order-heading">Single Order</h1>
         )}
         {sideBySide === "split-view" && (
-          <h1 className="order-heading">{`Order ${Number(appInstance) +
-            1}`}</h1>
+          <h1 className="order-heading">{`Order ${
+            Number(appInstance) + 1
+          }`}</h1>
         )}
         <PizzaCards
           pizzas={this.state.pizzas}
@@ -155,7 +160,7 @@ App.propTypes = {
   metricUnits: PropTypes.bool.isRequired,
   appInstance: PropTypes.string.isRequired,
   handleMetricConversion: PropTypes.func.isRequired,
-  handleImperialConversion: PropTypes.func.isRequired
+  handleImperialConversion: PropTypes.func.isRequired,
 };
 
 export default App;
