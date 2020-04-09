@@ -1,6 +1,6 @@
 import App from "./App";
 import "../styles/UpperLevel.scss";
-
+import Footer from "./Footer";
 import React, { Component } from "react";
 
 class UpperLevel extends Component {
@@ -10,23 +10,23 @@ class UpperLevel extends Component {
       comparisonDiv: false,
       comparisonClass: "single-view-comparison",
       splitView: "single-view",
-      metricUnits: false
+      metricUnits: false,
     };
   }
 
-  handleAddComparison = event => {
+  handleAddComparison = (event) => {
     this.setState({
       comparisonDiv: true,
       comparisonClass: "side-by-side-comparison",
-      splitView: "split-view"
+      splitView: "split-view",
     });
   };
 
-  handleRemoveComparison = event => {
+  handleRemoveComparison = (event) => {
     this.setState({
       comparisonDiv: false,
       comparisonClass: "single-view-comparison",
-      splitView: "single-view"
+      splitView: "single-view",
     });
   };
 
@@ -85,6 +85,8 @@ class UpperLevel extends Component {
             />
           )}
         </span>
+        <div className="spacer"></div>
+        <Footer />
       </div>
     );
   }

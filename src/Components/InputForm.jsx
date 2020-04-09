@@ -12,13 +12,13 @@ class InputForm extends Component {
       diameterInput: "",
       priceInput: null,
       metricInput: this.props.metricUnits,
-      quantityInput: 1
+      quantityInput: 1,
     };
   }
 
   onChangeLeft = () => this.setState({ metricInput: false });
   onChangeRight = () => this.setState({ metricInput: true });
-  handleInput = input => {
+  handleInput = (input) => {
     input.preventDefault();
     let inchesVal = this.state.diameterInput;
     if (this.state.metricInput === true) {
@@ -36,7 +36,7 @@ class InputForm extends Component {
       price: this.state.priceInput,
       quantity: this.state.quantityInput,
       key: pizzaId,
-      pizzaId: pizzaId
+      pizzaId: pizzaId,
     };
     this.props.updatePizzas(newPizza);
   };
@@ -55,7 +55,7 @@ class InputForm extends Component {
                   type="text"
                   required
                   name="pizzaName"
-                  onChange={event =>
+                  onChange={(event) =>
                     this.setState({ nameInput: event.target.value })
                   }
                   className="pizza-input"
@@ -71,7 +71,7 @@ class InputForm extends Component {
                   required
                   name="diameter"
                   min="1"
-                  onChange={event =>
+                  onChange={(event) =>
                     this.setState({ diameterInput: event.target.value })
                   }
                   className="pizza-input"
@@ -80,7 +80,7 @@ class InputForm extends Component {
               <span className="input-options">
                 <ToggleSwitch
                   uniqueId={`${appInstance}`}
-                  title="Pick a size"
+                  title="Pick your units"
                   isMetric={this.state.metricInput}
                   onChangeLeft={this.onChangeLeft}
                   onChangeRight={this.onChangeRight}
@@ -98,7 +98,7 @@ class InputForm extends Component {
                   name="price"
                   step="0.01"
                   min="1"
-                  onChange={event =>
+                  onChange={(event) =>
                     this.setState({ priceInput: event.target.value })
                   }
                   className="pizza-input"
@@ -116,7 +116,7 @@ class InputForm extends Component {
                   step="1"
                   min="1"
                   defaultValue="1"
-                  onChange={event =>
+                  onChange={(event) =>
                     this.setState({ quantityInput: event.target.value })
                   }
                   className="pizza-input"
@@ -138,7 +138,7 @@ InputForm.propTypes = {
   metricUnits: PropTypes.bool.isRequired,
   handleMetricConversion: PropTypes.func.isRequired,
   handleImperialConversion: PropTypes.func.isRequired,
-  appInstance: PropTypes.string.isRequired
+  appInstance: PropTypes.string.isRequired,
 };
 
 export default InputForm;

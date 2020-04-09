@@ -7,10 +7,16 @@
   flex-direction: column;
 
   justify-content: space-between;
-  width: 100%;
 
   align-items: stretch;
   height: 100%;
+
+  background-color: rgba($color: $dark-bg, $alpha: 0.5);
+  margin-bottom: 5px;
+  border-radius: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
   .all-pizzas {
     display: flex;
     flex-basis: 1;
@@ -23,9 +29,9 @@
       height: 100%;
       justify-content: flex-end;
       flex-direction: column;
+      /*   */
       .PizzaCard {
-        min-width: 50%;
-        max-width: 80%;
+        max-width: 90%;
         align-self: center;
       }
     }

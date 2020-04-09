@@ -4,8 +4,14 @@
 .switch-field {
   font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
   padding: 15px;
-  margin: auto;
 
+  margin: 5px auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+
+  justify-content: space-between;
   .switch-title {
     @include font-size($p-font-sizes);
     font-weight: bold;

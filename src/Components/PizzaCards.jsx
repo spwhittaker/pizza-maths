@@ -20,6 +20,7 @@ const pence = new Intl.NumberFormat("en-UK", {
 const PizzaCards = ({
   splitView,
   pizzas,
+  appInstance,
   addButton,
   minusButton,
   removeButton,
@@ -30,31 +31,33 @@ const PizzaCards = ({
   handleMetricConversion,
   handleImperialConversion,
   selectedDiscount,
-  xPizzas
+  xPizzas,
 }) => {
   let totalVal = 0;
   let areaVal = 0;
   if (pizzas.length > 0) {
     totalVal = pizzas
-      .map(pizza => pizza.price * pizza.quantity)
+      .map((pizza) => pizza.price * pizza.quantity)
       .reduce((total, currentPizza) => total + currentPizza);
   }
   let totalPizzasQuantity = 0;
   if (pizzas.length > 0) {
     totalPizzasQuantity = pizzas
-      .map(pizza => pizza.quantity)
+      .map((pizza) => pizza.quantity)
       .reduce((a, b) => a + b);
   }
 
   const pricePerAreas = pizzas.map(
-    pizza => pizza.price / (Math.pow(pizza.diameter / 2, 2) * Math.PI)
+    (pizza) => pizza.price / (Math.pow(pizza.diameter / 2, 2) * Math.PI)
   );
   const indexOfBestValuePizza = pricePerAreas.indexOf(
     Math.min.apply(null, pricePerAreas)
   );
   if (pizzas.length > 0) {
     areaVal = pizzas
-      .map(pizza => Math.PI * Math.pow(pizza.diameter / 2, 2) * pizza.quantity)
+      .map(
+        (pizza) => Math.PI * Math.pow(pizza.diameter / 2, 2) * pizza.quantity
+      )
       .reduce((total, currentArea) => total + currentArea);
   }
   let percentageMetThreshold;
@@ -65,19 +68,19 @@ const PizzaCards = ({
   }
 
   let totalAfterDiscount = totalVal;
-  const buyXCheapestFree = xValue => {
+  const buyXCheapestFree = (xValue) => {
     if (totalPizzasQuantity > 1) {
       let allPizzaPrices = [];
       pizzas
-        .map(pizza => {
+        .map((pizza) => {
           const arr = [];
           for (let i = 0; i < pizza.quantity; i++) {
             arr.push(pizza.price);
           }
           return arr;
         })
-        .forEach(element =>
-          element.forEach(nestedElement => allPizzaPrices.push(nestedElement))
+        .forEach((element) =>
+          element.forEach((nestedElement) => allPizzaPrices.push(nestedElement))
         );
 
       const freePizzasNumber = Math.floor(totalPizzasQuantity / xValue);
@@ -102,6 +105,12 @@ const PizzaCards = ({
 
   return (
     <div className="pizza-cards-container">
+      {splitView === "single-view" && (
+        <h1 className="order-heading">Single Order</h1>
+      )}
+      {splitView === "split-view" && (
+        <h1 className="order-heading">{`Order ${Number(appInstance) + 1}`}</h1>
+      )}
       <div className={`all-pizzas ${splitView}`}>
         {pizzas.map((pie, index) => {
           return (
@@ -216,7 +225,7 @@ const PizzaCards = ({
                 {(
                   areaVal /
                   pizzas
-                    .map(pizza => Math.PI * pizza.diameter * pizza.quantity)
+                    .map((pizza) => Math.PI * pizza.diameter * pizza.quantity)
                     .reduce((total, currentPizza) => total + currentPizza)
                 ).toFixed(2)}
               </span>
@@ -242,7 +251,7 @@ PizzaCards.propTypes = {
   percentValue: PropTypes.number.isRequired,
   minSpend: PropTypes.number.isRequired,
   selectedDiscount: PropTypes.string.isRequired,
-  xPizzas: PropTypes.number.isRequired
+  xPizzas: PropTypes.number.isRequired,
 };
 
 export default PizzaCards;

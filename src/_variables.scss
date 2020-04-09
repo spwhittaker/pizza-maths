@@ -6,9 +6,11 @@ $header: #011627;
 $submitButton: #ff9f1c;
 $altBackground: rgba(192, 37, 37, 0.9);
 $inputForm-bg: rgba(197, 197, 197, 0.9);
+$dark-text: rgb(75, 75, 75);
+$dark-bg: #303030;
 
 $breakpoints: (
-  small: 480px,
+  small: 500px,
   medium: 700px,
   large: 1024px,
 );
@@ -50,9 +52,8 @@ $button-font-sizes: (
   1440px: 15px,
 );
 $card-sizes: (
-  200px: 200px,
-  null: 220px,
-  small: 220px,
+  null: 150px,
+  small: 180px,
   medium: 250px,
   900px: 300px,
   large: 310px,

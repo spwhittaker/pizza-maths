@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       pizzas: [
-        /* {
+        {
           name: "Test guy",
           diameter: 12,
           price: 7,
@@ -26,7 +26,7 @@ class App extends React.Component {
           key: "Test guy 1",
           pizzaId: "test id1",
           quantity: 3,
-        }, */
+        },
       ],
       selectedDiscount: "",
       percentage: 0,
@@ -126,15 +126,9 @@ class App extends React.Component {
             clearDiscount={this.clearDiscount}
           />
         </div>
-        {sideBySide === "single-view" && (
-          <h1 className="order-heading">Single Order</h1>
-        )}
-        {sideBySide === "split-view" && (
-          <h1 className="order-heading">{`Order ${
-            Number(appInstance) + 1
-          }`}</h1>
-        )}
+
         <PizzaCards
+          appInstance={appInstance}
           pizzas={this.state.pizzas}
           addButton={this.handleAdd}
           removeButton={this.handleRemove}
