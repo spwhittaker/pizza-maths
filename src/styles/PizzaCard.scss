@@ -34,7 +34,6 @@
     color: whitesmoke;
   }
   .best-value-text {
-    /* font-size: 102%; */
     font-weight: bolder;
     background-color: $addComparison;
     color: $primary-colour;
@@ -46,12 +45,16 @@
   }
   .quantity-buttons {
     display: flex;
-    justify-content: space-between;
-    align-items: space-between;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
     * {
-      padding: 5px 10px;
       margin: 0px;
+    }
+    .add-remove-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     button {
       background-color: #ffec64;
@@ -61,9 +64,9 @@
       cursor: pointer;
       color: #333333;
       font-family: Arial;
-      font-size: 12px;
+      @include font-size($p-font-sizes);
       font-weight: bold;
-
+      padding: 5px 10px;
       text-decoration: none;
       text-shadow: 0px 1px 0px #ffee66;
       width: max-content;

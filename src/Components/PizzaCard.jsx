@@ -74,7 +74,7 @@ const PizzaCard = ({
         <p>{quantity}</p>
       </span>
       <div className="quantity-buttons">
-        <div>
+        <div className="add-remove-buttons">
           <button
             type="button"
             className="add-button"
