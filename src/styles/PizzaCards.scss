@@ -5,16 +5,20 @@
 .pizza-cards-container {
   display: flex;
   flex-direction: column;
+
   justify-content: space-between;
   width: 100%;
 
-  /*  align-items: stretch; */
+  align-items: stretch;
   height: 100%;
   .all-pizzas {
     display: flex;
+    flex-basis: 1;
+    flex-grow: 3;
+
     flex-wrap: wrap;
     justify-content: center;
-    /* justify-self: flex-end; */
+
     &.split-view {
       height: 100%;
       justify-content: flex-end;

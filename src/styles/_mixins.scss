@@ -5,13 +5,26 @@
     @if $fs-breakpoint == null {
       font-size: $fs-font-size;
     } @else {
-      // If $fs-font-size is a key that exists in
-      // $fs-breakpoints, use the value
       @if map-has-key($fs-breakpoints, $fs-breakpoint) {
         $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
       }
       @media screen and (min-width: $fs-breakpoint) {
         font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+@mixin card-size($cs-map, $cs-breakpoints: $breakpoints) {
+  @each $cs-breakpoint, $cs-size in $cs-map {
+    @if $cs-breakpoint == null {
+      width: cs-size;
+    } @else {
+      @if map-has-key($cs-breakpoints, $cs-breakpoint) {
+        $cs-breakpoint: map-get($cs-breakpoints, $cs-breakpoint);
+      }
+      @media screen and (min-width: $cs-breakpoint) {
+        width: $cs-size;
       }
     }
   }

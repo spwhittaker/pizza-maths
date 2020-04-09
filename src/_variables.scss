@@ -10,7 +10,7 @@ $inputForm-bg: rgba(197, 197, 197, 0.9);
 $breakpoints: (
   small: 480px,
   medium: 700px,
-  large: 1024px
+  large: 1024px,
 );
 
 $p-font-sizes: (
@@ -19,27 +19,27 @@ $p-font-sizes: (
   medium: 15px,
   900px: 17px,
   large: 20px,
-  1440px: 21px
+  1440px: 21px,
 );
 
 $h1-font-sizes: (
   null: 16px,
   small: 21px,
   medium: 24px,
-  large: 26px
+  large: 26px,
 );
 
 $h2-font-sizes: (
   null: 13px,
   small: 18px,
   medium: 20px,
-  large: 22px
+  large: 22px,
 );
 $h3-font-sizes: (
   null: 12px,
   small: 17px,
   medium: 19px,
-  large: 20px
+  large: 20px,
 );
 $button-font-sizes: (
   null: 8px,
@@ -47,8 +47,14 @@ $button-font-sizes: (
   medium: 12px,
   900px: 15px,
   large: 17px,
-  1440px: 19px
+  1440px: 19px,
 );
-/* * {
-  font-size: calc(8px + 2vmin);
-} */
+$card-sizes: (
+  200px: 200px,
+  null: 220px,
+  small: 220px,
+  medium: 250px,
+  900px: 300px,
+  large: 310px,
+  1440px: 320px,
+);
