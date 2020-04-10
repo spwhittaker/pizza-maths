@@ -15,7 +15,7 @@ const Footer = () => {
       <a href="#top">
         <p>Top of page</p>
       </a>
-      <p>{fullCopyrightText}</p>
+        <strong><p>{fullCopyrightText}</p></strong>
     </footer>
   );
 };
