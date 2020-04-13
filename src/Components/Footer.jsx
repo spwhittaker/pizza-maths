@@ -5,9 +5,11 @@ const Footer = () => {
   const year = today.getFullYear();
   let fullCopyrightText;
   if (year == "2020") {
-    fullCopyrightText = "© 2020 Stephen Whittaker & Joanne Basa";
+    fullCopyrightText = <p>©{year} <a href = "https://github.com/spwhittaker" target = "_blank" rel="noopener noreferrer" >Stephen Whittaker</a> &
+      <a href= "https://github.com/joannebasa" target = "_blank" rel="noopener noreferrer"> Joanne Basa</a></p>;
   } else {
-    fullCopyrightText = `© 2020 - ${year} Stephen Whittaker & Joanne Basa`;
+    fullCopyrightText = <p>© 2020 - {year} <a href="https://github.com/spwhittaker" target= "_blank" rel="noopener noreferrer">Stephen Whittaker</a> &
+      <a href= "https://github.com/joannebasa" target= "_blank" rel="noopener noreferrer"> Joanne Basa</a></p>;
   }
 
   return (
