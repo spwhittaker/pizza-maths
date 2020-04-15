@@ -1,9 +1,9 @@
 @import "../_variables";
 
 footer {
-  position: relative;
+  position: fixed;
   bottom: 0;
-
+  align-self: center;
   margin-top: auto;
 
   margin-bottom: 5px;
