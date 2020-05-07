@@ -89,7 +89,7 @@ const PizzaCards = ({
         return allPizzaPrices
           .sort()
           .slice(0, freePizzasNumber)
-          .reduce((a, b) => a + b);
+          .reduce((a, b) => Number(a) + Number(b));
       }
     }
     return 0;

@@ -28,8 +28,7 @@ html {
   overflow-x: hidden;
 
   width: 100%;
-  height: calc(100% + 60px);
-  min-height: calc(100% + 60px);
+
   left: 0;
   top: 0;
   background: url(https://res.cloudinary.com/spwhittaker/image/upload/v1584033879/pizza_ib8xge.jpg)
@@ -44,7 +43,8 @@ html {
 .upper-level {
   display: flex;
   flex-direction: column;
-
+  height: calc(100% + 60px);
+  min-height: calc(100% + 60px);
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;

@@ -174,7 +174,7 @@ const PizzaCard = ({
         </span>
       )}
       {isBestValue === true && (
-        <p className="best-value-text">(Best value for money!)</p>
+        <p className="best-value-text">(Best value for money on this order!)</p>
       )}{" "}
     </div>
   );

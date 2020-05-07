@@ -40,6 +40,7 @@ class UpperLevel extends Component {
   render() {
     return (
       <div className="upper-level">
+        <div className="background"></div>
         <header className="App-header">
           <h1>Pizzarithmetic</h1>
           <h3>...best thing since sliced bread (pizza)</h3>
