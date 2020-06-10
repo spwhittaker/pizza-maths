@@ -47,8 +47,6 @@ html {
   min-height: calc(100% + 60px);
   align-items: stretch;
   justify-content: flex-start;
-  width: 100%;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
   li {
@@ -58,13 +56,17 @@ html {
     background-color: $header;
     display: flex;
     text-align: center;
-    padding: 5px;
-    margin: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
   }
+
+  #logo {
+    width: 78%;
+    height: auto;
+  }
+
   .apps {
     display: flex;
     flex-wrap: nowrap;
@@ -106,7 +108,3 @@ html {
   }
 }
 
-//TODO:
-//* Move components + styles
-//* Check colour/style guide - done
-//* Colour scheme and mockup v2
