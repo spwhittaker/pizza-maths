@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "@bit/campgladiator.cgui.components.atoms.slider": "0.0.4",
-    "@bit/nexxtway.react-rainbow.slider": "^1.10.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
-    "bit": "^1.0.20",
     "enzyme": "^3.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
