@@ -42,9 +42,9 @@ class UpperLevel extends Component {
       <div className="upper-level">
         <div className="background"></div>
         <header className="App-header">
-          <h1>Pizzarithmetic</h1>
-          <h3>...best thing since sliced bread (pizza)</h3>
-          <p>Add some pizza details below and compare for the best value</p>
+          <img src="/white_logo_transparent_background_edited.png" id="logo" alt="app logo"/>
+          <h1>...best thing since sliced bread (pizza)</h1>
+          <p>Add some pizza details below and check for the best value</p>
         </header>
         <div className="top-level-options">
           {this.state.comparisonDiv === false && (
@@ -53,7 +53,7 @@ class UpperLevel extends Component {
               onClick={this.handleAddComparison}
               className="top-level-button"
             >
-              Add second order to compare
+              Compare second pizza deal
             </button>
           )}
           {this.state.comparisonDiv === true && (
