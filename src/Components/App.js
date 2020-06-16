@@ -43,8 +43,8 @@ class App extends React.Component {
   ) => {
     this.setState({
       selectedDiscount: selectedDiscount,
-      percentage: percentageValue,
-      minSpend: minSpendValue,
+      percentage: Number(percentageValue),
+      minSpend: Number(minSpendValue),
       xPizzas: xPizzas,
     });
   };
@@ -117,6 +117,9 @@ class App extends React.Component {
             handleMetricConversion={handleMetricConversion}
             handleImperialConversion={handleImperialConversion}
             appInstance={appInstance}
+            pizzaNames={[
+              ...new Set(this.state.pizzas.map((pizza) => pizza.name)),
+            ]}
           />
           <Discount
             selectedDiscount={this.state.selectedDiscount}

@@ -10,7 +10,7 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: null,
+      priceInput: "",
       metricInput: this.props.metricUnits,
       quantityInput: 1,
     };
@@ -40,8 +40,18 @@ class InputForm extends Component {
     };
     this.props.updatePizzas(newPizza);
   };
+
   render() {
-    const { appInstance } = this.props;
+    const { appInstance, pizzaNames } = this.props;
+    const pizzaNameslist = (
+      <datalist id="pizza-names">
+        {pizzaNames.map((pizzaName) => (
+          <option value={pizzaName} key={pizzaName}>
+            {pizzaName}
+          </option>
+        ))}
+      </datalist>
+    );
 
     return (
       <div className="input-form">
@@ -51,7 +61,7 @@ class InputForm extends Component {
               <span className="input-options">
                 <p>Name</p>
 
-                <input
+                {/* <input
                   type="text"
                   required
                   name="pizzaName"
@@ -59,24 +69,47 @@ class InputForm extends Component {
                     this.setState({ nameInput: event.target.value })
                   }
                   className="pizza-input"
+                /> */}
+                <input
+                  type="text"
+                  required
+                  name="pizzaName"
+                  list="pizza-names"
+                  onChange={(event) =>
+                    this.setState({ nameInput: event.target.value })
+                  }
+                  className="pizza-input"
                 />
+                {pizzaNameslist}
               </span>
             </div>
             <div className="pizza-option" id="toggle">
               <span className="input-options">
                 <p>Diameter</p>
-
                 <input
+                  className="range-input"
+                  type="range"
+                  name="diameter"
+                  min="1"
+                  max="50"
+                  value={this.state.diameterInput}
+                  onChange={(event) =>
+                    this.setState({ diameterInput: Number(event.target.value) })
+                  }
+                />
+                <input
+                  value={this.state.diameterInput}
                   type="number"
                   required
                   name="diameter"
                   min="1"
                   onChange={(event) =>
-                    this.setState({ diameterInput: event.target.value })
+                    this.setState({ diameterInput: Number(event.target.value) })
                   }
                   className="pizza-input"
                 />
               </span>
+
               <span className="input-options">
                 <ToggleSwitch
                   uniqueId={`${appInstance}`}
@@ -91,15 +124,31 @@ class InputForm extends Component {
             <div className="pizza-option">
               <span className="input-options">
                 <p>Price ({localCurrency(1).replace(/[\s0-9.,]/gi, "")})</p>
-
+                <input
+                  className="range-input"
+                  type="range"
+                  name="price"
+                  min="1"
+                  max="30"
+                  step="0.01"
+                  value={this.state.priceInput}
+                  onChange={(event) =>
+                    this.setState({
+                      priceInput: Number(Number(event.target.value).toFixed(2)),
+                    })
+                  }
+                />
                 <input
                   type="number"
                   required
                   name="price"
                   step="0.01"
                   min="1"
+                  value={this.state.priceInput}
                   onChange={(event) =>
-                    this.setState({ priceInput: event.target.value })
+                    this.setState({
+                      priceInput: Number(event.target.value),
+                    })
                   }
                   className="pizza-input"
                 />
@@ -108,16 +157,29 @@ class InputForm extends Component {
             <div className="pizza-option">
               <span className="input-options">
                 <p>Quantity</p>
-
+                <input
+                  type="range"
+                  name="quantity"
+                  step="1"
+                  min="1"
+                  max="20"
+                  value={this.state.quantityInput}
+                  onChange={(event) => {
+                    this.setState({
+                      quantityInput: Number(event.target.value),
+                    });
+                  }}
+                  className="pizza-input"
+                />
                 <input
                   type="number"
                   required
                   name="quantity"
                   step="1"
                   min="1"
-                  defaultValue="1"
+                  value={this.state.quantityInput}
                   onChange={(event) =>
-                    this.setState({ quantityInput: event.target.value })
+                    this.setState({ quantityInput: Number(event.target.value) })
                   }
                   className="pizza-input"
                 />

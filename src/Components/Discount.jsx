@@ -6,16 +6,16 @@ const options = [
   { value: "% off", label: "% off" },
   {
     value: "% off over minimum spend",
-    label: "% off over minimum spend"
+    label: "% off over minimum spend",
   },
   {
     value: "Buy 2 pizzas, get cheapest free",
-    label: "Buy 2 pizzas, get cheapest free"
+    label: "Buy 2 pizzas, get cheapest free",
   },
   {
     value: "Buy x number of pizzas, get cheapest free",
-    label: "Buy x number of pizzas, get cheapest free"
-  }
+    label: "Buy x number of pizzas, get cheapest free",
+  },
 ];
 class Discount extends Component {
   constructor(props) {
@@ -24,10 +24,10 @@ class Discount extends Component {
       percentage: 0,
       minSpend: 0,
       selectedDiscount: "",
-      xPizzas: 0
+      xPizzas: 0,
     };
   }
-  handleDiscountInput = input => {
+  handleDiscountInput = (input) => {
     this.setState({ selectedDiscount: input.value });
   };
 
@@ -37,7 +37,7 @@ class Discount extends Component {
       percentage: 0,
       minSpend: 0,
       selectedDiscount: "",
-      xPizzas: 0
+      xPizzas: 0,
     });
   };
 
@@ -46,7 +46,7 @@ class Discount extends Component {
       onApplyDiscount,
       selectedDiscount,
       percentageState,
-      minSpend
+      minSpend,
     } = this.props;
     return (
       <div className="add-discounts">
@@ -61,7 +61,7 @@ class Discount extends Component {
           <div className="select-discount">
             <input
               type="button"
-              onClick={e => {
+              onClick={(e) => {
                 onApplyDiscount(this.state.selectedDiscount, "", "", 2);
               }}
               label="submitBuyOneGetCheapestFree"
@@ -77,11 +77,13 @@ class Discount extends Component {
               type="number"
               step="1"
               min="2"
-              onChange={event => this.setState({ xPizzas: event.target.value })}
+              onChange={(event) =>
+                this.setState({ xPizzas: Number(event.target.value) })
+              }
             />
             <input
               type="button"
-              onClick={e => {
+              onClick={(e) => {
                 onApplyDiscount(
                   this.state.selectedDiscount,
                   "",
@@ -102,13 +104,13 @@ class Discount extends Component {
               step="1"
               min="1"
               max="99"
-              onChange={event =>
-                this.setState({ percentage: event.target.value })
+              onChange={(event) =>
+                this.setState({ percentage: Number(event.target.value) })
               }
             />
             <input
               type="button"
-              onClick={e => {
+              onClick={(e) => {
                 onApplyDiscount(
                   this.state.selectedDiscount,
                   this.state.percentage
@@ -127,8 +129,8 @@ class Discount extends Component {
               step="1"
               min="1"
               max="99"
-              onChange={event =>
-                this.setState({ percentage: event.target.value })
+              onChange={(event) =>
+                this.setState({ percentage: Number(event.target.value) })
               }
             />
             <p>Minimum spend: £: </p>{" "}
@@ -136,13 +138,13 @@ class Discount extends Component {
               type="number"
               step="1"
               max="99"
-              onChange={event =>
+              onChange={(event) =>
                 this.setState({ minSpend: event.target.value })
               }
             />
             <input
               type="button"
-              onClick={e => {
+              onClick={(e) => {
                 if (this.state.selectedDiscount === "% off") {
                   onApplyDiscount(
                     this.state.selectedDiscount,
@@ -197,7 +199,7 @@ Discount.propTypes = {
   onApplyDiscount: PropTypes.func.isRequired,
   percentageState: PropTypes.number.isRequired,
   minSpend: PropTypes.number.isRequired,
-  clearDiscount: PropTypes.func.isRequired
+  clearDiscount: PropTypes.func.isRequired,
 };
 
 export default Discount;
