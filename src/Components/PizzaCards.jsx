@@ -116,7 +116,11 @@ const PizzaCards = ({
           return (
             <PizzaCard
               {...pie}
-              isBestValue={index === indexOfBestValuePizza ? true : false}
+              isBestValue={
+                index === indexOfBestValuePizza && pizzas.length > 1
+                  ? true
+                  : false
+              }
               pizzaId={pie.pizzaId}
               addButtonClick={addButton}
               minusButtonClick={minusButton}

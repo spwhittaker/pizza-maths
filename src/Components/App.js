@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       pizzas: [
-        /* {
+        /* 
+        {
           name: "Test guy",
           diameter: 12,
           price: 7,
