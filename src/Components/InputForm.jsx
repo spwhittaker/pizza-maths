@@ -131,10 +131,10 @@ class InputForm extends Component {
                   min="1"
                   max="30"
                   step="0.01"
-                  value={Number(this.state.priceInput).toFixed(2)}
+                  value={this.state.priceInput}
                   onChange={(event) =>
                     this.setState({
-                      priceInput: Number(Number(event.target.value).toFixed(2)),
+                      priceInput: Number(event.target.value).toFixed(2),
                     })
                   }
                 />
@@ -144,12 +144,12 @@ class InputForm extends Component {
                   name="price"
                   step="0.01"
                   min="1"
-                  value={Number(this.state.priceInput).toFixed(2)}
-                  onChange={(event) =>
+                  value={this.state.priceInput}
+                  onChange={(event) => {
                     this.setState({
-                      priceInput: Number(event.target.value),
-                    })
-                  }
+                      priceInput: event.target.value,
+                    });
+                  }}
                   className="pizza-input"
                 />
               </span>
