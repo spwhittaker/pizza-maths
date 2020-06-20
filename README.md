@@ -3,15 +3,18 @@
 This project is the capstone project of [Stephen Whittaker](https://github.com/spwhittaker) and [Joanne](https://github.com/joannebasa) [Basa](https://joannebasa.com/) as part of the [Manchester Codes' ](https://www.manchestercodes.com/) Software Engineer Fast-Track course September 2019 cohort.
 
 ### About the App
-Stephen had a vision: he wanted a way to check (like mathematically check) the **'most pizza for your money'**. In keeping up with the technologies we learned in this course, we have decided that the tech stack are:
+Stephen had a vision: he wanted a way to check (like mathematically check) the **'most pizza for your money'**. In keeping up with the technologies we learned in this course, we have decided that we can use all the technologies we have learned, and more:
 
 **Frontend** | **Backend** | **Other Methodologies** 
 ------------ | ------------- | -----------
 HTML5 | Node.js | TDD
 CSS3 + Sass | Express | Wireframing
-React.js |  | Github
+React.js | Heroku  | Github
 
-We also employed modern responsive and user experience design concepts, as well as doing daily 'standups' and kept a Trello board to monitor progress and continuously assess priorities and respond to problems in a timely manner.
+We also employed modern responsive and user experience design concepts, as well as doing daily 'standups' and kept a Trello board to monitor progress and continuously assess priorities and respond to problems in a timely manner.  
+See Pizzarithmetic in action:
++ as a progressive web app (deployed using Firebase): https://pizzarithmetic.web.app/
++ deployed in Heroku: https://pizza-maths.now.sh
 
 ### How to get started
 
