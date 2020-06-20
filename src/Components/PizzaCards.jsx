@@ -3,20 +3,30 @@ import React from "react";
 import PizzaCard from "./PizzaCard";
 import "../styles/PizzaCards.scss";
 import PropTypes from "prop-types";
+import Select from "react-select";
 import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
 
-/* const pounds = new Intl.NumberFormat("en-UK", {
-  style: "currency",
-  currency: "GBP",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2
-});
-const pence = new Intl.NumberFormat("en-UK", {
-  style: "currency",
-  currency: "GBP",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 5
-}); */
+const options = [
+  { value: "area", label: "Area" },
+  {
+    value: "diameter",
+    label: "Diameter",
+  },
+  {
+    value: "name",
+    label: "Name",
+  },
+  {
+    value: "price",
+    label: "Price",
+  },
+
+  {
+    value: "pizzaValue",
+    label: "Value for money",
+  },
+];
+
 const PizzaCards = ({
   splitView,
   pizzas,
@@ -32,6 +42,9 @@ const PizzaCards = ({
   handleImperialConversion,
   selectedDiscount,
   xPizzas,
+  /* setSort,
+  sortMode,
+  setPizzaSort, */
 }) => {
   let totalVal = 0;
   let areaVal = 0;
@@ -111,6 +124,20 @@ const PizzaCards = ({
       {splitView === "split-view" && (
         <h1 className="order-heading">{`Order ${Number(appInstance) + 1}`}</h1>
       )}
+      {/*  <div className="sort-fields">
+        <span>
+          <h1>Sort by: </h1>
+          <Select
+            className="selector"
+            value={{ label: sortMode }}
+            options={options}
+            onChange={(e) => {
+              setSort(e);
+              setPizzaSort("Name");
+            }}
+          />
+        </span>
+      </div> */}
       <div className={`all-pizzas ${splitView}`}>
         {pizzas.map((pie, index) => {
           return (

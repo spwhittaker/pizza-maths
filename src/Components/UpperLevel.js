@@ -11,6 +11,7 @@ class UpperLevel extends Component {
       comparisonClass: "single-view-comparison",
       splitView: "single-view",
       metricUnits: false,
+      sortMode: "Name",
     };
   }
 
@@ -35,6 +36,10 @@ class UpperLevel extends Component {
   };
   handleImperialConversion = () => {
     this.setState({ metricUnits: false });
+  };
+  setSort = (e) => {
+    console.log(e);
+    this.setState({ sortMode: "Name" });
   };
 
   render() {
@@ -75,6 +80,8 @@ class UpperLevel extends Component {
             className={this.state.comparisonClass}
             sideBySide={this.state.splitView}
             metricUnits={this.state.metricUnits}
+            sortMode={this.state.sortMode}
+            setSort={this.setSort}
             appInstance={"0"}
             handleMetricConversion={this.handleMetricConversion}
             handleImperialConversion={this.handleImperialConversion}
@@ -84,6 +91,7 @@ class UpperLevel extends Component {
               className={this.state.splitView}
               sideBySide={this.state.splitView}
               metricUnits={this.state.metricUnits}
+              sortMode={this.state.sortMode}
               appInstance={"1"}
               handleMetricConversion={this.handleMetricConversion}
               handleImperialConversion={this.handleImperialConversion}

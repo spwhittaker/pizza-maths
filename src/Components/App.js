@@ -11,9 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       pizzas: [
-        /* 
         {
-          name: "Test guy",
+          name: "Zest guy",
           diameter: 12,
           price: 7,
           key: "Test guy 0",
@@ -27,7 +26,7 @@ class App extends React.Component {
           key: "Test guy 1",
           pizzaId: "test id1",
           quantity: 3,
-        }, */
+        },
       ],
       selectedDiscount: "",
       percentage: 0,
@@ -36,6 +35,18 @@ class App extends React.Component {
     };
   }
 
+  /*   setPizzaSort = (mode) => {
+    if (mode === "name" || "diameter" || "price") {
+      console.log(mode, "is the value");
+
+      const sortedPizzas = [...this.state.pizzas].sort(
+        (a, b) => a[mode] - b[mode]
+      );
+      console.log(sortedPizzas);
+    } else {
+      console.log("something else", mode);
+    }
+  }; */
   onApplyDiscount = (
     selectedDiscount = "",
     percentageValue = 0,
@@ -101,14 +112,22 @@ class App extends React.Component {
     }
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props.sortMode !== prevProps.sortMode) {
+      this.setPizzaSort(this.sortMode);
+    }
+  }
   render() {
     const {
       sideBySide,
       metricUnits,
       handleMetricConversion,
       handleImperialConversion,
+      /* setSort,
+      sortMode, */
       appInstance,
     } = this.props;
+
     return (
       <div className={`App ${sideBySide} app-number-${appInstance}`}>
         <div className="input-and-discounts">
@@ -137,6 +156,9 @@ class App extends React.Component {
           addButton={this.handleAdd}
           removeButton={this.handleRemove}
           minusButton={this.handleMinus}
+          /* sortMode={sortMode}
+          setSort={setSort}
+          setPizzaSort={this.setPizzaSort} */
           splitView={sideBySide}
           metricUnits={metricUnits}
           handleMetricConversion={handleMetricConversion}
