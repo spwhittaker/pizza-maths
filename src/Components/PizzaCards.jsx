@@ -3,10 +3,10 @@ import React from "react";
 import PizzaCard from "./PizzaCard";
 import "../styles/PizzaCards.scss";
 import PropTypes from "prop-types";
-import Select from "react-select";
+/* import Select from "react-select"; */
 import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
 
-const options = [
+/* const options = [
   { value: "area", label: "Area" },
   {
     value: "diameter",
@@ -25,7 +25,7 @@ const options = [
     value: "pizzaValue",
     label: "Value for money",
   },
-];
+]; */
 
 const PizzaCards = ({
   splitView,
