@@ -10,7 +10,7 @@ class InputForm extends Component {
     this.state = {
       nameInput: "",
       diameterInput: "",
-      priceInput: "",
+      priceInput: "5.00",
       metricInput: this.props.metricUnits,
       quantityInput: 1,
     };
@@ -131,7 +131,7 @@ class InputForm extends Component {
                   min="1"
                   max="30"
                   step="0.01"
-                  value={this.state.priceInput}
+                  value={Number(this.state.priceInput).toFixed(2)}
                   onChange={(event) =>
                     this.setState({
                       priceInput: Number(Number(event.target.value).toFixed(2)),
@@ -144,7 +144,7 @@ class InputForm extends Component {
                   name="price"
                   step="0.01"
                   min="1"
-                  value={this.state.priceInput}
+                  value={Number(this.state.priceInput).toFixed(2)}
                   onChange={(event) =>
                     this.setState({
                       priceInput: Number(event.target.value),
