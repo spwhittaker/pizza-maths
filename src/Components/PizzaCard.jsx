@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/PizzaCard.scss";
 import ToggleSwitch from "./ToggleSwitch";
 import PropTypes from "prop-types";
+import { FaPlusCircle, FaMinusCircle, FaTrash } from "react-icons/fa";
 import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
 
 const PizzaCard = ({
@@ -75,27 +76,19 @@ const PizzaCard = ({
       </span>
       <div className="quantity-buttons">
         <div className="add-remove-buttons">
-          <button
-            type="button"
+          <FaPlusCircle
             className="add-button"
             onClick={() => addButtonClick(pizzaId)}
-          >
-            +
-          </button>
-          <button
-            type="button"
+          />
+
+          <FaMinusCircle
             className="minus-button"
             onClick={() => minusButtonClick(pizzaId)}
-          >
-            -
-          </button>
-          <button
-            type="button"
+          />
+          <FaTrash
             className="remove-button"
             onClick={() => removeButtonClick(pizzaId)}
-          >
-            Remove
-          </button>
+          />
         </div>
         <ToggleSwitch
           uniqueId={pizzaId}

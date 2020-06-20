@@ -63,8 +63,11 @@ html {
   }
 
   #logo {
-    width: 78%;
+    min-width: 30%;
+    max-width: 78%;
     height: auto;
+    min-height: 100px;
+    max-height: 300px;
   }
 
   .apps {
@@ -91,8 +94,6 @@ html {
     color: #333333;
     font-family: Arial;
     font-weight: bold;
-    color: #000000;
-    padding: 10px;
     text-decoration: none;
     width: max-content;
     margin-left: 25%;
@@ -105,4 +106,3 @@ html {
     flex-grow: 5;
   }
 }
-

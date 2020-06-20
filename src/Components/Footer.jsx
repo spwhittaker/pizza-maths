@@ -55,9 +55,7 @@ const Footer = () => {
       <a href="#top">
         <p>Top of page</p>
       </a>
-      <strong>
-        <p>{fullCopyrightText}</p>
-      </strong>
+      <strong>{fullCopyrightText}</strong>
     </footer>
   );
 };
