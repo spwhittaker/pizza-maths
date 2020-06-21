@@ -14,7 +14,7 @@ React.js | Heroku  | Github
 We also employed modern responsive and user experience design concepts, as well as doing daily 'standups' and kept a Trello board to monitor progress and continuously assess priorities and respond to problems in a timely manner.  
 See Pizzarithmetic in action: 
 + deployed using Firebase: https://pizzarithmetic.web.app/
-+ deployed using Heroku: https://pizza-maths.now.sh  
++ deployed using Vercel: https://pizza-maths.now.sh  
 They are both Progressive Web Apps, feel free to save it on your phone (you're welcome :smile: )
 
 ### How to get started
