@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../styles/InputForm.scss";
 import ToggleSwitch from "./ToggleSwitch.jsx";
 import PropTypes from "prop-types";
-import { localCurrency } from "../currencyFormatter";
+import { localCurrency } from "../currencyFormatter.js";
 
 class InputForm extends Component {
   constructor(props) {

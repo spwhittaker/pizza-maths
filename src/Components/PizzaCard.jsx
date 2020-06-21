@@ -166,9 +166,9 @@ const PizzaCard = ({
           <p>{localCurrencyDetailed(price / (area * 2.54 * 2.54))}</p>
         </span>
       )}
-      {isBestValue === true && (
-        <p className="best-value-text">(Best value for money on this order!)</p>
-      )}{" "}
+      {/*{isBestValue === true && (*/}
+      {/*  <p className="best-value-text">(Best value for money on this order!)</p>*/}
+      {/*)}{" "}*/}
     </div>
   );
 };
