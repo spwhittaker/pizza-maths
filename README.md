@@ -41,3 +41,5 @@ The authors would like to thank the following people from Manchester Codes, who 
 * Daniel Cross
 * Ersel Aker
 * our fellow classmates! :vulcan_salute:
+
+Thank you also to [sarahC on Reddit](https://www.reddit.com/r/javascript/comments/7007r4/ive_created_a_nice_locale_to_currency_converter/) who wrote a function to get currency information based on a user's locale.
