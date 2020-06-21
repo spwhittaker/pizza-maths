@@ -18,7 +18,7 @@ class App extends React.Component {
           price: 7,
           key: "Test guy 0",
           pizzaId: "test id",
-          quantity: 2,
+          quantity: 3,
         },
         {
           name: "Test guy no. 2",
@@ -26,7 +26,7 @@ class App extends React.Component {
           price: 6,
           key: "Test guy 1",
           pizzaId: "test id1",
-          quantity: 3,
+          quantity: 2,
         }, */
       ],
       selectedDiscount: "",

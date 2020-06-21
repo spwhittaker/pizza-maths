@@ -5,18 +5,6 @@ import "../styles/PizzaCards.scss";
 import PropTypes from "prop-types";
 import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
 
-/* const pounds = new Intl.NumberFormat("en-UK", {
-  style: "currency",
-  currency: "GBP",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2
-});
-const pence = new Intl.NumberFormat("en-UK", {
-  style: "currency",
-  currency: "GBP",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 5
-}); */
 const PizzaCards = ({
   splitView,
   pizzas,

@@ -60,16 +60,6 @@ class InputForm extends Component {
             <div className="pizza-option">
               <span className="input-options">
                 <p>Name</p>
-
-                {/* <input
-                  type="text"
-                  required
-                  name="pizzaName"
-                  onChange={(event) =>
-                    this.setState({ nameInput: event.target.value })
-                  }
-                  className="pizza-input"
-                /> */}
                 <input
                   type="text"
                   required

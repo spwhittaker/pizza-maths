@@ -1096,9 +1096,7 @@ function getCurrencyDetailsByLocale(locale) {
 
 export let localCurrency = (function currencyConvert() {
   let locale = navigator.language;
-  //console.log(locale, "is the locale");
   let thisCurrency = getCurrencyDetailsByLocale(locale || "en-GB");
-  //console.log(thisCurrency);
   if (thisCurrency == null) thisCurrency = getCurrencyDetailsByLocale("en-GB");
   let format = {
     style: "currency",
@@ -1131,8 +1129,4 @@ export let localCurrencyDetailed = (function currencyConvert() {
   };
 })();
 
-//console.log(localCurrency(123));
-//console.log(localCurrencyDetailed(1 / 3));
-
-//Credit to sarahC on Reddit https://www.reddit.com/r/javascript/comments/7007r4/ive_created_a_nice_locale_to_currency_converter/
 export default { localCurrency, localCurrencyDetailed };
