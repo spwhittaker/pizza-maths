@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "../styles/PizzaCard.scss";
 import ToggleSwitch from "./ToggleSwitch";
+import { UpperLevelContext } from "../context/UpperLevelContext";
+import { AppContext } from "../context/AppContext";
 import PropTypes from "prop-types";
 import { FaPlusCircle, FaMinusCircle, FaTrash } from "react-icons/fa";
 import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
@@ -19,6 +21,13 @@ const PizzaCard = ({
   handleImperial,
   isBestValue,
 }) => {
+  const { coolStuff, metricUnit, setMetricUnits } = useContext(
+    UpperLevelContext
+  );
+  const { increaseCount, count } = useContext(AppContext);
+
+  useEffect(() => console.log(count), [count]);
+  console.log(increaseCount);
   let roundedDiameter;
   if (diameter % 1 === 0) {
     roundedDiameter = diameter;
@@ -32,9 +41,10 @@ const PizzaCard = ({
 
   const area = Math.PI * Math.pow(diameter / 2, 2);
   const circumference = Math.PI * diameter;
-
+  coolStuff();
   return (
     <div className={classNames} key={pizzaId}>
+      <button onClick={increaseCount}>Add up</button>
       <span className="pizza-detail">
         <p>
           <strong>Name</strong>:
@@ -93,8 +103,16 @@ const PizzaCard = ({
         <ToggleSwitch
           uniqueId={pizzaId}
           isMetric={metricUnits}
-          onChangeLeft={handleImperial}
-          onChangeRight={handleMetric}
+          onChangeLeft={() => {
+            setMetricUnits(false);
+            console.log(metricUnit);
+            handleImperial();
+          }}
+          onChangeRight={() => {
+            setMetricUnits(true);
+            console.log(metricUnit);
+            handleMetric();
+          }}
         />
       </div>
       <span className="pizza-detail">

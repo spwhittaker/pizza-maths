@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { UpperLevelContext } from "../context/UpperLevelContext";
 import PizzaCard from "./PizzaCard";
 import "../styles/PizzaCards.scss";
 import PropTypes from "prop-types";

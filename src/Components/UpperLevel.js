@@ -2,6 +2,7 @@ import App from "./App";
 import "../styles/UpperLevel.scss";
 import Footer from "./Footer";
 import React, { Component } from "react";
+import { AppProvider } from "../context/AppContext";
 
 class UpperLevel extends Component {
   constructor(props) {
@@ -71,23 +72,27 @@ class UpperLevel extends Component {
           )}
         </div>
         <span className="apps">
-          <App
-            className={this.state.comparisonClass}
-            sideBySide={this.state.splitView}
-            metricUnits={this.state.metricUnits}
-            appInstance={"0"}
-            handleMetricConversion={this.handleMetricConversion}
-            handleImperialConversion={this.handleImperialConversion}
-          />
-          {this.state.comparisonDiv && (
+          <AppProvider>
             <App
-              className={this.state.splitView}
+              className={this.state.comparisonClass}
               sideBySide={this.state.splitView}
               metricUnits={this.state.metricUnits}
-              appInstance={"1"}
+              appInstance={"0"}
               handleMetricConversion={this.handleMetricConversion}
               handleImperialConversion={this.handleImperialConversion}
             />
+          </AppProvider>
+          {this.state.comparisonDiv && (
+            <AppProvider>
+              <App
+                className={this.state.splitView}
+                sideBySide={this.state.splitView}
+                metricUnits={this.state.metricUnits}
+                appInstance={"1"}
+                handleMetricConversion={this.handleMetricConversion}
+                handleImperialConversion={this.handleImperialConversion}
+              />
+            </AppProvider>
           )}
         </span>
         <div className="spacer"></div>

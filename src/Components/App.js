@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/App.scss";
 import "./InputForm";
 import InputForm from "./InputForm";
 import PizzaCards from "./PizzaCards";
 import Discount from "./Discount";
 import PropTypes from "prop-types";
+import { AppContext } from "../context/AppContext";
 /* eslint no-restricted-globals:0 */
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pizzas: [
-        /* 
         {
           name: "Test guy",
           diameter: 12,
@@ -27,7 +27,7 @@ class App extends React.Component {
           key: "Test guy 1",
           pizzaId: "test id1",
           quantity: 2,
-        }, */
+        },
       ],
       selectedDiscount: "",
       percentage: 0,
@@ -109,6 +109,7 @@ class App extends React.Component {
       handleImperialConversion,
       appInstance,
     } = this.props;
+
     return (
       <div className={`App ${sideBySide} app-number-${appInstance}`}>
         <div className="input-and-discounts">
