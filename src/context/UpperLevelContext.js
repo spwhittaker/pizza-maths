@@ -7,21 +7,35 @@ const UpperLevelProvider = ({ children }) => {
   const [comparisonClass, setComparisonClass] = useState(
     "single-view-comparison"
   );
-  const [splitView, setSplitView] = useState("split-view");
-  const [metricUnit, setMetricUnits] = useState(false);
-  const coolStuff = () => console.log("Cool! This is contextual!");
+  const [splitView, setSplitView] = useState("single-view");
+  const [metricUnits, setMetricUnits] = useState(false);
+  const handleAddComparison = (event) => {
+    setComparisonDiv(true);
+    setComparisonClass("side-by-side-comparison");
+    setSplitView("split-view");
+  };
+  const handleRemoveComparison = (event) => {
+    setComparisonDiv(false);
+    setComparisonClass("single-view-comparison");
+    setSplitView("single-view");
+  };
+  const handleMetricConversion = () => setMetricUnits(true);
+  const handleImperialConversion = () => setMetricUnits(false);
   return (
     <UpperLevelContext.Provider
       value={{
-        coolStuff,
         comparisonDiv,
         setComparisonDiv,
         comparisonClass,
         setComparisonClass,
         splitView,
         setSplitView,
-        metricUnit,
+        metricUnits,
         setMetricUnits,
+        handleAddComparison,
+        handleRemoveComparison,
+        handleMetricConversion,
+        handleImperialConversion,
       }}
     >
       {children}

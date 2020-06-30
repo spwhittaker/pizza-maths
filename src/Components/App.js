@@ -5,161 +5,29 @@ import InputForm from "./InputForm";
 import PizzaCards from "./PizzaCards";
 import Discount from "./Discount";
 import PropTypes from "prop-types";
-import { AppContext } from "../context/AppContext";
-/* eslint no-restricted-globals:0 */
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pizzas: [
-        {
-          name: "Test guy",
-          diameter: 12,
-          price: 7,
-          key: "Test guy 0",
-          pizzaId: "test id",
-          quantity: 3,
-        },
-        {
-          name: "Test guy no. 2",
-          diameter: 10,
-          price: 6,
-          key: "Test guy 1",
-          pizzaId: "test id1",
-          quantity: 2,
-        },
-      ],
-      selectedDiscount: "",
-      percentage: 0,
-      minSpend: 0,
-      xPizzas: 0,
-    };
-  }
+import { UpperLevelContext } from "../context/UpperLevelContext";
 
-  onApplyDiscount = (
-    selectedDiscount = "",
-    percentageValue = 0,
-    minSpendValue = 0,
-    xPizzas = 0
-  ) => {
-    this.setState({
-      selectedDiscount: selectedDiscount,
-      percentage: Number(percentageValue),
-      minSpend: Number(minSpendValue),
-      xPizzas: xPizzas,
-    });
-  };
+const App = ({ appInstance }) => {
+  const { splitView, metricUnits } = useContext(UpperLevelContext);
 
-  clearDiscount = () =>
-    this.setState({
-      selectedDiscount: "",
-      percentage: 0,
-      minSpend: 0,
-      xPizzas: 0,
-    });
-
-  updatePizzas = (e) => {
-    if (
-      !this.state.pizzas.some(
-        (obj) =>
-          obj.name === e.name && Number(obj.diameter) === Number(e.diameter)
-      )
-    ) {
-      this.setState({ pizzas: [...this.state.pizzas, e] });
-    }
-  };
-
-  handleRemove = (e) => {
-    if (confirm("Are you sure you want to remove this pizza?")) {
-      this.setState({
-        pizzas: this.state.pizzas.filter((arrPizza) => arrPizza.pizzaId !== e),
-      });
-    }
-  };
-
-  handleAdd = (e) => {
-    let foundPizza = this.state.pizzas.find(
-      (arrPizza) => arrPizza.pizzaId === e
-    );
-    let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
-    foundPizza.quantity = Number(foundPizza.quantity) + 1;
-    const newPizzas = [...this.state.pizzas];
-    newPizzas[pizzaIndex] = foundPizza;
-    this.setState({ pizzas: newPizzas });
-  };
-
-  handleMinus = (e) => {
-    let foundPizza = this.state.pizzas.find(
-      (arrPizza) => arrPizza.pizzaId === e
-    );
-    let pizzaIndex = this.state.pizzas.indexOf(foundPizza);
-    if (foundPizza.quantity > 1) {
-      foundPizza.quantity = Number(foundPizza.quantity) - 1;
-      const newPizzas = [...this.state.pizzas];
-      newPizzas[pizzaIndex] = foundPizza;
-      this.setState({ pizzas: newPizzas });
-    }
-  };
-
-  render() {
-    const {
-      sideBySide,
-      metricUnits,
-      handleMetricConversion,
-      handleImperialConversion,
-      appInstance,
-    } = this.props;
-
-    return (
-      <div className={`App ${sideBySide} app-number-${appInstance}`}>
-        <div className="input-and-discounts">
-          <InputForm
-            updatePizzas={this.updatePizzas}
-            metricUnits={metricUnits}
-            handleMetricConversion={handleMetricConversion}
-            handleImperialConversion={handleImperialConversion}
-            appInstance={appInstance}
-            pizzaNames={[
-              ...new Set(this.state.pizzas.map((pizza) => pizza.name)),
-            ]}
-          />
-          <Discount
-            selectedDiscount={this.state.selectedDiscount}
-            onApplyDiscount={this.onApplyDiscount}
-            percentageState={this.state.percentage}
-            minSpend={this.state.minSpend}
-            clearDiscount={this.clearDiscount}
-          />
-        </div>
-
-        <PizzaCards
-          appInstance={appInstance}
-          pizzas={this.state.pizzas}
-          addButton={this.handleAdd}
-          removeButton={this.handleRemove}
-          minusButton={this.handleMinus}
-          splitView={sideBySide}
-          metricUnits={metricUnits}
-          handleMetricConversion={handleMetricConversion}
-          handleImperialConversion={handleImperialConversion}
-          percentageCalculator={1 - (this.state.percentage / 100).toFixed(2)}
-          percentValue={this.state.percentage}
-          minSpend={this.state.minSpend}
-          selectedDiscount={this.state.selectedDiscount}
-          xPizzas={this.state.xPizzas}
-        />
+  return (
+    <div className={`App ${splitView} app-number-${appInstance}`}>
+      <div className="input-and-discounts">
+        <InputForm />
+        <Discount />
       </div>
-    );
-  }
-}
+
+      <PizzaCards
+        appInstance={appInstance}
+        splitView={splitView}
+        metricUnits={metricUnits}
+      />
+    </div>
+  );
+};
 
 App.propTypes = {
-  className: PropTypes.string.isRequired,
-  sideBySide: PropTypes.string.isRequired,
-  metricUnits: PropTypes.bool.isRequired,
   appInstance: PropTypes.string.isRequired,
-  handleMetricConversion: PropTypes.func.isRequired,
-  handleImperialConversion: PropTypes.func.isRequired,
 };
 
 export default App;
