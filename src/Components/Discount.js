@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import Select from "react-select";
-
 import "../styles/Discount.scss";
 
 const Discount = () => {
@@ -27,11 +26,10 @@ const Discount = () => {
     minSpend,
     clearDiscount,
   } = useContext(AppContext);
-  const [percentageInput, setPercentageInput] = useState(0);
-  const [minSpendInput, setMinSpendInput] = useState(0);
+  const [percentageInput, setPercentageInput] = useState(10);
+  const [minSpendInput, setMinSpendInput] = useState(10);
   const [discountInput, setDiscountInput] = useState("");
-  const [xPizzasInput, setXPizzasInput] = useState(0);
-
+  const [xPizzasInput, setXPizzasInput] = useState(2);
   const handleDiscountInput = (input) => {
     setDiscountInput(input.value);
   };
@@ -63,13 +61,25 @@ const Discount = () => {
           />
         </div>
       )}
+
       {discountInput === "Buy x number of pizzas, get cheapest free" && (
         <div className="select-discount">
           <p>x number of pizzas</p>
           <input
+            type="range"
+            step="1"
+            min="2"
+            max="10"
+            value={xPizzasInput}
+            onChange={(event) => {
+              setXPizzasInput(Number(event.target.value));
+            }}
+          />
+          <input
             type="number"
             step="1"
             min="2"
+            value={xPizzasInput}
             onChange={(event) => setXPizzasInput(Number(event.target.value))}
           />
           <input
@@ -86,10 +96,19 @@ const Discount = () => {
         <div className="select-discount">
           <p>Percentage discount</p>
           <input
+            type="range"
+            step="1"
+            min="1"
+            max="99"
+            value={percentageInput}
+            onChange={(event) => setPercentageInput(Number(event.target.value))}
+          />
+          <input
             type="number"
             step="1"
             min="1"
             max="99"
+            value={percentageInput}
             onChange={(event) => setPercentageInput(Number(event.target.value))}
           />
           <input
@@ -106,18 +125,36 @@ const Discount = () => {
         <div className="select-discount">
           <p>Percentage discount: %</p>
           <input
+            type="range"
+            step="1"
+            min="1"
+            max="99"
+            value={percentageInput}
+            onChange={(event) => setPercentageInput(Number(event.target.value))}
+          />
+          <input
             type="number"
             step="1"
             min="1"
             max="99"
+            value={percentageInput}
             onChange={(event) => setPercentageInput(Number(event.target.value))}
           />
-          <p>Minimum spend: £: </p>{" "}
+          <p>Minimum spend: £: </p>
+
+          <input
+            type="range"
+            step="1"
+            min="1"
+            max="50"
+            value={minSpendInput}
+            onChange={(event) => setMinSpendInput(Number(event.target.value))}
+          />
           <input
             type="number"
             step="1"
-            max="99"
-            onChange={(event) => setMinSpendInput(event.target.value)}
+            value={minSpendInput}
+            onChange={(event) => setMinSpendInput(Number(event.target.value))}
           />
           <input
             type="button"

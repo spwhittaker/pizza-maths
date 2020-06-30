@@ -18,12 +18,8 @@ const PizzaCard = ({
   const { metricUnits, setMetricUnits } = useContext(UpperLevelContext);
   const { handleRemove, handleAdd, handleMinus } = useContext(AppContext);
 
-  let roundedDiameter;
-  if (diameter % 1 === 0) {
-    roundedDiameter = diameter;
-  } else {
-    roundedDiameter = Number(diameter).toFixed(1);
-  }
+  let roundedDiameter =
+    diameter % 1 === 0 ? diameter : Number(diameter).toFixed(1);
 
   const classNames =
     isBestValue === true ? "PizzaCard best-value-pizza" : "PizzaCard";
@@ -39,26 +35,21 @@ const PizzaCard = ({
 
         <p>{name}</p>
       </span>
-      {metricUnits === false ? (
-        <span className="pizza-detail">
-          <p>
-            <strong>Diameter</strong>:
-          </p>
-          <p>{roundedDiameter} inches</p>
-        </span>
-      ) : (
-        <span className="pizza-detail">
-          <p>
-            <strong>Diameter</strong>:
-          </p>
-          <p>
-            {(diameter * 2.54) % 1 === 0
-              ? diameter * 2.54
-              : Number(diameter * 2.54).toFixed(1)}{" "}
-            cm
-          </p>
-        </span>
-      )}
+      <span className="pizza-detail">
+        <p>
+          <strong>Diameter</strong>:
+        </p>
+        <p>
+          {metricUnits
+            ? `${
+                (diameter * 2.54) % 1 === 0
+                  ? diameter * 2.54
+                  : Number(diameter * 2.54).toFixed(1)
+              } cm`
+            : `${roundedDiameter} inches`}
+        </p>
+      </span>
+
       <span className="pizza-detail">
         <p>
           <strong>Price per pizza</strong>:
@@ -104,69 +95,50 @@ const PizzaCard = ({
         </p>
         <p>{localCurrency(price * quantity)}</p>
       </span>
-      {metricUnits === false ? (
-        <span className="pizza-detail">
-          <p>
-            <strong>Area</strong>:
-          </p>
-          <p>
-            {(area * quantity).toFixed(2)} in<sup>2</sup>
-          </p>
-        </span>
-      ) : (
-        <span className="pizza-detail">
-          <p>
-            <strong>Area</strong>:
-          </p>
-          <p>
-            {(area * quantity * 2.54 * 2.54).toFixed(2)} cm
-            <sup>2</sup>
-          </p>
-        </span>
-      )}
-      {metricUnits === false ? (
-        <span className="pizza-detail">
-          <p>
-            <strong>Crust</strong>:
-          </p>
-          <p>{(circumference * quantity).toFixed(2)} inches</p>
-        </span>
-      ) : (
-        <span className="pizza-detail">
-          <p>
-            <strong>Crust</strong>:
-          </p>
-          <p>{(circumference * quantity * 2.54).toFixed(2)} cm</p>
-        </span>
-      )}
+
       <span className="pizza-detail">
-        {" "}
+        <p>
+          <strong>Area</strong>:
+        </p>
+        <p>
+          {metricUnits
+            ? `${(area * quantity * 2.54 * 2.54).toFixed(2)} cm`
+            : `${(area * quantity).toFixed(2)} in`}
+          <sup>2</sup>
+        </p>
+      </span>
+      <span className="pizza-detail">
+        <p>
+          <strong>Crust</strong>:
+        </p>
+        <p>
+          {metricUnits
+            ? `${(circumference * quantity * 2.54).toFixed(2)} cm`
+            : `${(circumference * quantity).toFixed(2)} inches`}
+        </p>
+      </span>
+      <span className="pizza-detail">
         <p>
           <strong>Area to crust ratio</strong>:
         </p>
         <p>{((area * quantity) / (circumference * quantity)).toFixed(2)}</p>
       </span>
-      {metricUnits === false ? (
-        <span className="pizza-detail">
-          <p>
-            <strong>
-              Price per in<sup>2</sup>
-            </strong>
-            :
-          </p>
-          <p>{localCurrencyDetailed(price / area)}</p>
-        </span>
-      ) : (
-        <span className="pizza-detail">
-          <p>
-            <strong>
-              Price per cm<sup>2</sup>
-            </strong>
-            :
-          </p>
-          <p>{localCurrencyDetailed(price / (area * 2.54 * 2.54))}</p>
-        </span>
-      )}
+
+      <span className="pizza-detail">
+        <p>
+          <strong>
+            Price per {metricUnits ? "cm" : "in"}
+            <sup>2</sup>
+          </strong>
+          :
+        </p>
+        <p>
+          {metricUnits
+            ? localCurrencyDetailed(price / (area * 2.54 * 2.54))
+            : localCurrencyDetailed(price / area)}
+        </p>
+      </span>
+
       {isBestValue === true && (
         <p className="best-value-text">(Best value for money on this order!)</p>
       )}

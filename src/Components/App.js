@@ -10,14 +10,12 @@ import ScrollButton from "./ScrollButton";
 
 const App = ({ appInstance }) => {
   const { splitView, metricUnits } = useContext(UpperLevelContext);
-
   return (
     <div className={`App ${splitView} app-number-${appInstance}`}>
       <div className="input-and-discounts">
         <InputForm />
         <Discount />
       </div>
-
       <PizzaCards
         appInstance={appInstance}
         splitView={splitView}

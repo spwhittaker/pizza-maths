@@ -34,12 +34,14 @@ const PizzaCards = ({ appInstance }) => {
   const pricePerAreas = pizzas.map(
     (pizza) => pizza.price / (Math.pow(pizza.diameter / 2, 2) * Math.PI)
   );
-  const firstIndexOfBestValuePizza = pricePerAreas.indexOf(
-    Math.min.apply(null, pricePerAreas)
-  );
   const cheapestArr = pricePerAreas
     .map((e, index) => {
-      if (e === pricePerAreas[firstIndexOfBestValuePizza]) {
+      if (
+        e ===
+        pricePerAreas[
+          pricePerAreas.indexOf(Math.min.apply(null, pricePerAreas))
+        ]
+      ) {
         return index;
       } else {
         return null;
@@ -54,12 +56,7 @@ const PizzaCards = ({ appInstance }) => {
       )
       .reduce((total, currentArea) => total + currentArea);
   }
-  let percentageMetThreshold;
-  if (minSpend <= totalVal) {
-    percentageMetThreshold = percentageCalculator;
-  } else {
-    percentageMetThreshold = 1;
-  }
+  let percentageMetThreshold = minSpend <= totalVal ? percentageCalculator : 1;
 
   let totalAfterDiscount = totalVal;
   const buyXCheapestFree = (xValue) => {
@@ -88,14 +85,11 @@ const PizzaCards = ({ appInstance }) => {
     }
     return 0;
   };
-  if (
+  totalAfterDiscount =
     selectedDiscount === "Buy x number of pizzas, get cheapest free" ||
     selectedDiscount === "Buy 2 pizzas, get cheapest free"
-  ) {
-    totalAfterDiscount = totalVal - buyXCheapestFree(xPizzas);
-  } else {
-    totalAfterDiscount = totalVal * percentageCalculator;
-  }
+      ? totalVal - buyXCheapestFree(xPizzas)
+      : totalVal * percentageCalculator;
 
   return (
     <div className="pizza-cards-container">
@@ -127,22 +121,26 @@ const PizzaCards = ({ appInstance }) => {
               </h2>
             )}
             {percentageMetThreshold !== 1 && (
-              <h2 className="total-label-and-value">
-                <span>Total before discount: </span>
-                <span>{localCurrency(totalVal)}</span>
-              </h2>
-            )}
-            {percentageMetThreshold !== 1 && (
-              <h2 className="total-label-and-value">
-                <span>Discount applied: </span>
-                <span>{percentage}%</span>
-              </h2>
-            )}
-            {percentageMetThreshold !== 1 && (
-              <h2 className="total-label-and-value">
-                <span>Total after discount: </span>
-                <span>{localCurrency(totalAfterDiscount)}</span>
-              </h2>
+              <>
+                <h2 className="total-label-and-value">
+                  <span>Total before discount: </span>
+                  <span>{localCurrency(totalVal)}</span>
+                </h2>
+
+                <h2 className="total-label-and-value">
+                  <span>Discount applied: </span>
+                  <span>{percentage}%</span>
+                </h2>
+                <h2 className="total-label-and-value">
+                  <span>Savings: </span>
+                  <span>{localCurrency(totalVal - totalAfterDiscount)}</span>
+                </h2>
+
+                <h2 className="total-label-and-value">
+                  <span>Total after discount: </span>
+                  <span>{localCurrency(totalAfterDiscount)}</span>
+                </h2>
+              </>
             )}
             {minSpend > 0 && minSpend > totalVal && (
               <h2>
@@ -162,7 +160,11 @@ const PizzaCards = ({ appInstance }) => {
 
                   <h2 className="total-label-and-value">
                     <span>Discount applied: </span>
-                    <span>{localCurrency(buyXCheapestFree(xPizzas))}</span>
+                    <span>{`Buy ${xPizzas} pizzas, get cheapest free`}</span>
+                  </h2>
+                  <h2 className="total-label-and-value">
+                    <span>Savings: </span>
+                    <span>{localCurrency(totalVal - totalAfterDiscount)}</span>
                   </h2>
 
                   <h2 className="total-label-and-value">
@@ -171,43 +173,29 @@ const PizzaCards = ({ appInstance }) => {
                   </h2>
                 </div>
               )}
+            <h2 className="total-label-and-value">
+              <span>Total area: </span>
+              <span>
+                {metricUnits
+                  ? `${(areaVal * 2.54 * 2.54).toFixed(2)} cm`
+                  : `${areaVal.toFixed(2)} in`}
+                <sup>2</sup>
+              </span>
+            </h2>
 
-            {metricUnits === false ? (
-              <h2 className="total-label-and-value">
-                <span>Total area: </span>
-                <span>
-                  {areaVal.toFixed(2)} in<sup>2</sup>
-                </span>
-              </h2>
-            ) : (
-              <h2 className="total-label-and-value">
-                <span>Total area: </span>
-                <span>
-                  {(areaVal * 2.54 * 2.54).toFixed(2)} cm<sup>2</sup>
-                </span>
-              </h2>
-            )}
-            {metricUnits === false ? (
-              <h2 className="total-label-and-value">
-                <span>
-                  Total price per in<sup>2</sup>:{" "}
-                </span>
-                <span>
-                  {localCurrencyDetailed(totalAfterDiscount / areaVal)}
-                </span>
-              </h2>
-            ) : (
-              <h2 className="total-label-and-value">
-                <span>
-                  Total price per cm<sup>2</sup>:{" "}
-                </span>
-                <span>
-                  {localCurrencyDetailed(
-                    totalAfterDiscount / (areaVal * 2.54 * 2.54)
-                  )}
-                </span>
-              </h2>
-            )}
+            <h2 className="total-label-and-value">
+              <span>
+                Total price per {metricUnits ? "cm" : "in"}
+                <sup>2</sup>:
+              </span>
+              <span>
+                {metricUnits
+                  ? localCurrencyDetailed(
+                      totalAfterDiscount / (areaVal * 2.54 * 2.54)
+                    )
+                  : localCurrencyDetailed(totalAfterDiscount / areaVal)}
+              </span>
+            </h2>
 
             <h2 className="total-label-and-value">
               <span>Total area to crust ratio: </span>
