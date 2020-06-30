@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/PizzaCard.scss";
 import ToggleSwitch from "./ToggleSwitch";
+import { UpperLevelContext } from "../context/UpperLevelContext";
+import { AppContext } from "../context/AppContext";
 import PropTypes from "prop-types";
 import { FaPlusCircle, FaMinusCircle, FaTrash } from "react-icons/fa";
 import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
@@ -11,25 +13,20 @@ const PizzaCard = ({
   price,
   quantity,
   pizzaId,
-  addButtonClick,
-  minusButtonClick,
-  removeButtonClick,
-  metricUnits,
-  handleMetric,
-  handleImperial,
   isBestValue,
 }) => {
+  const { metricUnits, setMetricUnits } = useContext(UpperLevelContext);
+  const { handleRemove, handleAdd, handleMinus } = useContext(AppContext);
+
   let roundedDiameter;
   if (diameter % 1 === 0) {
     roundedDiameter = diameter;
   } else {
     roundedDiameter = Number(diameter).toFixed(1);
   }
-  let classNames = "PizzaCard";
-  if (isBestValue === true) {
-    classNames = "PizzaCard best-value-pizza";
-  }
 
+  const classNames =
+    isBestValue === true ? "PizzaCard best-value-pizza" : "PizzaCard";
   const area = Math.PI * Math.pow(diameter / 2, 2);
   const circumference = Math.PI * diameter;
 
@@ -78,23 +75,27 @@ const PizzaCard = ({
         <div className="add-remove-buttons">
           <FaPlusCircle
             className="add-button"
-            onClick={() => addButtonClick(pizzaId)}
+            onClick={() => handleAdd(pizzaId)}
           />
 
           <FaMinusCircle
             className="minus-button"
-            onClick={() => minusButtonClick(pizzaId)}
+            onClick={() => handleMinus(pizzaId)}
           />
           <FaTrash
             className="remove-button"
-            onClick={() => removeButtonClick(pizzaId)}
+            onClick={() => handleRemove(pizzaId)}
           />
         </div>
         <ToggleSwitch
           uniqueId={pizzaId}
           isMetric={metricUnits}
-          onChangeLeft={handleImperial}
-          onChangeRight={handleMetric}
+          onChangeLeft={() => {
+            setMetricUnits(false);
+          }}
+          onChangeRight={() => {
+            setMetricUnits(true);
+          }}
         />
       </div>
       <span className="pizza-detail">
@@ -166,26 +167,20 @@ const PizzaCard = ({
           <p>{localCurrencyDetailed(price / (area * 2.54 * 2.54))}</p>
         </span>
       )}
-      {/*{isBestValue === true && (*/}
-      {/*  <p className="best-value-text">(Best value for money on this order!)</p>*/}
-      {/*)}{" "}*/}
+      {isBestValue === true && (
+        <p className="best-value-text">(Best value for money on this order!)</p>
+      )}
     </div>
   );
 };
 
 PizzaCard.propTypes = {
-  addButtonClick: PropTypes.func.isRequired,
   diameter: PropTypes.number.isRequired,
-  handleImperial: PropTypes.func.isRequired,
-  handleMetric: PropTypes.func.isRequired,
   isBestValue: PropTypes.bool.isRequired,
-  metricUnits: PropTypes.bool.isRequired,
-  minusButtonClick: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   pizzaId: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
-  removeButtonClick: PropTypes.func.isRequired,
 };
 
 export default PizzaCard;

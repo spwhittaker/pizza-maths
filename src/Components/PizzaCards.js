@@ -1,26 +1,22 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { UpperLevelContext } from "../context/UpperLevelContext";
+import { AppContext } from "../context/AppContext";
 import PizzaCard from "./PizzaCard";
 import "../styles/PizzaCards.scss";
 import PropTypes from "prop-types";
 import { localCurrency, localCurrencyDetailed } from "../currencyFormatter";
 
-const PizzaCards = ({
-  splitView,
-  pizzas,
-  appInstance,
-  addButton,
-  minusButton,
-  removeButton,
-  metricUnits,
-  percentageCalculator,
-  percentValue,
-  minSpend,
-  handleMetricConversion,
-  handleImperialConversion,
-  selectedDiscount,
-  xPizzas,
-}) => {
+const PizzaCards = ({ appInstance }) => {
+  const { splitView, metricUnits } = useContext(UpperLevelContext);
+  const {
+    pizzas,
+    selectedDiscount,
+    percentage,
+    minSpend,
+    xPizzas,
+  } = useContext(AppContext);
+
+  const percentageCalculator = 1 - (percentage / 100).toFixed(2);
   let totalVal = 0;
   let areaVal = 0;
   if (pizzas.length > 0) {
@@ -38,9 +34,19 @@ const PizzaCards = ({
   const pricePerAreas = pizzas.map(
     (pizza) => pizza.price / (Math.pow(pizza.diameter / 2, 2) * Math.PI)
   );
-  const indexOfBestValuePizza = pricePerAreas.indexOf(
+  const firstIndexOfBestValuePizza = pricePerAreas.indexOf(
     Math.min.apply(null, pricePerAreas)
   );
+  const cheapestArr = pricePerAreas
+    .map((e, index) => {
+      if (e === pricePerAreas[firstIndexOfBestValuePizza]) {
+        return index;
+      } else {
+        return null;
+      }
+    })
+    .filter((e) => e !== null);
+
   if (pizzas.length > 0) {
     areaVal = pizzas
       .map(
@@ -105,17 +111,9 @@ const PizzaCards = ({
             <PizzaCard
               {...pie}
               isBestValue={
-                index === indexOfBestValuePizza && pizzas.length > 1
-                  ? true
-                  : false
+                cheapestArr.includes(index) && pizzas.length > 1 ? true : false
               }
               pizzaId={pie.pizzaId}
-              addButtonClick={addButton}
-              minusButtonClick={minusButton}
-              removeButtonClick={removeButton}
-              metricUnits={metricUnits}
-              handleMetric={handleMetricConversion}
-              handleImperial={handleImperialConversion}
             />
           );
         })}
@@ -137,7 +135,7 @@ const PizzaCards = ({
             {percentageMetThreshold !== 1 && (
               <h2 className="total-label-and-value">
                 <span>Discount applied: </span>
-                <span>{percentValue}%</span>
+                <span>{percentage}%</span>
               </h2>
             )}
             {percentageMetThreshold !== 1 && (
@@ -149,7 +147,7 @@ const PizzaCards = ({
             {minSpend > 0 && minSpend > totalVal && (
               <h2>
                 You've not met the minimum spend of <br />
-                {localCurrency(minSpend)} to get {percentValue}% off.
+                {localCurrency(minSpend)} to get {percentage}% off.
               </h2>
             )}
             {totalPizzasQuantity >= xPizzas &&
@@ -231,19 +229,7 @@ const PizzaCards = ({
   );
 };
 PizzaCards.propTypes = {
-  pizzas: PropTypes.array.isRequired,
-  addButton: PropTypes.func.isRequired,
-  removeButton: PropTypes.func.isRequired,
-  minusButton: PropTypes.func.isRequired,
-  splitView: PropTypes.string.isRequired,
-  metricUnits: PropTypes.bool.isRequired,
-  handleMetricConversion: PropTypes.func.isRequired,
-  handleImperialConversion: PropTypes.func.isRequired,
-  percentageCalculator: PropTypes.number.isRequired,
-  percentValue: PropTypes.number.isRequired,
-  minSpend: PropTypes.number.isRequired,
-  selectedDiscount: PropTypes.string.isRequired,
-  xPizzas: PropTypes.number.isRequired,
+  appInstance: PropTypes.string.isRequired,
 };
 
 export default PizzaCards;
