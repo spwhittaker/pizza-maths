@@ -4,29 +4,29 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [pizzas, setPizzas] = useState([
-    {
-      name: "Test guy",
-      diameter: 12,
-      price: 7,
-      key: "Test guy 0",
-      pizzaId: "test id",
-      quantity: 3,
-    },
-    {
-      name: "Test guy no. 2",
-      diameter: 10,
-      price: 6,
-      key: "Test guy 1",
-      pizzaId: "test id1",
-      quantity: 2,
-    },
-    {
-      name: "Test guy Pepp",
-      diameter: 12,
-      price: 7,
-      key: "Test guy 2",
-      pizzaId: "test id2",
-      quantity: 3,
+    // {
+    //   name: "Test guy",
+    //   diameter: 12,
+    //   price: 7,
+    //   key: "Test guy 0",
+    //   pizzaId: "test id",
+    //   quantity: 3,
+    // },
+    // {
+    //   name: "Test guy no. 2",
+    //   diameter: 10,
+    //   price: 6,
+    //   key: "Test guy 1",
+    //   pizzaId: "test id1",
+    //   quantity: 2,
+    // },
+    // {
+    //   name: "Test guy Pepp",
+    //   diameter: 12,
+    //   price: 7,
+    //   key: "Test guy 2",
+    //   pizzaId: "test id2",
+    //   quantity: 3,
     },
   ]);
 
