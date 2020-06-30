@@ -6,6 +6,7 @@ import PizzaCards from "./PizzaCards";
 import Discount from "./Discount";
 import PropTypes from "prop-types";
 import { UpperLevelContext } from "../context/UpperLevelContext";
+import ScrollButton from "./ScrollButton";
 
 const App = ({ appInstance }) => {
   const { splitView, metricUnits } = useContext(UpperLevelContext);
@@ -22,6 +23,7 @@ const App = ({ appInstance }) => {
         splitView={splitView}
         metricUnits={metricUnits}
       />
+      <ScrollButton />
     </div>
   );
 };

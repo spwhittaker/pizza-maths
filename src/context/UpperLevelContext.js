@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const UpperLevelContext = createContext();
 
@@ -9,6 +9,13 @@ const UpperLevelProvider = ({ children }) => {
   );
   const [splitView, setSplitView] = useState("single-view");
   const [metricUnits, setMetricUnits] = useState(false);
+  const [height, setHeight] = useState(0);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setHeight(window.pageYOffset);
+    });
+    return () => window.removeEventListener("scroll", () => {});
+  });
   const handleAddComparison = (event) => {
     setComparisonDiv(true);
     setComparisonClass("side-by-side-comparison");
@@ -29,6 +36,7 @@ const UpperLevelProvider = ({ children }) => {
         comparisonClass,
         setComparisonClass,
         splitView,
+        height,
         setSplitView,
         metricUnits,
         setMetricUnits,

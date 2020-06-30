@@ -4,42 +4,7 @@ import Footer from "./Footer";
 import React, { useContext } from "react";
 import { AppProvider } from "../context/AppContext";
 import { UpperLevelContext } from "../context/UpperLevelContext";
-
-/* class UpperLevel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comparisonDiv: false,
-      comparisonClass: "single-view-comparison",
-      splitView: "single-view",
-      metricUnits: false,
-    };
-  }
-
-  handleAddComparison = (event) => {
-    this.setState({
-      comparisonDiv: true,
-      comparisonClass: "side-by-side-comparison",
-      splitView: "split-view",
-    });
-  };
-
-  handleRemoveComparison = (event) => {
-    this.setState({
-      comparisonDiv: false,
-      comparisonClass: "single-view-comparison",
-      splitView: "single-view",
-    });
-  };
-
-  handleMetricConversion = () => {
-    this.setState({ metricUnits: true });
-  };
-  handleImperialConversion = () => {
-    this.setState({ metricUnits: false });
-  };
-
-  render() */ const UpperLevel = () => {
+const UpperLevel = () => {
   const {
     comparisonDiv,
 
@@ -84,25 +49,11 @@ import { UpperLevelContext } from "../context/UpperLevelContext";
       </div>
       <span className="apps">
         <AppProvider>
-          <App
-            className={comparisonClass}
-            /*             sideBySide={splitView}
-            metricUnits={metricUnits}
- */ appInstance={
-              "0"
-            }
-          />
+          <App className={comparisonClass} appInstance={"0"} />
         </AppProvider>
         {comparisonDiv && (
           <AppProvider>
-            <App
-              className={splitView}
-              /*               sideBySide={splitView}
-              metricUnits={metricUnits}
- */ appInstance={
-                "1"
-              }
-            />
+            <App className={splitView} appInstance={"1"} />
           </AppProvider>
         )}
       </span>
