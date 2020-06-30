@@ -65,7 +65,7 @@ const InputForm = () => {
         <div className="input-texts">
           <div className="pizza-option">
             <span className="input-options">
-              <p>Name</p>
+              <label htmlFor="nameInput">Name:</label>
               <input
                 type="text"
                 required
@@ -73,34 +73,38 @@ const InputForm = () => {
                 list="pizza-names"
                 onChange={(event) => setNameInput(event.target.value)}
                 className="pizza-input"
+                id="nameInput"
               />
               {pizzaNameslist}
             </span>
           </div>
           <div className="pizza-option" id="toggle">
             <span className="input-options">
-              <p>Diameter</p>
+              <label htmlFor="diameterInput">Diameter:</label>
+              <label htmlFor="diameterSlider" id="diameterSliderLabel">diameterSlider</label>
               <input
                 className="range-input"
                 type="range"
-                name="diameter"
+                name="diameterSlider"
                 min="1"
                 max="50"
                 value={diameterInput}
                 onChange={(event) =>
                   setDiameterInput(Number(event.target.value))
                 }
+                id="diameterSlider"
               />
               <input
                 value={diameterInput}
                 type="number"
                 required
-                name="diameter"
+                name="diameterInput"
                 min="1"
                 onChange={(event) =>
                   setDiameterInput(Number(event.target.value))
                 }
                 className="pizza-input"
+                id="diameterInput"
               />
             </span>
 
@@ -117,11 +121,12 @@ const InputForm = () => {
           </div>
           <div className="pizza-option">
             <span className="input-options">
-              <p>Price ({localCurrency(1).replace(/[\s0-9.,]/gi, "")})</p>
+              <label htmlFor="priceInput">Price ({localCurrency(1).replace(/[\s0-9.,]/gi, "")})</label>
+              <label htmlFor="priceSlider" id="priceSliderLabel">priceSlider</label>
               <input
                 className="range-input"
                 type="range"
-                name="price"
+                name="priceSlider"
                 min="1"
                 max="30"
                 step="0.01"
@@ -129,25 +134,28 @@ const InputForm = () => {
                 onChange={(event) =>
                   setPriceInput(Number(event.target.value).toFixed(2))
                 }
+                id="priceSlider"
               />
               <input
                 type="number"
                 required
-                name="price"
+                name="priceInput"
                 step="0.01"
                 min="1"
                 value={priceInput}
                 onChange={(event) => setPriceInput(event.target.value)}
                 className="pizza-input"
+                id="priceInput"
               />
             </span>
           </div>
           <div className="pizza-option">
             <span className="input-options">
-              <p>Quantity</p>
+              <label htmlFor="quantityInput">Quantity:</label>
+              <label htmlFor="quantitySlider" id="quantitySliderLabel">quantitySlider</label>
               <input
                 type="range"
-                name="quantity"
+                name="quantityInput"
                 step="1"
                 min="1"
                 max="20"
@@ -156,11 +164,12 @@ const InputForm = () => {
                   setQuantityInput(Number(event.target.value))
                 }
                 className="pizza-input"
+                id="quantityInput"
               />
               <input
                 type="number"
                 required
-                name="quantity"
+                name="quantitySlider"
                 step="1"
                 min="1"
                 value={quantityInput}
@@ -168,13 +177,14 @@ const InputForm = () => {
                   setQuantityInput(Number(event.target.value))
                 }
                 className="pizza-input"
+                id="quantitySlider"
               />
             </span>
           </div>
         </div>
 
         <div className="add-pizza">
-          <button type="submit">I'm hungry!</button>
+          <button type="submit" aria-label="button">I'm hungry!</button>
         </div>
       </form>
     </div>
