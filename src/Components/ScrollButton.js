@@ -11,6 +11,7 @@ export default () => {
     <button
       className={height > 80 ? "scroll-btn show-scroll-btn" : "scroll-btn"}
       onClick={scrollBackToTop}
+      aria-label="button"
     >
       <FaAngleDoubleUp />
     </button>
