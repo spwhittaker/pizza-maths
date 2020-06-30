@@ -27,7 +27,7 @@ const AppProvider = ({ children }) => {
     //   key: "Test guy 2",
     //   pizzaId: "test id2",
     //   quantity: 3,
-    },
+    // },
   ]);
 
   const [selectedDiscount, setSelectedDiscount] = useState("");
