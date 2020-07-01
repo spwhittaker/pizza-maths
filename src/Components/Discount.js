@@ -42,12 +42,13 @@ const Discount = () => {
   };
   return (
     <div className="add-discounts">
-      <p>Add a discount if applicable:</p>
+      <label htmlFor="discountOptions">Add a discount if applicable:</label>
       <Select
         className="selector"
         value={{ label: discountInput }}
         options={options}
         onChange={handleDiscountInput}
+        inputId="discountOptions"
       />
       {discountInput === "Buy 2 pizzas, get cheapest free" && (
         <div className="select-discount">
