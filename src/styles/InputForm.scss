@@ -26,7 +26,7 @@
   .pizza-input {
     width: 100%;
     max-width: 500px;
-    min-width: 100px;
+    min-width: 70px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -43,18 +43,23 @@
     flex-wrap: wrap;
     align-items: center;
     justify-items: stretch;
-    min-width: fit-content;
+    /*     min-width: fit-content;
+ */
     justify-content: space-between;
 
     p {
-      min-width: fit-content;
+      /*       min-width: fit-content;
+ */
       padding: 0 5px 0 0;
     }
   }
 
   form {
     background-color: $inputForm-bg;
-    margin: 10px 0em 10px;
+    margin: 10px 0 10px;
     border-radius: 10px;
+    @media screen and (max-width: 370px) {
+      margin: 0;
+    }
   }
 }

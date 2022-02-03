@@ -59,7 +59,7 @@ xPizzas: PropTypes.number
 
 ToggleSwitch
 
-uniqueId: PropTypes.string
+appInstance: PropTypes.string
 title: PropTypes.string
 isMetric: PropTypes.bool
 onChangeLeft: PropTypes.func

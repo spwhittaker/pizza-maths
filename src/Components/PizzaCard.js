@@ -28,14 +28,14 @@ const PizzaCard = ({
 
   return (
     <div className={classNames} key={pizzaId}>
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Name</strong>:
         </p>
 
         <p>{name}</p>
       </span>
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Diameter</strong>:
         </p>
@@ -50,36 +50,36 @@ const PizzaCard = ({
         </p>
       </span>
 
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Price per pizza</strong>:
         </p>
         <p>{localCurrency(price)}</p>
       </span>
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Quantity</strong>:
         </p>
         <p>{quantity}</p>
       </span>
-      <div className="quantity-buttons">
-        <div className="add-remove-buttons">
+      <div className='quantity-buttons'>
+        <div className='add-remove-buttons'>
           <FaPlusCircle
-            className="add-button"
+            className='add-button'
             onClick={() => handleAdd(pizzaId)}
           />
 
           <FaMinusCircle
-            className="minus-button"
+            className='minus-button'
             onClick={() => handleMinus(pizzaId)}
           />
           <FaTrash
-            className="remove-button"
+            className='remove-button'
             onClick={() => handleRemove(pizzaId)}
           />
         </div>
         <ToggleSwitch
-          uniqueId={pizzaId}
+          appInstance={pizzaId}
           isMetric={metricUnits}
           onChangeLeft={() => {
             setMetricUnits(false);
@@ -89,14 +89,14 @@ const PizzaCard = ({
           }}
         />
       </div>
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Total</strong>:
         </p>
         <p>{localCurrency(price * quantity)}</p>
       </span>
 
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Area</strong>:
         </p>
@@ -107,7 +107,7 @@ const PizzaCard = ({
           <sup>2</sup>
         </p>
       </span>
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Crust</strong>:
         </p>
@@ -117,14 +117,14 @@ const PizzaCard = ({
             : `${(circumference * quantity).toFixed(2)} inches`}
         </p>
       </span>
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>Area to crust ratio</strong>:
         </p>
         <p>{((area * quantity) / (circumference * quantity)).toFixed(2)}</p>
       </span>
 
-      <span className="pizza-detail">
+      <span className='pizza-detail'>
         <p>
           <strong>
             Price per {metricUnits ? "cm" : "in"}
@@ -140,7 +140,7 @@ const PizzaCard = ({
       </span>
 
       {isBestValue === true && (
-        <p className="best-value-text">(Best value for money on this order!)</p>
+        <p className='best-value-text'>(Best value for money on this order!)</p>
       )}
     </div>
   );

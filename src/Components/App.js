@@ -12,8 +12,8 @@ const App = ({ appInstance }) => {
   const { splitView, metricUnits } = useContext(UpperLevelContext);
   return (
     <div className={`App ${splitView} app-number-${appInstance}`}>
-      <div className="input-and-discounts">
-        <InputForm />
+      <div className='input-and-discounts'>
+        <InputForm appInstance={appInstance} />
         <Discount />
       </div>
       <PizzaCards

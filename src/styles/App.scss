@@ -26,11 +26,20 @@
     max-width: 50%;
     padding-left: 20px;
     padding-right: 2px;
+
+    @media screen and (max-width: 370px) {
+      padding: 2px;
+      margin: 2px;
+    }
   }
   &.split-view.app-number-1 {
     max-width: 50%;
     padding-left: 2px;
     padding-right: 20px;
+    @media screen and (max-width: 370px) {
+      padding: 2px;
+      margin: 2px;
+    }
   }
   .order-heading {
     color: $primary-colour;

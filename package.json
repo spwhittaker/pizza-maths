@@ -13,6 +13,7 @@
     "react-icons": "^3.10.0",
     "react-scripts": "^3.4.3",
     "react-select": "^3.0.8",
+    "sass": "^1.49.7",
     "vercel": "^20.1.1"
   },
   "license": "UNLICENSED",
@@ -39,9 +40,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "gh-pages": "^2.2.0",
-    "node-sass": "^4.14.1",
-    "now": "^17.0.4"
+    "gh-pages": "^2.2.0"
   },
   "plugins": [
     [

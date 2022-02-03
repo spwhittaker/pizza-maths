@@ -37,6 +37,9 @@
     text-align: center;
     text-shadow: none;
     padding: 3px 10px;
+    @media screen and (max-width: 250px) {
+      padding: 2px;
+    }
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3),
       0 1px rgba(255, 255, 255, 0.1);
@@ -46,9 +49,15 @@
     }
     &:first-of-type {
       border-radius: 4px 0 0 4px;
+      @media screen and (max-width: 320px) {
+        border-radius: 4px;
+      }
     }
     &:last-of-type {
       border-radius: 0 4px 4px 0;
+      @media screen and (max-width: 250px) {
+        border-radius: 4px;
+      }
     }
   }
 

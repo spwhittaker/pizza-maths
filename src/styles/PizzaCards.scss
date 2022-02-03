@@ -26,13 +26,11 @@
     justify-content: center;
 
     &.split-view {
-      height: 100%;
+      /* height: 100%; */
       justify-content: flex-start;
       flex-direction: column;
-      .PizzaCard {
-        max-width: 90%;
-        align-self: center;
-      }
+      max-width: 90%;
+      align-self: center;
     }
   }
 
@@ -44,7 +42,11 @@
     padding: 5px;
     border: solid maroon 3px;
     max-width: 100%;
+    height: 200px;
     border-radius: 5px;
+    @media screen and (max-width: 450px) {
+      height: auto;
+    }
   }
 
   .total-label-and-value {
